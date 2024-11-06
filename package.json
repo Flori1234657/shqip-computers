@@ -47,7 +47,7 @@
         }
     },
     "lint-staged": {
-        "*.{ts,tsx}": "eslint . --ext ts,tsx --fix",
+        "*.{ts,tsx}": "npx eslint --fix",
         "*.{json,js,ts,jsx,tsx,html}": "prettier --write --ignore-unknown"
     }
 }

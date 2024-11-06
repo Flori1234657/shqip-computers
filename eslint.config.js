@@ -1,20 +1,16 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
-import areslint from 'eslint-config-airbnb'
-import artseslint from 'eslint-config-airbnb-typescript'
-import pluginprettier from 'eslint-plugin-prettier'
-import prettier from 'prettier'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+import pluginprettier from 'eslint-plugin-prettier';
+import prettier from 'eslint-config-prettier';
 
 export default tseslint.config(
     { ignores: ['dist'] },
     {
         extends: [
-            areslint,
-            artseslint,
-            pluginprettier,
+            prettier,
             js.configs.recommended,
             ...tseslint.configs.recommended,
         ],
@@ -26,7 +22,7 @@ export default tseslint.config(
         plugins: {
             'react-hooks': reactHooks,
             'react-refresh': reactRefresh,
-            prettier: prettier,
+            prettier: pluginprettier,
         },
         rules: {
             ...reactHooks.configs.recommended.rules,
@@ -36,4 +32,4 @@ export default tseslint.config(
             ],
         },
     }
-)
+);
