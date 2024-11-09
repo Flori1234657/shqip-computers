@@ -21,23 +21,23 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: (
-                    <Suspense fallback="fallback-component">
+                    <Suspense fallback='fallback-component'>
                         <Shop />
                     </Suspense>
                 ),
                 children: [
                     {
-                        path: '/cart',
+                        path: '/shop/cart',
                         element: (
-                            <Suspense fallback="fallback-component">
+                            <Suspense fallback='fallback-component'>
                                 <Cart />
                             </Suspense>
                         ),
                     },
                     {
-                        path: '/product/:id',
+                        path: '/shop/product/:id',
                         element: (
-                            <Suspense fallback="fallback-component">
+                            <Suspense fallback='fallback-component'>
                                 <Product />
                             </Suspense>
                         ),
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
             {
                 path: '/about-us',
                 element: (
-                    <Suspense fallback="fallback-component">
+                    <Suspense fallback='fallback-component'>
                         <AboutUs />
                     </Suspense>
                 ),
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
             {
                 path: '/contact-us',
                 element: (
-                    <Suspense fallback="fallback-component">
+                    <Suspense fallback='fallback-component'>
                         <ContactUs />
                     </Suspense>
                 ),
