@@ -3,16 +3,16 @@ import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
-import pluginprettier from 'eslint-plugin-prettier';
-import prettier from 'eslint-config-prettier';
+import stylisticJs from '@stylistic/eslint-plugin-js';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default tseslint.config(
     { ignores: ['dist'] },
     {
         extends: [
-            prettier,
             js.configs.recommended,
             ...tseslint.configs.recommended,
+            eslintConfigPrettier,
         ],
         files: ['**/*.{ts,tsx}'],
         languageOptions: {
@@ -22,7 +22,7 @@ export default tseslint.config(
         plugins: {
             'react-hooks': reactHooks,
             'react-refresh': reactRefresh,
-            prettier: pluginprettier,
+            '@stylistic/js': stylisticJs,
         },
         rules: {
             ...reactHooks.configs.recommended.rules,
@@ -30,6 +30,8 @@ export default tseslint.config(
                 'warn',
                 { allowConstantExport: true },
             ],
+            '@stylistic/js/indent': ['error', 4],
+            '@stylistic/js/jsx-quotes': ['error', 'prefer-single'],
         },
     }
 );
