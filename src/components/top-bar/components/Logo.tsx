@@ -1,16 +1,26 @@
-import { AspectRatio, Stack, Typography } from '@mui/joy';
-//✨ Need to improve the performance
-import Image from 'src/assets/images/logo.png';
+import { Stack, Typography } from '@mui/joy';
+import Image from 'src/components/Image';
+import Img from 'src/assets/images/logo.svg';
 
 export default function Logo() {
     return (
-        <Stack>
-            <AspectRatio ratio='1/1'>
-                <img src={Image} alt='logo of the website' />
-            </AspectRatio>
+        <Stack direction='row' alignItems='center' gap='0.25rem'>
+            <Image
+                ratio='1/1'
+                src={Img}
+                alt='logo of the website'
+                width='2rem'
+            />
 
             {/** 🖥️ Remove text on pc size */}
-            <Typography>ShqipComputers</Typography>
+            <Typography
+                fontSize='md'
+                fontWeight='600'
+                fontFamily='Poppins'
+                sx={(theme) => ({ color: theme.palette.primary[900] })}
+            >
+                ShqipComputers
+            </Typography>
         </Stack>
     );
 }

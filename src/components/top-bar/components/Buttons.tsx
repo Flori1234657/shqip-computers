@@ -4,7 +4,12 @@ import { MdOutlineShoppingCart as CartIcon } from 'react-icons/md';
 export default function Buttons() {
     return (
         <Stack>
-            <IconButton>
+            <IconButton
+                variant='solid'
+                size='sm'
+                color='primary'
+                sx={(theme) => ({ bgcolor: theme.palette.primary[900] })}
+            >
                 <CartIcon />
             </IconButton>
 

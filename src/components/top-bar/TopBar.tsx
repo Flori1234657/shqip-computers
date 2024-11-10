@@ -5,8 +5,14 @@ import Logo from './components/Logo';
 
 export default function TopBar() {
     return (
-        <header>
-            <Stack>
+        <header style={{ width: '100%', position: 'fixed', zIndex: 1 }}>
+            <Stack
+                direction={'row'}
+                justifyContent='space-between'
+                px='1.5rem'
+                py='0.5rem'
+                bgcolor='white'
+            >
                 <Logo />
                 <Navigation />
                 <Buttons />

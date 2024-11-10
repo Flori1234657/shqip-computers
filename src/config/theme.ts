@@ -89,6 +89,24 @@ const theme = extendTheme({
             xl: 1536,
         },
     },
+    components: {
+        JoyButton: {
+            styleOverrides: {
+                root: {
+                    borderRadius: '0.5rem',
+                    '-webkit-tap-highlight-color': 'none',
+                },
+            },
+        },
+        JoyIconButton: {
+            styleOverrides: {
+                root: {
+                    borderRadius: '0.5rem',
+                    '-webkit-tap-highlight-color': 'none',
+                },
+            },
+        },
+    },
 });
 
 export default theme;
