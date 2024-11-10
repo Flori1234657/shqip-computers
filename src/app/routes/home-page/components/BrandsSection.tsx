@@ -6,7 +6,7 @@ function BrandsSection() {
         <Stack>
             <Typography>Brand’s you can find here 🔎</Typography>
 
-            <AspectRatio>
+            <AspectRatio ratio='1.15/1'>
                 <img src={Image} alt='logo collection' />
             </AspectRatio>
         </Stack>

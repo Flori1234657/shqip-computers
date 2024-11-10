@@ -6,25 +6,29 @@ import tseslint from 'typescript-eslint';
 import stylisticJs from '@stylistic/eslint-plugin-js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
-export default tseslint.config({ ignores: ['dist'] }, eslintConfigPrettier, {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-        ecmaVersion: 2020,
-        globals: globals.browser,
+export default tseslint.config(
+    { ignores: ['dist'] },
+    {
+        extends: [js.configs.recommended, ...tseslint.configs.recommended],
+        files: ['**/*.{ts,tsx}'],
+        languageOptions: {
+            ecmaVersion: 2020,
+            globals: globals.browser,
+        },
+        plugins: {
+            'react-hooks': reactHooks,
+            'react-refresh': reactRefresh,
+            '@stylistic/js': stylisticJs,
+        },
+        rules: {
+            ...reactHooks.configs.recommended.rules,
+            'react-refresh/only-export-components': [
+                'warn',
+                { allowConstantExport: true },
+            ],
+            '@stylistic/js/indent': ['error', 4],
+            '@stylistic/js/jsx-quotes': ['error', 'prefer-single'],
+        },
     },
-    plugins: {
-        'react-hooks': reactHooks,
-        'react-refresh': reactRefresh,
-        '@stylistic/js': stylisticJs,
-    },
-    rules: {
-        ...reactHooks.configs.recommended.rules,
-        'react-refresh/only-export-components': [
-            'warn',
-            { allowConstantExport: true },
-        ],
-        '@stylistic/js/indent': ['error', 4],
-        '@stylistic/js/jsx-quotes': ['error', 'prefer-single'],
-    },
-});
+    eslintConfigPrettier
+);
