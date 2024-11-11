@@ -1,5 +1,4 @@
 import {
-    AspectRatio,
     Autocomplete,
     AutocompleteOption,
     FormControl,
@@ -7,6 +6,7 @@ import {
 } from '@mui/joy';
 import { BsSearch as SearchIcon } from 'react-icons/bs';
 import PlaceholderImg from 'src/assets/images/placeholder.png';
+import Image from 'src/components/Image';
 
 export default function SearchBar() {
     /**
@@ -41,22 +41,46 @@ export default function SearchBar() {
                     input: {
                         autoComplete: 'new-password', // disable autocomplete and autofill
                     },
+                    popupIndicator: {
+                        style: {
+                            display: 'none',
+                        },
+                    },
+                    endDecorator: {
+                        style: {
+                            fontSize: '1.25rem',
+                        },
+                    },
+                    listbox: {
+                        style: {
+                            borderRadius: '1rem',
+                        },
+                    },
                 }}
-                sx={{ width: 300 }}
+                size='lg'
+                sx={(theme) => ({
+                    width: '100%',
+                    minHeight: '2.5rem',
+                    backgroundColor: 'transparent',
+                    borderRadius: '2rem',
+                    border: `2px solid ${theme.palette.primary[500]}`,
+                })}
                 options={placeholderProducts}
                 autoHighlight
                 getOptionLabel={(option) => option.name}
                 renderOption={(props, option) => (
                     <AutocompleteOption {...props}>
-                        <AspectRatio ratio='1.55/1'>
-                            <img src={option.image} alt='product' />
-                        </AspectRatio>
+                        <Image
+                            ratio='1.55/1'
+                            src={option.image}
+                            alt='product'
+                            width='3rem'
+                        />
                         <Typography>{option.name}</Typography>
                     </AutocompleteOption>
                 )}
                 endDecorator={<SearchIcon />}
             />
-            {/* <FormHelperText>Nothing matches your search!</FormHelperText> */}
         </FormControl>
     );
 }

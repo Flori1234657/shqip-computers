@@ -15,8 +15,8 @@ export default function Logo() {
             {/** 🖥️ Remove text on pc size */}
             <Typography
                 fontSize='md'
-                fontWeight='600'
                 fontFamily='Poppins'
+                fontWeight='600'
                 sx={(theme) => ({ color: theme.palette.primary[900] })}
             >
                 ShqipComputers

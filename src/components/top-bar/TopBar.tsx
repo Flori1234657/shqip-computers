@@ -5,7 +5,7 @@ import Logo from './components/Logo';
 
 export default function TopBar() {
     return (
-        <header style={{ width: '100%', position: 'fixed', zIndex: 1 }}>
+        <header style={{ width: '100%', position: 'fixed', top: 0, zIndex: 1 }}>
             <Stack
                 direction={'row'}
                 justifyContent='space-between'

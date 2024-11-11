@@ -29,7 +29,7 @@ const theme = extendTheme({
             palette: {
                 gradient: {
                     heroTxt:
-                        'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(61,153,245,1) 100%)',
+                        'linear-gradient(90deg, rgba(11,107,203,1) 0%, rgba(61,153,245,1) 100%)',
                     blob: 'linear-gradient(180deg, rgba(11,107,203,0.8) 0%, rgba(207,229,252,1) 100%)',
                     masiveBlob:
                         'linear-gradient(90deg, rgba(11,107,203,1) 0%, rgba(158,204,250,0.1) 100%)',
@@ -53,7 +53,7 @@ const theme = extendTheme({
     typography: {
         'title-lg': {
             fontFamily: 'Poppins',
-            fontWeight: '700',
+            fontWeight: '600',
             fontSize: 'var(--joy-fontSize-x14,2.488rem)',
             lineHeight: '1.1',
         },
