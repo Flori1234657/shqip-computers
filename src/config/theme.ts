@@ -10,6 +10,10 @@ interface NewColors {
     };
 }
 
+interface NewShadows {
+    selectedCard: string;
+}
+
 // Gjej nje menyr me efikase per ta implementuar
 declare module '@mui/joy/styles' {
     interface Palette extends NewColors {
@@ -20,6 +24,10 @@ declare module '@mui/joy/styles' {
             lines: string;
             sendSuccess: string;
         };
+    }
+
+    interface Shadow extends NewShadows {
+        selectedCard: string;
     }
 }
 
@@ -88,6 +96,9 @@ const theme = extendTheme({
             lg: 1200,
             xl: 1536,
         },
+    },
+    shadow: {
+        selectedCard: '0 0 16px 12px rgba(255, 255, 255,0.25)',
     },
     components: {
         JoyButton: {

@@ -7,7 +7,7 @@ import LeftBlob from 'src/assets/images/svg/home/hero-blob-2.svg';
 
 export default function HeroSection() {
     return (
-        <Stack mt='7.5rem' mx='1.5rem' gap='2rem'>
+        <Stack mt='7.5rem' gap='2rem'>
             <Image
                 ratio='1.01/1'
                 src={RightBlob}

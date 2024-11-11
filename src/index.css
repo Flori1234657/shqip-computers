@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
 /* Improve performance by not loading all the fonts at once
    exp >> create different css files with font faces and import
    them only on the desierd component's */
