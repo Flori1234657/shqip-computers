@@ -1,5 +1,6 @@
 import { AspectRatio } from '@mui/joy';
 import { SxProps } from '@mui/joy/styles/types';
+import { CSSProperties } from 'react';
 
 interface Props {
     ratio: string;
@@ -7,14 +8,16 @@ interface Props {
     alt: string;
     width: string;
 
+    objectFit?: CSSProperties['objectFit'];
     otherStyles?: SxProps;
 }
 
-function Image({ ratio, src, alt, width, otherStyles }: Props) {
+function Image({ ratio, src, alt, width, objectFit, otherStyles }: Props) {
     return (
         <AspectRatio
             ratio={ratio}
             sx={{ width, ...otherStyles }}
+            objectFit={objectFit || 'cover'}
             slotProps={{
                 content: {
                     style: {
