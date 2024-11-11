@@ -107,6 +107,9 @@ const theme = extendTheme({
                     borderRadius: '0.5rem',
                     '-webkit-tap-highlight-color': 'none',
                 },
+                endDecorator: {
+                    fontSize: '1.2em',
+                },
             },
         },
         JoyIconButton: {
@@ -114,6 +117,27 @@ const theme = extendTheme({
                 root: {
                     borderRadius: '0.5rem',
                     '-webkit-tap-highlight-color': 'none',
+                },
+            },
+        },
+        JoyInput: {
+            styleOverrides: {
+                root: {
+                    borderRadius: '0.5rem',
+                },
+                startDecorator: {
+                    fontSize: '1.3em',
+                },
+            },
+        },
+        JoyTextarea: {
+            styleOverrides: {
+                root: {
+                    borderRadius: '0.5rem',
+                    flexDirection: 'row',
+                },
+                startDecorator: {
+                    fontSize: '1.3em',
                 },
             },
         },
