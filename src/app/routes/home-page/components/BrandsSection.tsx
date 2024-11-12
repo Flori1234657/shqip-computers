@@ -1,14 +1,27 @@
-import { AspectRatio, Stack, Typography } from '@mui/joy';
-import Image from 'src/assets/images/svg/home/brands-image.png';
+import { Stack, Typography } from '@mui/joy';
+import LogoCollection from 'src/assets/images/svg/home/brands-image.png';
+import Image from 'src/components/Image';
 
 function BrandsSection() {
     return (
-        <Stack>
-            <Typography>Brand’s you can find here 🔎</Typography>
+        <Stack mt='10.75rem' gap='2rem'>
+            <Typography
+                textAlign='center'
+                level='title-md'
+                sx={(theme) => ({
+                    textAlign: 'center',
+                    color: theme.palette.primary[800],
+                })}
+            >
+                Brand’s you can find here 🔎
+            </Typography>
 
-            <AspectRatio ratio='1.15/1'>
-                <img src={Image} alt='logo collection' />
-            </AspectRatio>
+            <Image
+                ratio='1.15/1'
+                src={LogoCollection}
+                width='17rem'
+                alt='logo collection'
+            />
         </Stack>
     );
 }

@@ -1,5 +1,6 @@
-import { AspectRatio, Stack, Typography } from '@mui/joy';
+import { Stack, Typography } from '@mui/joy';
 import PlaceholderImg from 'src/assets/images/review-placeholder.png';
+import Image from 'src/components/Image';
 
 function TestimonialCards() {
     const reviewsData = [
@@ -27,15 +28,50 @@ function TestimonialCards() {
 
     return (
         <>
-            {reviewsData.map((review) => (
-                <Stack>
-                    <Stack>
-                        <AspectRatio ratio='1/1'>
-                            <img src={review.image} alt='profile' />
-                        </AspectRatio>
-                        <Typography>{review.name}</Typography>
+            {reviewsData.map((review, index) => (
+                <Stack
+                    alignItems='center'
+                    px='0.5rem'
+                    py='0.5rem'
+                    gap='0.5rem'
+                    maxWidth='12.55rem'
+                    borderRadius='0.5rem'
+                    sx={(theme) => ({
+                        backgroundImage: theme.palette.gradient.heroTxt,
+                        boxShadow: '0 1.86px 2.78px 1.39px rgba(0,0,0,0.25)',
+                        alignSelf: index == 1 ? 'flex-end' : 'unset',
+                    })}
+                >
+                    <Stack alignItems='center' gap='0.25rem'>
+                        <Image
+                            ratio='1/1'
+                            src={review.image}
+                            width='3.063rem'
+                            alt='person'
+                            otherStyles={{
+                                borderRadius: '50%',
+                                border: '2px solid white',
+                            }}
+                        />
+                        <Typography
+                            fontFamily='Poppins'
+                            fontWeight='500'
+                            lineHeight='0.75'
+                            fontSize='sm'
+                            sx={(theme) => ({
+                                color: theme.palette.neutral[800],
+                            })}
+                        >
+                            {review.name}
+                        </Typography>
                     </Stack>
-                    <Typography>{review.review}</Typography>
+                    <Typography
+                        fontStyle='italic'
+                        fontSize='xs'
+                        sx={{ color: 'white', textAlign: 'center' }}
+                    >
+                        {review.review}
+                    </Typography>
                 </Stack>
             ))}
         </>
