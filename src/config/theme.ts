@@ -38,7 +38,7 @@ const theme = extendTheme({
                 gradient: {
                     heroTxt:
                         'linear-gradient(90deg, rgba(11,107,203,1) 0%, rgba(61,153,245,1) 100%)',
-                    blob: 'linear-gradient(180deg, rgba(11,107,203,0.8) 0%, rgba(207,229,252,1) 100%)',
+                    blob: 'linear-gradient(180deg, rgba(207,229,252,1) 0%, rgba(207,229,252,0.2) 100%)',
                     masiveBlob:
                         'linear-gradient(90deg, rgba(11,107,203,1) 0%, rgba(158,204,250,0.1) 100%)',
                     lines: 'linear-gradient(180deg, rgba(11,107,203,1) 0%, rgba(207,229,252,1) 100%)',
@@ -138,6 +138,16 @@ const theme = extendTheme({
                 },
                 startDecorator: {
                     fontSize: '1.3em',
+                },
+            },
+        },
+        JoyList: {
+            styleOverrides: {
+                root: {
+                    '--ListDivider-gap': 'unset',
+                    '--ListItem-minHeight': 'unset',
+                    '--ListItem-paddingY': 'unset',
+                    '--ListItem-paddingX': 'unset',
                 },
             },
         },
