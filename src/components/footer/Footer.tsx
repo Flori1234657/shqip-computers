@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/joy';
 import Image from '../Image';
-import Wave from 'src/assets/images/svg/footer-wave.png';
+import Wave from 'src/assets/images/svg/footer-wave.svg';
 import CompanyInfo from './components/CompanyInfo';
 import HomeNavigation from './components/HomeNavigation';
 import SocialNetworks from './components/SocialNetworks';
@@ -8,8 +8,17 @@ import ContactUs from './components/ContactUs';
 
 export default function Footer() {
     return (
-        <footer style={{ marginTop: '10.75rem' }}>
-            <Image ratio='13.91/1' src={Wave} width='20rem' alt='wave' />
+        <footer style={{ marginTop: '12.188rem', position: 'relative' }}>
+            <Image
+                ratio='13.91/1'
+                src={Wave}
+                width='100%'
+                alt='wave'
+                otherStyles={{
+                    position: 'absolute',
+                    top: '-1.4rem',
+                }}
+            />
             <Stack
                 gap='2rem'
                 px='1.25rem'

@@ -9,6 +9,12 @@
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+
+    font-size: clamp(
+        1rem,
+        0.0323rem + 4.8387vw,
+        1.8438rem
+    ); /*16px > 29.5px vw(320-599)px */
 }
 
 /* Improve performance by not loading all the fonts at once
