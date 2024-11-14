@@ -15,8 +15,8 @@ export default function HeroSection() {
                 alt='blob'
                 otherStyles={{
                     position: 'absolute',
-                    top: '3rem',
-                    left: 0,
+                    top: { xs: '3rem', sm: '3.125rem' },
+                    left: { xs: 0, sm: '2.083rem' },
                     zIndex: '-1',
                 }}
             />
@@ -55,8 +55,8 @@ export default function HeroSection() {
                 alt='blob'
                 otherStyles={{
                     position: 'absolute',
-                    top: '21.5rem',
-                    right: '0.313rem',
+                    top: { xs: '21.5rem', sm: '17.5rem' },
+                    right: { xs: '0.313rem', sm: '0.417rem' },
                     zIndex: '-1',
                 }}
             />

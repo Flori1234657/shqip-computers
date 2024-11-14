@@ -9,8 +9,10 @@ export default function TopBar() {
             <Stack
                 direction={'row'}
                 justifyContent='space-between'
-                px='1.5rem'
-                py='0.5rem'
+                sx={{
+                    px: { xs: '1.5rem', sm: '2.5rem' },
+                    py: { xs: '0.5rem', sm: '0.563rem' },
+                }}
                 bgcolor='white'
             >
                 <Logo />

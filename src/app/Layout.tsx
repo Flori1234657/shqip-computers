@@ -6,7 +6,7 @@ export default function Layout() {
     return (
         <>
             <TopBar />
-            <main style={{ padding: '0 1.5rem', overflowX: 'hidden' }}>
+            <main style={{ overflowX: 'hidden' }}>
                 <Outlet />
             </main>
             <Footer />

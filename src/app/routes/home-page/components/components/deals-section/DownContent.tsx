@@ -23,14 +23,15 @@ function DownContent() {
                 <LeftArrIcon />
             </IconButton>
             <Stack
-                maxWidth='10rem'
                 direction='row'
                 alignItems='center'
                 justifyContent='center'
                 gap='1.5rem'
                 sx={{
-                    overflowX: 'scroll',
+                    maxWidth: { xs: '10rem', sm: '20rem' },
                     height: '6.503rem',
+                    pl: { sm: '13rem' },
+                    overflowX: 'scroll',
                 }}
             >
                 <CardImages />

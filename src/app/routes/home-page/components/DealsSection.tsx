@@ -8,9 +8,12 @@ import BigBlob from 'src/assets/images/svg/home/deals-blob.svg';
 function DealsSection() {
     return (
         <Stack
-            mt='19.75rem'
             gap='4rem'
-            sx={{ position: 'relative', overflowX: 'visible' }}
+            sx={{
+                position: 'relative',
+                overflowX: 'visible',
+                mt: { xs: '19.75rem', sm: '15rem' },
+            }}
         >
             <Image
                 ratio='3.34/1'
