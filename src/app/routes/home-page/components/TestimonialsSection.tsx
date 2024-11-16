@@ -5,11 +5,15 @@ import Blob from 'src/assets/images/svg/home/testimonials-blob.svg';
 
 function TestimonialsSection() {
     return (
-        <Stack mt='10.75rem' gap='5rem'>
+        <Stack
+            mt={{ xs: '10.75rem', sm: '15rem' }}
+            gap={{ xs: '5rem', sm: '2.917rem' }}
+        >
             <Typography
                 textAlign='center'
                 level='title-md'
                 sx={(theme) => ({
+                    maxWidth: { sm: '16rem' },
                     textAlign: 'center',
                     color: theme.palette.primary[800],
                 })}
@@ -26,8 +30,8 @@ function TestimonialsSection() {
                     objectFit='contain'
                     otherStyles={{
                         position: 'absolute',
-                        top: '-3rem',
-                        left: '-2.75rem',
+                        top: { xs: '-3rem', sm: '3rem' },
+                        left: { xs: '-2.75rem', sm: '-6rem' },
                         zIndex: -1,
                     }}
                 />

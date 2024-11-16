@@ -7,11 +7,10 @@ import Blob from 'src/assets/images/svg/home/build-pc-blob.svg';
 function BuildPcSection() {
     return (
         <Stack
-            mt='11rem'
             alignItems='center'
             sx={{
                 mt: { xs: '11rem', sm: '15rem' },
-                gap: { xs: '2rem' },
+                gap: { xs: '2rem', sm: '3.75rem' },
 
                 position: { xs: 'relative' },
             }}
@@ -41,7 +40,7 @@ function BuildPcSection() {
                     objectFit='contain'
                     otherStyles={{
                         position: { xs: 'absolute' },
-                        top: { xs: '4.125rem', sm: '2.2rem' },
+                        top: { xs: '4.125rem', sm: '4rem' },
                         zIndex: -1,
                         left: { xs: '-9.1rem', sm: '-5rem' },
                     }}

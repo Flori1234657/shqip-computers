@@ -1,17 +1,10 @@
-import {
-    Button,
-    FormControl,
-    FormHelperText,
-    FormLabel,
-    Stack,
-    Textarea,
-} from '@mui/joy';
+import { Grid, Stack } from '@mui/joy';
 import { formSchema } from './schemas/yupFormSchema';
 import { Formik } from 'formik';
 import Inputs from './components/Inputs';
 
-import { TbMessageCircle as MsgIcon, TbSend as SendIcon } from 'react-icons/tb';
-import { IoMdClose as ClearIcon } from 'react-icons/io';
+import TextArea from './components/TextArea';
+import Buttons from './components/Buttons';
 
 export default function SaleRequest() {
     const initialValues = {
@@ -30,15 +23,7 @@ export default function SaleRequest() {
             onSubmit={(values) => console.log(values)}
         >
             {(formik) => {
-                const {
-                    values,
-                    handleChange,
-                    handleSubmit,
-                    errors,
-                    touched,
-                    // isValid,
-                    // dirty,
-                } = formik;
+                const { handleSubmit } = formik;
 
                 return (
                     <form onSubmit={handleSubmit}>
@@ -52,50 +37,16 @@ export default function SaleRequest() {
                                 borderRadius: '1rem',
                             })}
                         >
-                            <Inputs formik={formik} />
-                            <FormControl>
-                                <FormLabel
-                                    sx={{ color: 'white', mb: '0.25rem' }}
-                                >
-                                    Selling Reason
-                                </FormLabel>
-                                <Textarea
-                                    name='sellingReason'
-                                    placeholder='Only serious sellers...'
-                                    minRows={4}
-                                    maxRows={4}
-                                    onChange={handleChange}
-                                    value={values.sellingReason}
-                                    startDecorator={<MsgIcon />}
-                                />
-                                {errors.sellingReason &&
-                                    touched.sellingReason && (
-                                    <FormHelperText
-                                        sx={(theme) => ({
-                                            color: theme.palette
-                                                .danger[500],
-                                        })}
-                                    >
-                                        {errors.sellingReason}
-                                    </FormHelperText>
-                                )}
-                            </FormControl>
+                            <Grid
+                                container
+                                rowSpacing={{ xs: '0.75rem' }}
+                                columnSpacing={{ sm: '0.75rem' }}
+                            >
+                                <Inputs formik={formik} />
+                                <TextArea formik={formik} />
+                            </Grid>
 
-                            <Stack mt='0.25rem' gap='0.5rem'>
-                                <Button
-                                    variant='outlined'
-                                    color='danger'
-                                    endDecorator={<ClearIcon />}
-                                >
-                                    Clear
-                                </Button>
-                                <Button
-                                    type='submit'
-                                    endDecorator={<SendIcon />}
-                                >
-                                    Send To Us
-                                </Button>
-                            </Stack>
+                            <Buttons />
                         </Stack>
                     </form>
                 );

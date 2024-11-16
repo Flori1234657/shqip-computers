@@ -8,7 +8,11 @@ import ContactUs from './components/ContactUs';
 
 export default function Footer() {
     return (
-        <footer style={{ marginTop: '12.188rem', position: 'relative' }}>
+        <footer
+            style={{
+                position: 'relative',
+            }}
+        >
             <Image
                 ratio='13.91/1'
                 src={Wave}
@@ -35,8 +39,7 @@ export default function Footer() {
             <Stack
                 sx={(theme) => ({
                     bgcolor: theme.palette.primary[900],
-                    pt: '0.25rem',
-                    pb: '8rem',
+                    py: '0.25rem',
                     alignItems: 'center',
                 })}
             >

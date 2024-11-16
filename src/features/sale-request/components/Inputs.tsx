@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { FormControl, FormHelperText, FormLabel, Input } from '@mui/joy';
+import { FormControl, FormHelperText, FormLabel, Grid, Input } from '@mui/joy';
 import { FormikProps } from 'formik';
 
 import {
@@ -9,7 +9,7 @@ import {
 } from 'react-icons/md';
 import { BsEnvelope as MailIcon, BsPerson as PersonIcon } from 'react-icons/bs';
 
-interface Props {
+export interface SaleRequestInputs {
     formik: FormikProps<{
         fullName: string;
         pcModel: string;
@@ -19,7 +19,7 @@ interface Props {
     }>;
 }
 
-export default function Inputs({ formik }: Props) {
+export default function Inputs({ formik }: SaleRequestInputs) {
     const inputsData = [
         {
             label: 'Full Name',
@@ -50,29 +50,31 @@ export default function Inputs({ formik }: Props) {
     return (
         <>
             {inputsData.map((input) => (
-                <FormControl>
-                    <FormLabel sx={{ color: 'white', mb: '0.25rem' }}>
-                        {input.label}
-                    </FormLabel>
-                    <Input
-                        name={input.name}
-                        placeholder={input.placeholder}
-                        onChange={formik.handleChange}
-                        value={formik.values[input.name]}
-                        startDecorator={input.icon}
-                    />
+                <Grid width='100%' xs={12} sm={6}>
+                    <FormControl>
+                        <FormLabel sx={{ color: 'white', mb: '0.25rem' }}>
+                            {input.label}
+                        </FormLabel>
+                        <Input
+                            name={input.name}
+                            placeholder={input.placeholder}
+                            onChange={formik.handleChange}
+                            value={formik.values[input.name]}
+                            startDecorator={input.icon}
+                        />
 
-                    {formik.errors[input.name] &&
-                        formik.touched[input.name] && (
-                        <FormHelperText
-                            sx={(theme) => ({
-                                color: theme.palette.danger[500],
-                            })}
-                        >
-                            {formik.errors[input.name]}
-                        </FormHelperText>
-                    )}
-                </FormControl>
+                        {formik.errors[input.name] &&
+                            formik.touched[input.name] && (
+                            <FormHelperText
+                                sx={(theme) => ({
+                                    color: theme.palette.danger[500],
+                                })}
+                            >
+                                {formik.errors[input.name]}
+                            </FormHelperText>
+                        )}
+                    </FormControl>
+                </Grid>
             ))}
         </>
     );

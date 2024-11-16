@@ -4,11 +4,16 @@ import Image from 'src/components/Image';
 
 function BrandsSection() {
     return (
-        <Stack mt='10.75rem' gap='2rem'>
+        <Stack
+            mt={{ xs: '10.75rem', sm: '15rem' }}
+            gap={{ xs: '2rem', sm: '2.917rem' }}
+            alignItems='center'
+        >
             <Typography
                 textAlign='center'
                 level='title-md'
                 sx={(theme) => ({
+                    maxWidth: { sm: '15rem' },
                     textAlign: 'center',
                     color: theme.palette.primary[800],
                 })}

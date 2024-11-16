@@ -19,12 +19,22 @@ html {
     main {
         padding: 0 1.5rem;
     }
+    footer {
+        margin-top: 12.188rem;
+    }
 
     @media screen and (min-width: 600px) {
-        font-size: 19.2px;
+        font-size: clamp(
+            1.2rem,
+            0.1402rem + 2.8261vw,
+            1.7281rem
+        ); /*19.2px > 27.65px xw(600-899)px*/
 
         main {
             padding: 0 2.5rem;
+        }
+        footer {
+            margin-top: 15rem;
         }
     }
 }
