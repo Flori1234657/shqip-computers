@@ -37,6 +37,21 @@ html {
             margin-top: 15rem;
         }
     }
+
+    @media screen and (min-width: 900px) {
+        font-size: clamp(
+            1rem,
+            0rem + 1.7778vw,
+            2.1333rem
+        ); /*16px > 34.13333333333333px xw(900-1920)px scale changed >>> 2.133333333333333*/
+
+        main {
+            padding: 0 2.5rem;
+        }
+        footer {
+            margin-top: 15rem;
+        }
+    }
 }
 
 /* Improve performance by not loading all the fonts at once

@@ -1,7 +1,9 @@
-import { List, ListItem, Link } from '@mui/joy';
-import { Link as RouterLink } from 'react-router-dom';
+import { List, ListItem, Link, Typography } from '@mui/joy';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 function PcNavigation() {
+    const location = useLocation();
+
     const navLinks = [
         {
             text: 'Home',
@@ -22,15 +24,29 @@ function PcNavigation() {
     ];
 
     return (
-        <List>
-            {navLinks.map((link) => (
-                <ListItem>
-                    <Link component={RouterLink} to={link.path}>
-                        {link.text}
-                    </Link>
-                </ListItem>
-            ))}
-        </List>
+        <nav>
+            <List sx={{ flexDirection: 'row', gap: '2.344rem' }}>
+                {navLinks.map((link) => (
+                    <ListItem>
+                        <Link component={RouterLink} to={link.path}>
+                            <Typography
+                                fontSize='0.563rem'
+                                lineHeight='1.5'
+                                fontWeight='600'
+                                sx={(theme) => ({
+                                    color:
+                                        location.pathname == link.path
+                                            ? theme.palette.primary[500]
+                                            : theme.palette.neutral[500],
+                                })}
+                            >
+                                {link.text}
+                            </Typography>
+                        </Link>
+                    </ListItem>
+                ))}
+            </List>
+        </nav>
     );
 }
 

@@ -2,17 +2,24 @@ import { AspectRatio } from '@mui/joy';
 import { SxProps } from '@mui/joy/styles/types';
 import { CSSProperties } from 'react';
 
-interface Props {
+interface Props<T> {
     ratio: string;
     src: string;
     alt: string;
-    width: string;
+    width: string | T;
 
     objectFit?: CSSProperties['objectFit'];
     otherStyles?: SxProps;
 }
 
-function Image({ ratio, src, alt, width, objectFit, otherStyles }: Props) {
+function Image({
+    ratio,
+    src,
+    alt,
+    width,
+    objectFit,
+    otherStyles,
+}: Props<{ xs?: string; sm?: string; md?: string; lg?: string; xl?: string }>) {
     return (
         <AspectRatio
             ratio={ratio}

@@ -1,22 +1,7 @@
 import { extendTheme } from '@mui/joy/styles';
 
-interface NewColors {
-    gradient: {
-        heroTxt: string;
-        blob: string;
-        masiveBlob: string;
-        lines: string;
-        sendSuccess: string;
-    };
-}
-
-interface NewShadows {
-    selectedCard: string;
-}
-
-// Gjej nje menyr me efikase per ta implementuar
 declare module '@mui/joy/styles' {
-    interface Palette extends NewColors {
+    interface Palette {
         gradient: {
             heroTxt: string;
             blob: string;
@@ -26,8 +11,24 @@ declare module '@mui/joy/styles' {
         };
     }
 
-    interface Shadow extends NewShadows {
+    interface Shadow {
         selectedCard: string;
+    }
+}
+
+declare module '@mui/joy/IconButton' {
+    interface IconButtonPropsSizeOverrides {
+        xs: true;
+    }
+}
+declare module '@mui/joy/Button' {
+    interface ButtonPropsSizeOverrides {
+        xs: true;
+    }
+}
+declare module '@mui/joy/Input' {
+    interface InputPropsSizeOverrides {
+        xs: true;
     }
 }
 
@@ -103,10 +104,20 @@ const theme = extendTheme({
     components: {
         JoyButton: {
             styleOverrides: {
-                root: {
-                    borderRadius: '0.5rem',
-                    '-webkit-tap-highlight-color': 'none',
-                },
+                root: ({ ownerState }) => ({
+                    ...{
+                        borderRadius: '0.5rem',
+                        '-webkit-tap-highlight-color': 'transparent',
+                    },
+                    ...(ownerState.size === 'xs' && {
+                        '--Icon-fontSize': '0.586rem',
+                        '--Button-gap': '0.234rem',
+                        minHeight: '1.406rem',
+                        fontSize: '0.469rem',
+                        padding: '0.352rem 0.586rem',
+                        borderRadius: '0.352rem',
+                    }),
+                }),
                 endDecorator: {
                     fontSize: '1.2em',
                 },
@@ -114,10 +125,19 @@ const theme = extendTheme({
         },
         JoyIconButton: {
             styleOverrides: {
-                root: {
-                    borderRadius: '0.5rem',
-                    '-webkit-tap-highlight-color': 'none',
-                },
+                root: ({ ownerState }) => ({
+                    ...{
+                        borderRadius: '0.5rem',
+                        '-webkit-tap-highlight-color': 'transparent',
+                    },
+                    ...(ownerState.size === 'xs' && {
+                        fontSize: '0.586rem',
+                        minHeight: '1.406rem',
+                        minWidth: '1.406rem',
+                        padding: '0.352rem',
+                        borderRadius: '0.352rem',
+                    }),
+                }),
             },
         },
         JoyInput: {
