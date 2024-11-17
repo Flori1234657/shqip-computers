@@ -26,8 +26,8 @@ declare module '@mui/joy/Button' {
         xs: true;
     }
 }
-declare module '@mui/joy/Input' {
-    interface InputPropsSizeOverrides {
+declare module '@mui/joy/Autocomplete' {
+    interface AutocompletePropsSizeOverrides {
         xs: true;
     }
 }
@@ -138,6 +138,21 @@ const theme = extendTheme({
                         borderRadius: '0.352rem',
                     }),
                 }),
+            },
+        },
+        JoyAutocomplete: {
+            styleOverrides: {
+                root: ({ ownerState }) => ({
+                    ...(ownerState.size === 'xs' && {
+                        '--Input-gap': '0.118rem',
+                        fontSize: '0.674rem',
+                        padding: '0.469rem 0.703rem',
+                        minHeight: 'fit-content !important',
+                    }),
+                }),
+                endDecorator: {
+                    fontSize: '1.25em',
+                },
             },
         },
         JoyInput: {
