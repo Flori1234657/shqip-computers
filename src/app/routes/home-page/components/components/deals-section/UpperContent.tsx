@@ -32,8 +32,8 @@ export default function UpperContent() {
                 <Stack
                     sx={{
                         border: '2px solid red',
-                        width: { xs: '183px', md: '7.998rem' },
-                        height: { xs: '287.7px', md: '12.321rem' },
+                        width: { xs: '11.438rem', md: '7.998rem' },
+                        height: { xs: '17.981rem', md: '12.321rem' },
                     }}
                 >
                     <ProductCard />

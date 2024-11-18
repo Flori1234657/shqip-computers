@@ -24,6 +24,7 @@ declare module '@mui/joy/IconButton' {
 declare module '@mui/joy/Button' {
     interface ButtonPropsSizeOverrides {
         xs: true;
+        md2: true;
     }
 }
 declare module '@mui/joy/Autocomplete' {
@@ -115,6 +116,14 @@ const theme = extendTheme({
                         minHeight: '1.406rem',
                         fontSize: '0.469rem',
                         padding: '0.352rem 0.586rem',
+                        borderRadius: '0.352rem',
+                    }),
+                    ...(ownerState.size === 'md2' && {
+                        '--Button-gap': '0.234rem',
+                        minHeight: '1.688rem',
+                        fontSize: '0.528rem',
+                        lineHeight: '1',
+                        padding: '0.469rem 0.703rem',
                         borderRadius: '0.352rem',
                     }),
                 }),

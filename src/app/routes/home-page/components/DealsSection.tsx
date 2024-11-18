@@ -8,13 +8,13 @@ import BigBlob from 'src/assets/images/svg/home/deals-blob.svg';
 function DealsSection() {
     return (
         <Stack
-            width={{ md: '43.359rem' }}
-            alignItems={{ md: 'center' }}
+            width={{ sm: '100%', md: '43.359rem' }}
+            alignItems={{ sm: 'center' }}
             gap={{ xs: '4rem', md: '3.063rem' }}
             sx={{
                 position: 'relative',
                 overflowX: 'visible',
-                mt: { xs: '19.75rem', sm: '15rem', md: '10.813rem' },
+                mt: { xs: '19.75rem', sm: '15rem', md: '16.876rem' },
             }}
         >
             <Image

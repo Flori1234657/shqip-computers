@@ -11,8 +11,7 @@ function DownContent() {
 
     return (
         <Stack
-            width={{ md: '100%' }}
-            gap={{ md: '2.109rem' }}
+            width={{ sm: '100%' }}
             direction='row'
             alignItems='center'
             justifyContent='space-between'
