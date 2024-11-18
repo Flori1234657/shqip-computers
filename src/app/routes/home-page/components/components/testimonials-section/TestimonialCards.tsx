@@ -31,22 +31,26 @@ function TestimonialCards() {
             {reviewsData.map((review, index) => (
                 <Stack
                     alignItems='center'
-                    px='0.5rem'
-                    py='0.5rem'
-                    gap='0.5rem'
-                    maxWidth='12.55rem'
-                    borderRadius='0.5rem'
+                    p={{ xs: '0.5rem', md: '0.703rem' }}
+                    mt={index == 1 ? { md: '0.875rem' } : 'unset'}
+                    gap={{ xs: '0.5rem', md: '0.703rem' }}
+                    maxWidth={{ xs: '12.55rem', md: '12.625rem' }}
+                    height={{ md: 'fit-content' }}
+                    borderRadius={{ xs: '0.5rem', md: '0.469rem' }}
                     sx={(theme) => ({
                         backgroundImage: theme.palette.gradient.heroTxt,
                         boxShadow: '0 1.86px 2.78px 1.39px rgba(0,0,0,0.25)',
                         alignSelf: index == 1 ? 'flex-end' : 'unset',
                     })}
                 >
-                    <Stack alignItems='center' gap='0.25rem'>
+                    <Stack
+                        alignItems='center'
+                        gap={{ xs: '0.25rem', md: '0.469rem' }}
+                    >
                         <Image
                             ratio='1/1'
                             src={review.image}
-                            width='3.063rem'
+                            width={{ xs: '3.063rem', md: '2.578rem' }}
                             alt='person'
                             otherStyles={{
                                 borderRadius: '50%',
@@ -57,7 +61,7 @@ function TestimonialCards() {
                             fontFamily='Poppins'
                             fontWeight='500'
                             lineHeight='0.75'
-                            fontSize='sm'
+                            fontSize={{ xs: 'sm', md: '0.674rem' }}
                             sx={(theme) => ({
                                 color: theme.palette.neutral[800],
                             })}
@@ -67,7 +71,7 @@ function TestimonialCards() {
                     </Stack>
                     <Typography
                         fontStyle='italic'
-                        fontSize='xs'
+                        fontSize={{ xs: 'xs', md: '0.674rem' }}
                         sx={{ color: 'white', textAlign: 'center' }}
                     >
                         {review.review}

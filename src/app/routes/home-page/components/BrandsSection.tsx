@@ -5,14 +5,15 @@ import Image from 'src/components/Image';
 function BrandsSection() {
     return (
         <Stack
-            mt={{ xs: '10.75rem', sm: '15rem' }}
-            gap={{ xs: '2rem', sm: '2.917rem' }}
+            mt={{ xs: '10.75rem', sm: '15rem', md: '7.313rem' }}
+            gap={{ xs: '2rem', sm: '2.917rem', md: '4rem' }}
             alignItems='center'
         >
             <Typography
                 textAlign='center'
                 level='title-md'
                 sx={(theme) => ({
+                    fontSize: { md: '1.681rem' },
                     maxWidth: { sm: '15rem' },
                     textAlign: 'center',
                     color: theme.palette.primary[800],
@@ -24,7 +25,7 @@ function BrandsSection() {
             <Image
                 ratio='1.15/1'
                 src={LogoCollection}
-                width='17rem'
+                width={{ xs: '17rem', md: '14.619rem' }}
                 alt='logo collection'
             />
         </Stack>
