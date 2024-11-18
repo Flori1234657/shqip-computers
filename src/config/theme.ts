@@ -32,6 +32,21 @@ declare module '@mui/joy/Autocomplete' {
         xs: true;
     }
 }
+declare module '@mui/joy/FormControl' {
+    interface FormControlPropsSizeOverrides {
+        md2: true;
+    }
+}
+declare module '@mui/joy/Input' {
+    interface InputPropsSizeOverrides {
+        md2: true;
+    }
+}
+declare module '@mui/joy/Textarea' {
+    interface TextareaPropsSizeOverrides {
+        md2: true;
+    }
+}
 
 const theme = extendTheme({
     colorSchemes: {
@@ -164,11 +179,33 @@ const theme = extendTheme({
                 },
             },
         },
+        JoyFormControl: {
+            styleOverrides: {
+                root: ({ ownerState }) => ({
+                    ...(ownerState.size === 'md2' && {
+                        '--FormLabel-fontSize': '0.563rem',
+                        '--FormLabel-lineHeight': '0.469rem',
+                        '--FormLabel-margin': '0 0 0.234rem 0',
+                        '--FormHelperText-fontSize': '0.563rem',
+                        '--FormHelperText-lineHeight': '0.469rem',
+                        '--FormHelperText-margin': '0.234rem 0 0 0',
+                    }),
+                }),
+            },
+        },
         JoyInput: {
             styleOverrides: {
-                root: {
-                    borderRadius: '0.5rem',
-                },
+                root: ({ ownerState }) => ({
+                    ...(ownerState.size === 'md2' && {
+                        '--Input-gap': '0.234rem',
+                        padding: '0.323rem 0.352rem',
+                        fontSize: '0.563rem',
+                        lineHeight: '1.5',
+                    }),
+                    ...{
+                        borderRadius: '0.602em', //8px
+                    },
+                }),
                 startDecorator: {
                     fontSize: '1.3em',
                 },
@@ -176,10 +213,19 @@ const theme = extendTheme({
         },
         JoyTextarea: {
             styleOverrides: {
-                root: {
-                    borderRadius: '0.5rem',
-                    flexDirection: 'row',
-                },
+                root: ({ ownerState }) => ({
+                    ...(ownerState.size === 'md2' && {
+                        '--Textarea-gap': '0.234rem',
+                        padding: '0.323rem 0.352rem',
+                        fontSize: '0.563rem',
+                        lineHeight: '1.5',
+                        borderRadius: '0.352rem',
+                    }),
+                    ...{
+                        borderRadius: '0.602em', //8px
+                        flexDirection: 'row',
+                    },
+                }),
                 startDecorator: {
                     fontSize: '1.3em',
                 },

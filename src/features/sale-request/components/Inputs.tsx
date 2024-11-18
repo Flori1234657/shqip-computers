@@ -8,6 +8,7 @@ import {
     MdOutlineLocalPhone as PhoneIcon,
 } from 'react-icons/md';
 import { BsEnvelope as MailIcon, BsPerson as PersonIcon } from 'react-icons/bs';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export interface SaleRequestInputs {
     formik: FormikProps<{
@@ -20,6 +21,8 @@ export interface SaleRequestInputs {
 }
 
 export default function Inputs({ formik }: SaleRequestInputs) {
+    const { width } = useWindowDimensions();
+
     const inputsData = [
         {
             label: 'Full Name',
@@ -51,7 +54,7 @@ export default function Inputs({ formik }: SaleRequestInputs) {
         <>
             {inputsData.map((input) => (
                 <Grid width='100%' xs={12} sm={6}>
-                    <FormControl>
+                    <FormControl size={width > 899 ? 'md2' : 'md'}>
                         <FormLabel sx={{ color: 'white', mb: '0.25rem' }}>
                             {input.label}
                         </FormLabel>

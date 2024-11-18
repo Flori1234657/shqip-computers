@@ -28,19 +28,22 @@ export default function SaleRequest() {
                 return (
                     <form onSubmit={handleSubmit}>
                         <Stack
-                            py='1.25rem'
-                            px='1.625rem'
-                            gap='0.75rem'
+                            maxWidth={{ md: '18.34rem' }}
+                            p={{ xs: '1.25rem 1.625rem', md: '0.938rem' }}
+                            gap={{ xs: '0.75rem', md: '0.469rem' }}
                             sx={(theme) => ({
                                 backgroundColor: theme.palette.primary[800],
                                 boxShadow: '0 4px 5.8px 5px rgba(0,0,0,0.5)',
-                                borderRadius: '1rem',
+                                borderRadius: { xs: '1rem', md: '0.469rem' },
                             })}
                         >
                             <Grid
                                 container
-                                rowSpacing={{ xs: '0.75rem' }}
-                                columnSpacing={{ sm: '0.75rem' }}
+                                rowSpacing={{ xs: '0.75rem', md: '0.469rem' }}
+                                columnSpacing={{
+                                    sm: '0.75rem',
+                                    md: '0.469rem',
+                                }}
                             >
                                 <Inputs formik={formik} />
                                 <TextArea formik={formik} />

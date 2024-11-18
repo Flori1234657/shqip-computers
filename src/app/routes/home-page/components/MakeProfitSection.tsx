@@ -8,44 +8,52 @@ function MakeProfitSection() {
     return (
         <Stack
             alignItems='center'
-            gap={{ xs: '2rem', sm: '2.917rem' }}
+            gap={{ xs: '2rem', sm: '1.042rem', md: '4rem' }}
             sx={{
                 position: 'relative',
                 overflow: 'visible',
-                mt: { xs: '10.75rem', sm: '15rem' },
+                mt: { xs: '10.75rem', sm: '15rem', md: '7.313rem' },
             }}
         >
             <Image
                 ratio='1.06/1'
                 src={Blob}
-                width='24.313rem'
+                width={{ xs: '24.313rem', md: '18.441rem' }}
                 alt='blob'
                 objectFit='contain'
                 otherStyles={{
                     position: 'absolute',
-                    top: { xs: '6.125rem', sm: '4rem' },
-                    left: { sm: '5rem' },
+                    top: { xs: '6.125rem', sm: '4rem', md: '4.406rem' },
+                    left: { sm: '5rem', md: 'unset' },
+                    right: { md: '-2rem' },
                     zIndex: -1,
                 }}
             />
-
-            <Stack gap={{ xs: '2rem', sm: '1.042rem' }} alignItems='center'>
-                <Typography
-                    textAlign='center'
-                    level='title-md'
-                    sx={(theme) => ({
-                        maxWidth: '15rem',
-                        textAlign: 'center',
-                        color: theme.palette.primary[800],
-                    })}
-                >
-                    Make profit from your pc 💸
-                </Typography>
+            <Typography
+                textAlign='center'
+                level='title-md'
+                sx={(theme) => ({
+                    fontSize: { md: '1.681rem' },
+                    maxWidth: '15rem',
+                    textAlign: 'center',
+                    color: theme.palette.primary[800],
+                })}
+            >
+                Make profit from your pc 💸
+            </Typography>
+            <Stack
+                gap={{ xs: '2rem', sm: '2.917rem', md: '0.688rem' }}
+                alignItems='center'
+                direction={{ md: 'row' }}
+            >
                 <Typography
                     textAlign='center'
                     level='body-lg'
                     sx={(theme) => ({
-                        textAlign: 'center',
+                        maxWidth: { md: '10.752rem' },
+                        fontSize: { md: '0.809rem' },
+                        textAlign: { xs: 'center', md: 'left' },
+                        order: { md: '2' },
                         color: theme.palette.neutral[800],
                     })}
                 >
@@ -53,8 +61,8 @@ function MakeProfitSection() {
                     can buy it! Fill the form with the necessary information and
                     wait for us to contact you.
                 </Typography>
+                <SaleRequest />
             </Stack>
-            <SaleRequest />
         </Stack>
     );
 }

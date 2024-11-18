@@ -7,11 +7,14 @@ import {
 } from '@mui/joy';
 import { SaleRequestInputs } from './Inputs';
 import { TbMessageCircle as MsgIcon } from 'react-icons/tb';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 function TextArea({ formik }: SaleRequestInputs) {
+    const { width } = useWindowDimensions();
+
     return (
         <Grid width='100%'>
-            <FormControl>
+            <FormControl size={width > 899 ? 'md2' : 'md'}>
                 <FormLabel sx={{ color: 'white', mb: '0.25rem' }}>
                     Selling Reason
                 </FormLabel>
