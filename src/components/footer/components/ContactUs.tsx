@@ -3,8 +3,11 @@ import { Link as RouterLink } from 'react-router-dom';
 import { PiPhone as PhoneIcon, PiEnvelope as MailIcon } from 'react-icons/pi';
 import { SlLocationPin as LocationIcon } from 'react-icons/sl';
 import theme from 'src/config/theme';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 function ContactUs() {
+    const { width } = useWindowDimensions();
+
     const contacts = [
         {
             text: '+355 68 839 3968',
@@ -24,11 +27,14 @@ function ContactUs() {
     ];
 
     return (
-        <Stack gap='0.5rem'>
+        <Stack
+            gap={{ xs: '0.5rem', md: '0.469rem' }}
+            height={{ md: '6.743rem' }}
+        >
             <Typography
                 fontFamily='Poppins'
                 fontWeight='500'
-                fontSize='lg'
+                fontSize={{ xs: 'lg', md: '0.809rem' }}
                 lineHeight='1.6'
                 sx={(theme) => ({ color: theme.palette.neutral[800] })}
             >
@@ -36,7 +42,8 @@ function ContactUs() {
             </Typography>
             <List
                 sx={{
-                    gap: '0.5rem',
+                    gap: { xs: '0.5rem', md: '0.234rem' },
+                    maxHeight: 'fit-content',
                 }}
             >
                 {contacts.map((contact) => (
@@ -47,6 +54,7 @@ function ContactUs() {
                                 fontWeight='400'
                                 lineHeight='1.2'
                                 sx={{
+                                    fontSize: { md: '0.674rem' },
                                     color: theme.palette.neutral[700],
                                     maxWidth: '12.375rem',
                                 }}
@@ -66,8 +74,12 @@ function ContactUs() {
                 ))}
             </List>
             <Button
+                size={width > 899 ? 'xs' : 'md'}
                 endDecorator={<PhoneIcon />}
-                sx={{ mt: '0.25rem', width: 'fit-content' }}
+                sx={{
+                    mt: { xs: '0.25rem', md: 0 },
+                    width: 'fit-content',
+                }}
             >
                 Contact Form
             </Button>

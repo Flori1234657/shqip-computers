@@ -26,11 +26,11 @@ function HomeNavigation() {
     ];
 
     return (
-        <Stack gap='0.5rem'>
+        <Stack gap={{ xs: '0.5rem', md: '0.469rem' }}>
             <Typography
                 fontFamily='Poppins'
                 fontWeight='500'
-                fontSize='lg'
+                fontSize={{ xs: 'lg', md: '0.809rem' }}
                 lineHeight='1.6'
                 sx={(theme) => ({ color: theme.palette.neutral[800] })}
             >
@@ -38,7 +38,7 @@ function HomeNavigation() {
             </Typography>
             <List
                 sx={{
-                    gap: '0.5rem',
+                    gap: { xs: '0.5rem', md: '0.234rem' },
                 }}
             >
                 {homeLinks.map((link) => (
@@ -49,6 +49,7 @@ function HomeNavigation() {
                                 fontWeight='400'
                                 lineHeight='1.2'
                                 sx={(theme) => ({
+                                    fontSize: { md: '0.674rem' },
                                     color: theme.palette.neutral[700],
                                     maxWidth: '12.375rem',
                                 })}

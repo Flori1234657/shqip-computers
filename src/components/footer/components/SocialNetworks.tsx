@@ -27,17 +27,20 @@ function SocialNetworks() {
     ];
 
     return (
-        <Stack gap='0.5rem'>
+        <Stack
+            gap={{ xs: '0.5rem', md: '0.469rem' }}
+            height={{ md: '6.743rem' }}
+        >
             <Typography
                 fontFamily='Poppins'
                 fontWeight='500'
-                fontSize='lg'
+                fontSize={{ xs: 'lg', md: '0.809rem' }}
                 lineHeight='1.6'
                 sx={(theme) => ({ color: theme.palette.neutral[800] })}
             >
                 Social network's
             </Typography>
-            <List sx={{ gap: '0.5rem' }}>
+            <List sx={{ gap: { xs: '0.5rem', md: '0.234rem' } }}>
                 {networks.map((network) => (
                     <ListItem>
                         <Link component={RouterLink} to={network.goTo}>
@@ -46,6 +49,7 @@ function SocialNetworks() {
                                 fontWeight='400'
                                 lineHeight='1.2'
                                 sx={{
+                                    fontSize: { md: '0.674rem' },
                                     color: theme.palette.neutral[700],
                                     maxWidth: '12.375rem',
                                 }}
