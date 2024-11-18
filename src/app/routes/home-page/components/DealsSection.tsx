@@ -8,22 +8,24 @@ import BigBlob from 'src/assets/images/svg/home/deals-blob.svg';
 function DealsSection() {
     return (
         <Stack
-            gap='4rem'
+            width={{ md: '43.359rem' }}
+            alignItems={{ md: 'center' }}
+            gap={{ xs: '4rem', md: '3.063rem' }}
             sx={{
                 position: 'relative',
                 overflowX: 'visible',
-                mt: { xs: '19.75rem', sm: '15rem' },
+                mt: { xs: '19.75rem', sm: '15rem', md: '10.813rem' },
             }}
         >
             <Image
                 ratio='3.34/1'
                 src={BigBlob}
-                width='106.926rem'
+                width={{ xs: '106.926rem', md: '107.483rem' }}
                 alt='big blob'
                 otherStyles={{
                     position: 'absolute',
-                    left: '-51rem',
-                    top: '-2.25rem',
+                    left: { xs: '-51rem', md: '-34.188rem' },
+                    top: { xs: '-2.25rem', md: '-6.063rem' },
                     zIndex: -1,
                 }}
             />

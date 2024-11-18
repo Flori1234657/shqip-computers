@@ -4,10 +4,15 @@ import {
     FaArrowLeft as LeftArrIcon,
 } from 'react-icons/fa6';
 import CardImages from './components/down-content/CardImages';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 function DownContent() {
+    const { width } = useWindowDimensions();
+
     return (
         <Stack
+            width={{ md: '100%' }}
+            gap={{ md: '2.109rem' }}
             direction='row'
             alignItems='center'
             justifyContent='space-between'
@@ -15,7 +20,7 @@ function DownContent() {
             <IconButton
                 variant='solid'
                 color='primary'
-                size='sm'
+                size={width < 900 ? 'sm' : 'xs'}
                 sx={(theme) => ({
                     backgroundColor: theme.palette.primary[900],
                 })}
@@ -26,11 +31,11 @@ function DownContent() {
                 direction='row'
                 alignItems='center'
                 justifyContent='center'
-                gap='1.5rem'
+                gap={{ xs: '1.5rem', md: '1.641rem' }}
                 sx={{
-                    maxWidth: { xs: '10rem', sm: '20rem' },
-                    height: '6.503rem',
-                    pl: { sm: '13rem' },
+                    maxWidth: { xs: '10rem', sm: '20rem', md: '100%' },
+                    height: { xs: '6.503rem', md: 'auto' },
+                    pl: { sm: '13rem', md: 0 },
                     overflowX: 'scroll',
                 }}
             >
@@ -39,7 +44,7 @@ function DownContent() {
             <IconButton
                 variant='solid'
                 color='primary'
-                size='sm'
+                size={width < 900 ? 'sm' : 'xs'}
                 sx={(theme) => ({
                     backgroundColor: theme.palette.primary[900],
                 })}

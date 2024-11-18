@@ -30,17 +30,15 @@ function CardImages() {
         <>
             {offerProducts.map((product) => (
                 <Stack
-                    width='10rem'
-                    height='6.503rem'
                     sx={(theme) => ({
                         backgroundColor: theme.palette.neutral[800],
-                        borderRadius: '0.5rem',
+                        borderRadius: { xs: '0.5rem', md: '0.352rem' },
                     })}
                 >
                     <Image
                         ratio='1.54/1'
                         src={product.image}
-                        width='10rem'
+                        width={{ xs: '10rem', md: '5.859rem' }}
                         alt='product'
                     />
                 </Stack>

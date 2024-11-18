@@ -21,20 +21,21 @@ function AvailableTimeCards() {
     ];
 
     return (
-        <>
+        <Stack gap={{ xs: '1.5rem', md: '0.703rem' }} direction={{ md: 'row' }}>
             {timesData.map((time) => (
                 <Stack
                     alignItems='center'
                     sx={(theme) => ({
-                        p: '0.25rem 0.5rem',
-                        borderRadius: '0.5rem',
+                        p: { xs: '0.25rem 0.5rem', md: '0.118rem 0.352rem' },
+                        maxWidth: { xs: '3.375rem', md: '1.993rem' },
+                        borderRadius: { xs: '0.5rem', md: '0.352rem' },
 
                         backgroundColor: theme.palette.primary[100],
                         boxShadow: '0 4px 4px 0 rgba(0, 0, 0,0.25)',
                     })}
                 >
                     <Typography
-                        fontSize='md'
+                        fontSize={{ xs: 'md', md: '0.675rem' }}
                         sx={(theme) => ({
                             fontWeight: '700',
                             lineHeight: '1.4',
@@ -46,14 +47,14 @@ function AvailableTimeCards() {
                     <Divider
                         orientation='horizontal'
                         sx={(theme) => ({
-                            width: '1.875rem',
+                            width: { xs: '1.875rem', md: '1.289rem' },
                             alignSelf: 'center',
                             backgroundColor: theme.palette.primary[900],
                             borderRadius: '0.5rem',
                         })}
                     />
                     <Typography
-                        fontSize='md'
+                        fontSize={{ xs: 'md', md: '0.675rem' }}
                         sx={(theme) => ({
                             fontWeight: '700',
                             lineHeight: '1.4',
@@ -64,7 +65,7 @@ function AvailableTimeCards() {
                     </Typography>
                 </Stack>
             ))}
-        </>
+        </Stack>
     );
 }
 
