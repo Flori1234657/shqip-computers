@@ -12,7 +12,7 @@ function Buttons() {
     );
 
     return (
-        <Stack gap={{ xs: '0.75rem' }}>
+        <Stack gap={{ xs: '0.75rem' }} pt={{ xs: '1 .5rem' }}>
             <Button endDecorator={<CartIcon />}>View Cart</Button>
             <Button
                 endDecorator={<DeleteIcon />}

@@ -18,7 +18,7 @@ export default function Buttons() {
         <Stack direction={{ md: 'row' }} gap={{ md: '0.938rem' }}>
             <IconButton
                 variant='solid'
-                size='sm'
+                size={width < 900 ? 'sm' : 'xs'}
                 color='primary'
                 sx={(theme) => ({ bgcolor: theme.palette.primary[900] })}
                 onClick={() => toggleShoppingCartVisibility()}

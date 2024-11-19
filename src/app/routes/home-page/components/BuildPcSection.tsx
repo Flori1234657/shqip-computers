@@ -3,8 +3,11 @@ import { FaArrowRight as RightArrIcon } from 'react-icons/fa6';
 
 import Image from 'src/components/Image';
 import Blob from 'src/assets/images/svg/home/build-pc-blob.svg';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 function BuildPcSection() {
+    const { width } = useWindowDimensions();
+
     return (
         <Stack
             alignItems='center'
@@ -70,7 +73,7 @@ function BuildPcSection() {
                         not need to search for them everywhere!
                     </Typography>
                     <Button
-                        size='md2'
+                        size={width < 900 ? 'md' : 'md2'}
                         sx={{ width: { md: 'fit-content' } }}
                         endDecorator={<RightArrIcon />}
                     >

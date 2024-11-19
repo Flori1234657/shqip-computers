@@ -26,7 +26,7 @@ export default function ShoppingCart() {
                 zIndex: 2,
 
                 width: { xs: '100vw' },
-                height: { xs: '100vh' },
+                minHeight: { xs: '100vh' },
                 p: { xs: '1.5rem' },
                 gap: { xs: '1rem' },
 

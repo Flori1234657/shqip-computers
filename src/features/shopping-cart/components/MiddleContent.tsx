@@ -26,17 +26,16 @@ function MiddleContent() {
             price: '100.00',
             quantity: 1,
         },
-        {
-            id: '-90xjkx92dncnlap2',
-            name: '8gb DDR4 ram',
-            image: Placeholder,
-            price: '15.00',
-            quantity: 2,
-        },
     ];
 
     return (
-        <List sx={{ gap: { xs: '0.5rem' } }}>
+        <List
+            sx={{
+                gap: { xs: '0.5rem' },
+                maxHeight: '55vh',
+                overflowY: 'scroll',
+            }}
+        >
             {cartItems.map((item) => (
                 <ListItem
                     sx={{ borderBottom: '1px solid rgba(85,94,104,0.5)' }}
@@ -58,6 +57,7 @@ function MiddleContent() {
                                 fontSize={{ xs: '1rem' }}
                                 sx={(theme) => ({
                                     color: theme.palette.primary[500],
+                                    fontWeight: '500',
                                 })}
                             >
                                 $
