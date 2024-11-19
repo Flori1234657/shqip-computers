@@ -1,6 +1,7 @@
 import { IconButton, Stack } from '@mui/joy';
 import { lazy, Suspense } from 'react';
 import { MdOutlineShoppingCart as CartIcon } from 'react-icons/md';
+import useCartStore from 'src/features/shopping-cart/stores/shoppingCart';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 const CategoryButton = lazy(
@@ -9,14 +10,18 @@ const CategoryButton = lazy(
 
 export default function Buttons() {
     const { width } = useWindowDimensions();
+    const toggleShoppingCartVisibility = useCartStore(
+        (state) => state.toggleIsVisible
+    );
 
     return (
         <Stack direction={{ md: 'row' }} gap={{ md: '0.938rem' }}>
             <IconButton
                 variant='solid'
-                size='xs'
+                size='sm'
                 color='primary'
                 sx={(theme) => ({ bgcolor: theme.palette.primary[900] })}
+                onClick={() => toggleShoppingCartVisibility()}
             >
                 <CartIcon />
             </IconButton>

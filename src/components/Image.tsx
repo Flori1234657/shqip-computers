@@ -28,7 +28,7 @@ function Image({
             slotProps={{
                 content: {
                     style: {
-                        backgroundColor: 'transparent',
+                        backgroundColor: 'inherit',
                     },
                 },
             }}

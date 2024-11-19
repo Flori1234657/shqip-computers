@@ -13,12 +13,14 @@ declare module '@mui/joy/styles' {
 
     interface Shadow {
         selectedCard: string;
+        overlayModal: string;
     }
 }
 
 declare module '@mui/joy/IconButton' {
     interface IconButtonPropsSizeOverrides {
         xs: true;
+        xs2: true;
     }
 }
 declare module '@mui/joy/Button' {
@@ -116,6 +118,7 @@ const theme = extendTheme({
     },
     shadow: {
         selectedCard: '0 0 16px 12px rgba(255, 255, 255,0.25)',
+        overlayModal: '0 0 12.5px 4px rgba(255,255,255,1)',
     },
     components: {
         JoyButton: {
@@ -160,6 +163,13 @@ const theme = extendTheme({
                         minWidth: '1.406rem',
                         padding: '0.352rem',
                         borderRadius: '0.352rem',
+                    }),
+                    ...(ownerState.size === 'xs2' && {
+                        fontSize: '0.75rem',
+                        minHeight: '1.75rem',
+                        minWidth: '1.75rem',
+                        padding: '0.5rem',
+                        borderRadius: '0.5rem',
                     }),
                 }),
             },
