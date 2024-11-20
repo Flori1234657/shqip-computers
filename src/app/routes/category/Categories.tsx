@@ -1,8 +1,10 @@
 import { Stack } from '@mui/joy';
 import FirstScreen from './components/FirstScreen';
-import SecondScreen from './components/SecondScreen';
+import { Outlet, useLocation } from 'react-router-dom';
 
-export default function Categories() {
+function Categories() {
+    const location = useLocation();
+
     return (
         <Stack
             position='fixed'
@@ -17,8 +19,10 @@ export default function Categories() {
                 bgcolor: theme.palette.gradient.heroTxt,
             })}
         >
-            <FirstScreen />
-            <SecondScreen />
+            {location.pathname === '/categories' ? <FirstScreen /> : ''}
+            <Outlet />
         </Stack>
     );
 }
+
+export default Categories;

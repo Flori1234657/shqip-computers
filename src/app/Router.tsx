@@ -3,6 +3,8 @@ import Layout from './Layout';
 import Home from './routes/home-page/Home';
 import { lazy, Suspense } from 'react';
 
+const Category = lazy(() => import('./routes/category/components/Category'));
+const Categories = lazy(() => import('./routes/category/Categories'));
 const Shop = lazy(() => import('./routes/shop-page/Shop'));
 const Cart = lazy(() => import('./routes/cart-page/Cart'));
 const Product = lazy(() => import('./routes/product-page/Product'));
@@ -19,6 +21,24 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
+                path: '/categories',
+                element: (
+                    <Suspense fallback=''>
+                        <Categories />
+                    </Suspense>
+                ),
+                children: [
+                    {
+                        path: '/categories/:categoryId',
+                        element: (
+                            <Suspense fallback=''>
+                                <Category />
+                            </Suspense>
+                        ),
+                    },
+                ],
+            },
+            {
                 path: '/shop',
                 element: (
                     <Suspense fallback='fallback-component'>
@@ -33,6 +53,16 @@ const router = createBrowserRouter([
                                 <Cart />
                             </Suspense>
                         ),
+                    },
+                    {
+                        path: '/shop/categories/:categoryId',
+                        element: <Shop />,
+                        children: [
+                            {
+                                path: '/shop/categories/:categoryId/:typeId',
+                                element: <Shop />,
+                            },
+                        ],
                     },
                     {
                         path: '/shop/product/:id',
