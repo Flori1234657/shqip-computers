@@ -25,10 +25,10 @@ export default function ShoppingCart() {
                 right: 0,
                 zIndex: 2,
 
-                width: { xs: '100vw' },
+                width: { xs: '100vw', sm: '60vw', md: 'fit-content' },
                 minHeight: { xs: '100vh' },
-                p: { xs: '1.5rem' },
-                gap: { xs: '1rem' },
+                p: { xs: '1.5rem', md: '0.703rem' },
+                gap: { xs: '1rem', md: '0.469rem' },
 
                 bgcolor: theme.palette.primary[100],
             })}

@@ -11,8 +11,10 @@ import {
     MdDeleteOutline as DeleteIcon,
     MdOutlineCancel as CancelIcon,
 } from 'react-icons/md';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 function EmptyCartConfirmationModal() {
+    const { width } = useWindowDimensions();
     const modalVisibility = useCartStore((state) => state.showEmptyCartMessage);
 
     return (
@@ -24,34 +26,47 @@ function EmptyCartConfirmationModal() {
             <ModalDialog
                 sx={(theme) => ({
                     bgcolor: theme.palette.primary[900],
-                    borderRadius: '0.75rem',
+                    borderRadius: { xs: '0.75rem', md: '0.469rem' },
                     boxShadow: theme.shadow.overlayModal,
-                    p: { xs: '1rem' },
+                    p: { xs: '1rem', md: '0.938rem' },
+                    minWidth: 'fit-content',
                 })}
             >
-                <Stack gap={{ xs: '1rem' }}>
+                <Stack
+                    gap={{ xs: '1rem', md: '0.938rem' }}
+                    maxWidth={{ md: '12.158rem' }}
+                >
                     <Typography
                         level='title-md'
-                        fontSize='1rem'
+                        fontSize={{ xs: '1rem', md: '0.809rem' }}
                         fontWeight='400'
                         sx={{ color: 'white' }}
                     >
                         Are you sure that you want to empty the card?
                     </Typography>
-                    <Stack gap={{ xs: '0.75rem' }}>
-                        <Stack direction='row' gap={{ xs: '0.75rem' }}>
+                    <Stack gap={{ xs: '0.75rem', md: '0.352rem' }}>
+                        <Stack
+                            direction='row'
+                            gap={{ xs: '0.75rem', md: '0.469rem' }}
+                        >
                             <Button
                                 variant='outlined'
                                 color='danger'
                                 endDecorator={<DeleteIcon />}
+                                size={width < 900 ? 'md' : 'md2'}
                             >
                                 Yes
                             </Button>
-                            <Button endDecorator={<CancelIcon />}>No</Button>
+                            <Button
+                                endDecorator={<CancelIcon />}
+                                size={width < 900 ? 'md' : 'md2'}
+                            >
+                                No
+                            </Button>
                         </Stack>
                         <Checkbox
                             color='success'
-                            size='sm'
+                            size={width < 900 ? 'sm' : 'md2'}
                             sx={(theme) => ({
                                 color: theme.palette.primary[200],
                                 fontFamily: 'Poppins',

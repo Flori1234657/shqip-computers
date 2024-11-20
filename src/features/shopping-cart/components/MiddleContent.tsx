@@ -31,8 +31,8 @@ function MiddleContent() {
     return (
         <List
             sx={{
-                gap: { xs: '0.5rem' },
-                maxHeight: '55vh',
+                gap: { xs: '0.5rem', md: '0.234rem' },
+                maxHeight: { xs: '55vh' },
                 overflowY: 'scroll',
             }}
         >
@@ -40,7 +40,11 @@ function MiddleContent() {
                 <ListItem
                     sx={{ borderBottom: '1px solid rgba(85,94,104,0.5)' }}
                 >
-                    <Stack width='100%' sx={{ pb: { xs: '0.5rem' } }}>
+                    <Stack
+                        width='100%'
+                        sx={{ pb: { xs: '0.5rem', md: '0.234rem' } }}
+                        gap={{ md: '0.234rem' }}
+                    >
                         <ImageNamePriceInfo
                             image={item.image}
                             name={item.name}
@@ -54,7 +58,7 @@ function MiddleContent() {
                             <ActionButtons quantity={item.quantity} />
                             <Typography
                                 level='title-sm'
-                                fontSize={{ xs: '1rem' }}
+                                fontSize={{ xs: '1rem', md: '0.563rem' }}
                                 sx={(theme) => ({
                                     color: theme.palette.primary[500],
                                     fontWeight: '500',

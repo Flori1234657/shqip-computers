@@ -1,18 +1,26 @@
 import { IconButton, Stack, Typography } from '@mui/joy';
 import { FaPlus as PlusIcon, FaMinus as MinusIcon } from 'react-icons/fa6';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 function ActionButtons({ quantity }: { quantity: number }) {
+    const { width } = useWindowDimensions();
+
     return (
-        <Stack gap={{ xs: '0.5rem' }} direction='row' alignItems='center'>
+        <Stack
+            direction='row'
+            alignItems='center'
+            justifyContent='space-between'
+            width={{ xs: '5rem', md: '3.047rem' }}
+        >
             <IconButton
                 variant='solid'
-                size='xs2'
+                size={width < 900 ? 'xs2' : 'xs3'}
                 sx={(theme) => ({ bgcolor: theme.palette.primary[900] })}
             >
                 <MinusIcon />
             </IconButton>
             <Typography
-                fontSize={{ xs: '1rem' }}
+                fontSize={{ xs: '1rem', md: '0.563rem' }}
                 fontWeight='600'
                 lineHeight='1.2'
             >
@@ -20,7 +28,7 @@ function ActionButtons({ quantity }: { quantity: number }) {
             </Typography>
             <IconButton
                 variant='solid'
-                size='xs2'
+                size={width < 900 ? 'xs2' : 'xs3'}
                 sx={(theme) => ({ bgcolor: theme.palette.primary[900] })}
             >
                 <PlusIcon />

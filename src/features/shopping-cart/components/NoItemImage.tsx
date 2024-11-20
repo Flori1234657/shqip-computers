@@ -13,7 +13,7 @@ function NoItemImage() {
             <Image
                 ratio='1.4/1'
                 src={EmptyBox}
-                width='15.138rem'
+                width={{ xs: '15.138rem', md: '7.096rem' }}
                 alt='an empty box'
             />
         </Stack>

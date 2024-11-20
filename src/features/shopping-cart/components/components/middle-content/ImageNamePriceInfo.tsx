@@ -13,23 +13,24 @@ function ImageNamePriceInfo(props: Props) {
         <Stack
             direction='row'
             alignItems='center'
-            gap={{ xs: '0.5rem' }}
-            py={{ xs: '0.5rem' }}
+            gap={{ xs: '0.5rem', md: '0.234rem' }}
+            py={{ xs: '0.5rem', md: '0' }}
         >
             <Image
                 ratio='1.57/1'
                 src={props.image}
-                width={{ xs: '5rem' }}
+                width={{ xs: '5rem', md: '3.047rem' }}
                 alt='product'
                 objectFit='contain'
                 otherStyles={{
                     bgcolor: theme.palette.neutral[800],
-                    borderRadius: { xs: '0.5rem' },
+                    borderRadius: { xs: '0.5rem', md: '0.352rem' },
                 }}
             />
-            <Stack gap={{ xs: '0.25rem' }}>
+            <Stack gap={{ xs: '0.25rem', md: '0.118rem' }}>
                 <Typography
                     level='body-lg'
+                    fontSize={{ md: '0.563rem' }}
                     lineHeight='1.2'
                     sx={{ color: theme.palette.text.primary }}
                 >
@@ -37,7 +38,10 @@ function ImageNamePriceInfo(props: Props) {
                         ? `${props.name.slice(0, 16)}...`
                         : props.name}
                 </Typography>
-                <Typography level='title-sm' fontSize={{ xs: '1rem' }}>
+                <Typography
+                    level='title-sm'
+                    fontSize={{ xs: '1rem', md: '0.563rem' }}
+                >
                     ${props.price}
                 </Typography>
             </Stack>

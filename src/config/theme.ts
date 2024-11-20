@@ -21,6 +21,7 @@ declare module '@mui/joy/IconButton' {
     interface IconButtonPropsSizeOverrides {
         xs: true;
         xs2: true;
+        xs3: true;
     }
 }
 declare module '@mui/joy/Button' {
@@ -46,6 +47,11 @@ declare module '@mui/joy/Input' {
 }
 declare module '@mui/joy/Textarea' {
     interface TextareaPropsSizeOverrides {
+        md2: true;
+    }
+}
+declare module '@mui/joy/Checkbox' {
+    interface CheckboxPropsSizeOverrides {
         md2: true;
     }
 }
@@ -171,6 +177,13 @@ const theme = extendTheme({
                         padding: '0.5rem',
                         borderRadius: '0.5rem',
                     }),
+                    ...(ownerState.size === 'xs3' && {
+                        fontSize: '0.41rem',
+                        minHeight: '0.938rem',
+                        minWidth: '0.938rem',
+                        padding: '0.234rem',
+                        borderRadius: '0.352rem',
+                    }),
                 }),
             },
         },
@@ -186,6 +199,20 @@ const theme = extendTheme({
                 }),
                 endDecorator: {
                     fontSize: '1.25em',
+                },
+            },
+        },
+        JoyCheckbox: {
+            styleOverrides: {
+                root: ({ ownerState }) => ({
+                    ...(ownerState.size === 'md2' && {
+                        '--Checkbox-size': '0.563rem',
+                        fontSize: '0.563rem',
+                        gap: '0.234rem',
+                    }),
+                }),
+                checkbox: {
+                    borderRadius: '0.225em',
                 },
             },
         },
