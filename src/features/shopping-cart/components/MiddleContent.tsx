@@ -38,6 +38,7 @@ function MiddleContent() {
         >
             {cartItems.map((item) => (
                 <ListItem
+                    key={`shopping-cart-item${item.id}`}
                     sx={{ borderBottom: '1px solid rgba(85,94,104,0.5)' }}
                 >
                     <Stack

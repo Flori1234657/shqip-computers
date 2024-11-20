@@ -40,7 +40,10 @@ function EmptyCartConfirmationModal() {
                         level='title-md'
                         fontSize={{ xs: '1rem', md: '0.809rem' }}
                         fontWeight='400'
-                        sx={{ color: 'white' }}
+                        sx={{
+                            color: 'white',
+                            width: { xs: '15rem', md: 'unset' },
+                        }}
                     >
                         Are you sure that you want to empty the card?
                     </Typography>

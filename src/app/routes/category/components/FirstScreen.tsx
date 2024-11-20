@@ -30,7 +30,9 @@ function FirstScreen() {
                 ))}
             </Grid>
 
-            <Button startDecorator={<CloseIcon />}>Close</Button>
+            <Button startDecorator={<CloseIcon />} onClick={() => navigate(-1)}>
+                Close
+            </Button>
         </Stack>
     );
 }

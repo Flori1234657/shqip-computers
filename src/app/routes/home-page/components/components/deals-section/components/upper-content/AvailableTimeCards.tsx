@@ -24,6 +24,7 @@ function AvailableTimeCards() {
         <Stack gap={{ xs: '1.5rem', md: '0.703rem' }} direction={{ md: 'row' }}>
             {timesData.map((time) => (
                 <Stack
+                    key={`time-card${time.type}`}
                     alignItems='center'
                     sx={(theme) => ({
                         p: { xs: '0.25rem 0.5rem', md: '0.118rem 0.352rem' },

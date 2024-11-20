@@ -27,7 +27,7 @@ function PcNavigation() {
         <nav>
             <List sx={{ flexDirection: 'row', gap: '2.344rem' }}>
                 {navLinks.map((link) => (
-                    <ListItem>
+                    <ListItem key={`pc-navigation-link${link.path}`}>
                         <Link component={RouterLink} to={link.path}>
                             <Typography
                                 fontSize='0.563rem'

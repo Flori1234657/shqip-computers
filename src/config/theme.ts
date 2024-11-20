@@ -132,7 +132,7 @@ const theme = extendTheme({
                 root: ({ ownerState }) => ({
                     ...{
                         borderRadius: '0.5rem',
-                        '-webkit-tap-highlight-color': 'transparent',
+                        WebkitTapHighlightColor: 'transparent',
                     },
                     ...(ownerState.size === 'xs' && {
                         '--Icon-fontSize': '0.586rem',
@@ -161,7 +161,7 @@ const theme = extendTheme({
                 root: ({ ownerState }) => ({
                     ...{
                         borderRadius: '0.5rem',
-                        '-webkit-tap-highlight-color': 'transparent',
+                        WebkitTapHighlightColor: 'transparent',
                     },
                     ...(ownerState.size === 'xs' && {
                         fontSize: '0.586rem',

@@ -57,6 +57,7 @@ function NavLinks() {
         >
             {navLinks.map((link) => (
                 <ListItem
+                    key={`monile-nav-links${link.path}`}
                     sx={{
                         position:
                             location.pathname == link.path

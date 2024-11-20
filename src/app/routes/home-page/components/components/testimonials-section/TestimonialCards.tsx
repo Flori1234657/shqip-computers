@@ -30,6 +30,7 @@ function TestimonialCards() {
         <>
             {reviewsData.map((review, index) => (
                 <Stack
+                    key={`testimonial-card${index}`}
                     alignItems='center'
                     p={{ xs: '0.5rem', md: '0.703rem' }}
                     mt={index == 1 ? { md: '0.875rem' } : 'unset'}

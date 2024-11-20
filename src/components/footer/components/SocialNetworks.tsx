@@ -12,17 +12,17 @@ function SocialNetworks() {
         {
             text: '@shqip_computers',
             icon: <IgIcon />,
-            goTo: 'https://',
+            goTo: 'https://www.linkedin.com/in/florian-dollani/',
         },
         {
             text: '@shqip_computers',
             icon: <TikTokIcon />,
-            goTo: 'https://',
+            goTo: 'https://www.linkedin.com/in/florian-dollani/',
         },
         {
             text: 'Ship Computers',
             icon: <FbIcon />,
-            goTo: 'https://',
+            goTo: 'https://www.linkedin.com/in/florian-dollani/',
         },
     ];
 
@@ -41,8 +41,8 @@ function SocialNetworks() {
                 Social network's
             </Typography>
             <List sx={{ gap: { xs: '0.5rem', md: '0.234rem' } }}>
-                {networks.map((network) => (
-                    <ListItem>
+                {networks.map((network, index) => (
+                    <ListItem key={`footer-social-networks${index}`}>
                         <Link component={RouterLink} to={network.goTo}>
                             <Typography
                                 level='body-lg'

@@ -30,6 +30,7 @@ function CardImages() {
         <>
             {offerProducts.map((product) => (
                 <Stack
+                    key={`card-image-product${product.id}`}
                     sx={(theme) => ({
                         backgroundColor: theme.palette.neutral[800],
                         borderRadius: { xs: '0.5rem', md: '0.352rem' },

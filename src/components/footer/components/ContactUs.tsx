@@ -12,17 +12,17 @@ function ContactUs() {
         {
             text: '+355 68 839 3968',
             icon: <PhoneIcon />,
-            goTo: 'https://',
+            goTo: 'tel:+355 68 839 3968',
         },
         {
             text: 'shqipcomputers@gmail.com',
             icon: <MailIcon />,
-            goTo: 'https://',
+            goTo: 'mail:+355 68 839 3968',
         },
         {
             text: 'Maps location',
             icon: <LocationIcon />,
-            goTo: 'https://',
+            goTo: 'https://maps.app.goo.gl/Qokjph2AMYbWZLLk7',
         },
     ];
 
@@ -47,7 +47,7 @@ function ContactUs() {
                 }}
             >
                 {contacts.map((contact) => (
-                    <ListItem>
+                    <ListItem key={`contact-us-link${contact.text}`}>
                         <Link component={RouterLink} to={contact.goTo}>
                             <Typography
                                 level='body-lg'

@@ -1,12 +1,12 @@
 import { IconButton, Stack, Typography } from '@mui/joy';
 import { MdOutlineArrowForward as ArrowIcon } from 'react-icons/md';
-import useCartStore from '../stores/shoppingCart';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import useRenderStore from 'src/stores/render';
 
 function UpperContent() {
     const { width } = useWindowDimensions();
-    const toggleShoppingCartVisibility = useCartStore(
-        (state) => state.toggleIsVisible
+    const toggleShoppingCartVisibility = useRenderStore(
+        (state) => state.toggleIsShoppingCartVisible
     );
 
     return (

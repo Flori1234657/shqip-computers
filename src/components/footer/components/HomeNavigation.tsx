@@ -42,7 +42,7 @@ function HomeNavigation() {
                 }}
             >
                 {homeLinks.map((link) => (
-                    <ListItem>
+                    <ListItem key={`footer-nav-link${link.to}`}>
                         <Link component={RouterLink} to={link.to}>
                             <Typography
                                 level='body-lg'

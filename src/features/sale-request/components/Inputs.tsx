@@ -53,7 +53,12 @@ export default function Inputs({ formik }: SaleRequestInputs) {
     return (
         <>
             {inputsData.map((input) => (
-                <Grid width='100%' xs={12} sm={6}>
+                <Grid
+                    key={`sale-request-input${input.name}`}
+                    width='100%'
+                    xs={12}
+                    sm={6}
+                >
                     <FormControl size={width > 899 ? 'md2' : 'md'}>
                         <FormLabel sx={{ color: 'white', mb: '0.25rem' }}>
                             {input.label}
