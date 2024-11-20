@@ -1,7 +1,7 @@
 import { Stack } from '@mui/joy';
 import UpperContent from './components/UpperContent';
 import { lazy, Suspense } from 'react';
-import useCartStore from './stores/shoppingCart';
+import useRenderStore from 'src/stores/render';
 
 const EmptyCartConfirmationModal = lazy(
     () => import('./components/EmptyCartConfirmationModal')
@@ -11,7 +11,9 @@ const Buttons = lazy(() => import('./components/Buttons'));
 const NoItemImage = lazy(() => import('./components/NoItemImage'));
 
 export default function ShoppingCart() {
-    const isCartVisible = useCartStore((state) => state.isVisible);
+    const isCartVisible = useRenderStore(
+        (state) => state.isShoppingCartVisible
+    );
     if (!isCartVisible) return;
 
     // Supposing we have the zustand store
