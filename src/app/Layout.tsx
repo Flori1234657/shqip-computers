@@ -3,15 +3,13 @@ import TopBar from 'src/components/top-bar/TopBar';
 import Footer from 'src/components/footer/Footer';
 import { lazy, Suspense } from 'react';
 
-const ShoppingCart = lazy(
-    () => import('src/features/shopping-cart/ShoppingCart')
-);
+const DynamicImports = lazy(() => import('./DynamicImports'));
 
 export default function Layout() {
     return (
         <>
             <Suspense fallback=''>
-                <ShoppingCart />
+                <DynamicImports />
             </Suspense>
             <TopBar />
             <main style={{ overflowX: 'hidden' }}>
