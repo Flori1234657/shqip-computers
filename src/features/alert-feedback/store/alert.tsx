@@ -9,7 +9,8 @@ interface Data extends AlertData {
 const useAlertStore = create<Data>()(
     devtools((set) => ({
         type: 'Success',
-        description: '',
+        description:
+            'Your form is submitted successfully! Now wait for our response. ',
         setData: (type, description) =>
             set(() => ({
                 type,

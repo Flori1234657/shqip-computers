@@ -17,6 +17,7 @@ function Buttons() {
                 size={width > 899 ? 'md2' : 'md'}
                 variant='outlined'
                 color='danger'
+                type='reset'
                 endDecorator={<ClearIcon />}
             >
                 Clear

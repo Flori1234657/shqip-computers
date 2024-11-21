@@ -19,7 +19,7 @@ export const formSchema = Yup.object().shape({
             /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
             'Phone number is not valid!'
         )
-        .required('This diled is required!'),
+        .required('This filed is required!'),
     sellingReason: Yup.string()
         .min(100, 'At least 100 characters!')
         .max(500, 'No more than 500 characters!')

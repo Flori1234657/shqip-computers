@@ -22,20 +22,23 @@ export default function SaleRequest() {
             initialValues={initialValues}
             validationSchema={formSchema}
             // 🌐 Post request to the server
-            onSubmit={(values) => {
+            onSubmit={(values, action) => {
                 alertUser({
                     type: 'Success',
                     description:
                         'Your form is submitted successfully! Now wait for our response. ',
                 });
                 console.log(values);
+                action.setValues(initialValues);
+                action.resetForm();
             }}
+            onReset={(_, action) => action.setValues(initialValues)}
         >
             {(formik) => {
-                const { handleSubmit } = formik;
+                const { handleSubmit, handleReset } = formik;
 
                 return (
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} onReset={handleReset}>
                         <Stack
                             maxWidth={{ md: '18.34rem' }}
                             p={{ xs: '1.25rem 1.625rem', md: '0.938rem' }}
