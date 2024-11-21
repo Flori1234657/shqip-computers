@@ -1,8 +1,11 @@
 import { IconButton, Stack } from '@mui/joy';
 import { MdOutlinePages as CategoryIcon } from 'react-icons/md';
 import NavLinks from './components/mobile-navigation/NavLinks';
+import { useNavigate } from 'react-router-dom';
 
 export default function MobileVersion() {
+    const navigate = useNavigate();
+
     return (
         <Stack
             sx={{
@@ -43,6 +46,7 @@ export default function MobileVersion() {
                             top: '-0.938rem',
                             left: '-0.75rem',
                         }}
+                        onClick={() => navigate('/categories')}
                     >
                         <CategoryIcon />
                     </IconButton>

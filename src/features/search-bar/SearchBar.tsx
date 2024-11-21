@@ -19,18 +19,22 @@ export default function SearchBar() {
      */
     const placeholderProducts = [
         {
+            id: '12d2c21233r24rfvs',
             name: 'Fujitsu Esprimo p900',
             image: PlaceholderImg,
         },
         {
+            id: '16g*81x89^!!',
             name: 'Fujitsu Esprimo p340',
             image: PlaceholderImg,
         },
         {
+            id: '^!76xybg8191',
             name: 'Fujitsu Esprimo p750',
             image: PlaceholderImg,
         },
         {
+            id: '1901j0(!*(nz ',
             name: 'Fujitsu Esprimo p690',
             image: PlaceholderImg,
         },
@@ -80,6 +84,7 @@ export default function SearchBar() {
                 renderOption={(props, option) => (
                     <AutocompleteOption
                         {...props}
+                        key={`search-items${option.id}`}
                         sx={{
                             p: { xs: '0.25rem', md: '0.234rem' },
                             gap: { xs: '0.5rem', md: '0.469rem' },

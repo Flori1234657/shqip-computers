@@ -8,6 +8,7 @@ function Categories() {
     return (
         <Stack
             position='fixed'
+            alignItems='center'
             sx={(theme) => ({
                 top: 0,
                 right: 0,
@@ -15,8 +16,9 @@ function Categories() {
 
                 width: '100vw',
                 minHeight: '100vh',
+                px: { xs: '1.5rem' },
 
-                bgcolor: theme.palette.gradient.heroTxt,
+                backgroundImage: theme.palette.gradient.heroTxt,
             })}
         >
             {location.pathname === '/categories' ? <FirstScreen /> : ''}
