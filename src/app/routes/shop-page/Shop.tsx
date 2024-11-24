@@ -4,7 +4,7 @@ import DownSection from './components/DownSection';
 
 export default function Shop() {
     return (
-        <Stack>
+        <Stack mt={{ xs: '4.25rem' }} gap={{ xs: '1.5rem' }}>
             <UpperSection />
             <DownSection />
         </Stack>

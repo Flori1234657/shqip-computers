@@ -31,13 +31,21 @@ const Pagination = ({
     // const lastPage = paginationRange![paginationRange!.length - 1];
     return (
         <>
-            {paginationRange!.map((pageNumber) => {
+            {paginationRange!.map((pageNumber, index) => {
                 // If the pageItem is a DOT, render the DOTS unicode character
-                if (typeof pageNumber === 'string') return <Button>...</Button>;
+                if (typeof pageNumber === 'string')
+                    return (
+                        <Button key={`pagination-button${pageNumber}${index}`}>
+                            ...
+                        </Button>
+                    );
 
                 // Render our Page Pills
                 return (
-                    <Button onClick={() => onPageChange(pageNumber)}>
+                    <Button
+                        onClick={() => onPageChange(pageNumber)}
+                        key={`pagination-button${pageNumber}${index}`}
+                    >
                         {pageNumber}
                     </Button>
                 );

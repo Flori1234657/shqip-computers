@@ -3,7 +3,10 @@ import { Link as RouterLink } from 'react-router-dom';
 
 export default function BreadCrumb() {
     return (
-        <Breadcrumbs aria-label='breadcrumbs'>
+        <Breadcrumbs
+            aria-label='breadcrumbs'
+            sx={{ padding: 0, lineHeight: '1.5', fontWeight: '500' }}
+        >
             <Link
                 component={RouterLink}
                 to='/'

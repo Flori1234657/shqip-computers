@@ -14,6 +14,7 @@ declare module '@mui/joy/styles' {
     interface Shadow {
         selectedCard: string;
         overlayModal: string;
+        categoryCardSelected: string;
     }
 }
 
@@ -125,6 +126,7 @@ const theme = extendTheme({
     shadow: {
         selectedCard: '0 0 16px 12px rgba(255, 255, 255,0.25)',
         overlayModal: '0 0 12.5px 4px rgba(255,255,255,1)',
+        categoryCardSelected: '0 0 24px 6px rgba(11,107,203,1)',
     },
     components: {
         JoyButton: {
