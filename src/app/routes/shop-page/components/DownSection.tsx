@@ -4,7 +4,7 @@ import RightContent from './components/down-section/RightContent';
 
 export default function DownSection() {
     return (
-        <Stack>
+        <Stack position='relative'>
             <Filter />
             <RightContent />
         </Stack>

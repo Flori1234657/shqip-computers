@@ -5,8 +5,8 @@ import SortFilterButtons from './components/action-panel/SortFilterButtons';
 
 export default function ActionPanel() {
     return (
-        <Stack>
-            <Stack>
+        <Stack direction='row' justifyContent='space-between'>
+            <Stack gap={{ xs: '0.5rem' }}>
                 <SearchBar />
                 <ProductCount />
             </Stack>

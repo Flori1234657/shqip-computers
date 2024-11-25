@@ -35,7 +35,16 @@ const Pagination = ({
                 // If the pageItem is a DOT, render the DOTS unicode character
                 if (typeof pageNumber === 'string')
                     return (
-                        <Button key={`pagination-button${pageNumber}${index}`}>
+                        <Button
+                            key={`pagination-button${pageNumber}${index}`}
+                            size='sm'
+                            variant='outlined'
+                            color='neutral'
+                            sx={{
+                                borderRadius: '50%',
+                                maxWidth: { xs: '2rem' },
+                            }}
+                        >
                             ...
                         </Button>
                     );
@@ -43,8 +52,21 @@ const Pagination = ({
                 // Render our Page Pills
                 return (
                     <Button
-                        onClick={() => onPageChange(pageNumber)}
                         key={`pagination-button${pageNumber}${index}`}
+                        size='sm'
+                        variant='outlined'
+                        color='neutral'
+                        sx={(theme) => ({
+                            borderRadius: '50%',
+                            bgcolor:
+                                pageNumber == currentPage
+                                    ? theme.palette.primary[900]
+                                    : 'unset',
+                            color:
+                                pageNumber == currentPage ? 'white' : 'unset',
+                            maxWidth: { xs: '2rem' },
+                        })}
+                        onClick={() => onPageChange(pageNumber)}
                     >
                         {pageNumber}
                     </Button>

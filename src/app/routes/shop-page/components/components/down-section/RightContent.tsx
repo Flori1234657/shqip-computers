@@ -4,7 +4,7 @@ import ProductCardsMap from './components/ProductCardsMap';
 
 export default function RightContent() {
     return (
-        <Stack>
+        <Stack gap={{ xs: '2rem' }}>
             <ActionPanel />
             <ProductCardsMap />
         </Stack>
