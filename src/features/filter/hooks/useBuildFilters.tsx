@@ -5,7 +5,8 @@ import { FilterCategoriesRequestData } from '../types/filterCategoriesRequest';
 
 export default function useBuildFilters() {
     const { pathname } = useLocation();
-    const { setFilterCategory, filterCategory } = useFilterStore();
+    const { setFilterCategory, setCategoryToRender, filterCategory } =
+        useFilterStore();
 
     const hardwareIdMap: { id: string; name: CategoryKey }[] = [
         {
@@ -42,10 +43,11 @@ export default function useBuildFilters() {
         },
     ];
 
+    // this function need performace improvment
     const createFilters = async () => {
         let filterData: FilterCategoriesRequestData | null = null;
 
-        const computerRegex = /shop\Wcategories\W[pc|laptop]/g;
+        const computerRegex = /shop\Wcategories\W(pc|laptop)/g;
         const hardwareRegex = pathname.match(
             /shop\Wcategories\Whardware\W(\w+)/
         );
@@ -64,10 +66,13 @@ export default function useBuildFilters() {
 
         if (filterData !== null)
             setFilterCategory({
-                [filterData.category.name]: {
-                    options: filterData.category.options,
-                },
+                [filterData.category.name]: filterData.category.options,
             });
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
+        if (hardwareRegex) setCategoryToRender(hardwareRegex[1]);
+        else setCategoryToRender('computer');
     };
 
     return { createFilters };

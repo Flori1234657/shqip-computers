@@ -13,22 +13,26 @@ export type CategoryKey =
     | 'gpu'
     | 'psu';
 
-/** exp. computer --> options --> ram --> ['1 Gb',...] */
+/** exp. computer --> ram --> ['1 Gb',...] */
 type CategoryData = {
-    [key in CategoryKey]?: { options: { [key: string]: string[] } };
+    [key in CategoryKey]?: { [key: string]: string[] };
 };
 
 interface State {
     filterCategory?: CategoryData;
+    categoryToRender: CategoryKey;
     setFilterCategory: (data: CategoryData) => void;
+    setCategoryToRender: (key: CategoryKey) => void;
 }
 
 const useFilterStore = create<State>()(
     devtools((set) => ({
+        categoryToRender: 'computer',
         setFilterCategory: (data) =>
             set((prev) => ({
                 filterCategory: { ...prev.filterCategory, ...data },
             })),
+        setCategoryToRender: (key) => set(() => ({ categoryToRender: key })),
     }))
 );
 
