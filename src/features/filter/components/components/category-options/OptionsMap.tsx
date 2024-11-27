@@ -1,42 +1,15 @@
-import { lazy, Suspense } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
-const ComputerOptions = lazy(
-    () => import('./components/options-map/FilterComputerOptions')
-);
-const HardwareOptions = lazy(
-    () => import('./components/options-map/FilterHardwareOptions')
-);
-const AccessoriesOptions = lazy(
-    () => import('./components/options-map/FilterAccessoryOptions')
-);
+import useBuildFilters from 'src/features/filter/hooks/useBuildFilters';
 
 export default function OptionsMap() {
     const { pathname } = useLocation();
+    const { createFilters } = useBuildFilters();
 
-    if (
-        pathname === '/shop/categories/pc' ||
-        pathname === '/shop/categories/laptop'
-    )
-        return (
-            <Suspense fallback=''>
-                <ComputerOptions />
-            </Suspense>
-        );
-
-    if (/shop\Wcategories\Waccessories\W\w+/.test(pathname))
-        return (
-            <Suspense fallback=''>
-                <AccessoriesOptions />
-            </Suspense>
-        );
-
-    if (/shop\Wcategories\Whardware\W\w+/.test(pathname))
-        return (
-            <Suspense fallback=''>
-                <HardwareOptions />
-            </Suspense>
-        );
+    useEffect(() => {
+        if (/shop\Wcategories\W\w+/g.test(pathname)) createFilters();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathname]);
 
     return <></>;
 }

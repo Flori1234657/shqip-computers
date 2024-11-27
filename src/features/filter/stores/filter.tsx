@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 /** The filter options will be displayed based on this categoy keys */
-type CategoryKey =
+export type CategoryKey =
     | 'computer'
     | 'ram'
     | 'hdd'
