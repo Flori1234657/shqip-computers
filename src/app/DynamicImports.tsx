@@ -7,14 +7,22 @@ const ShoppingCart = lazy(
 const AlertFeedback = lazy(
     () => import('src/features/alert-feedback/AlertFeedback')
 );
+const SimpleAlertFeedback = lazy(
+    () => import('src/features/alert-feedback-simple/SimpleAlertFeedback')
+);
 
 export default function DynamicImports() {
-    const { isShoppingCartVisible, isAlertFeedbackVisible } = useRenderStore();
+    const {
+        isShoppingCartVisible,
+        isAlertFeedbackVisible,
+        isSimpleAlertFeedbackVisible,
+    } = useRenderStore();
 
     return (
         <Suspense fallback=''>
             {isShoppingCartVisible ? <ShoppingCart /> : ''}
             {isAlertFeedbackVisible ? <AlertFeedback /> : ''}
+            {isSimpleAlertFeedbackVisible ? <SimpleAlertFeedback /> : ''}
         </Suspense>
     );
 }

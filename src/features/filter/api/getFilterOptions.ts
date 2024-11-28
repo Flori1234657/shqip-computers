@@ -6,7 +6,10 @@ export const getFilterCategory = async (categoryId: string) => {
         .get(
             `${import.meta.env.VITE_REACT_APP_BACKEND}api/filter-options/${categoryId}`
         ) // categoryId === documentId in the database
-        .then((res) => res.data.data);
+        .then((res) => res.data.data)
+        .catch(() => {
+            throw new Error('Failed to fech the data');
+        });
 
     return request;
 };

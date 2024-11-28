@@ -10,6 +10,7 @@ export default function Filter() {
                 zIndex: 2,
                 top: 0,
                 right: 0,
+                overflow: 'scroll',
                 p: { xs: '1.5rem', md: '0.703rem' },
                 gap: { xs: '2rem' },
 

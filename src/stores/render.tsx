@@ -10,14 +10,17 @@ import { devtools } from 'zustand/middleware';
 interface VisibilityState {
     isShoppingCartVisible: boolean;
     isAlertFeedbackVisible: boolean;
+    isSimpleAlertFeedbackVisible: boolean;
     toggleIsShoppingCartVisible: () => void;
     toggleIsAlertFeedbackVisible: () => void;
+    toggleIsSimpleAlertFeedbackVisible: () => void;
 }
 
 const useRenderStore = create<VisibilityState>()(
     devtools((set) => ({
         isShoppingCartVisible: false,
         isAlertFeedbackVisible: false,
+        isSimpleAlertFeedbackVisible: false,
         toggleIsShoppingCartVisible: () =>
             set((state) => ({
                 isShoppingCartVisible: !state.isShoppingCartVisible,
@@ -25,6 +28,11 @@ const useRenderStore = create<VisibilityState>()(
         toggleIsAlertFeedbackVisible: () =>
             set((state) => ({
                 isAlertFeedbackVisible: !state.isAlertFeedbackVisible,
+            })),
+        toggleIsSimpleAlertFeedbackVisible: () =>
+            set((state) => ({
+                isSimpleAlertFeedbackVisible:
+                    !state.isSimpleAlertFeedbackVisible,
             })),
     }))
 );
