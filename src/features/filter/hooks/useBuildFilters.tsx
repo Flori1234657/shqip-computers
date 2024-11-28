@@ -27,7 +27,7 @@ export default function useBuildFilters() {
         },
         {
             id: 'uasanydt1fkb9fj8ry39eghf',
-            name: 'dvd-rom',
+            name: 'dvd',
         },
         {
             id: 'khak93z3vrrldggjuaditlqz',
@@ -55,14 +55,19 @@ export default function useBuildFilters() {
         if (computerRegex.test(pathname) && !filterCategory?.computer)
             filterData = await getFilterCategory('zbb3uoh3ak36oye0qndst4yh');
 
-        if (hardwareRegex)
-            hardwareIdMap.map(async (hardware) => {
+        if (hardwareRegex) {
+            const selectedHardware = hardwareIdMap.filter((hardware) => {
                 if (
                     hardwareRegex[1] === hardware.name &&
                     (!filterCategory || !filterCategory[hardware.name])
                 )
-                    filterData = await getFilterCategory(hardware.id);
+                    return hardware;
             });
+
+            filterData = selectedHardware[0]
+                ? await getFilterCategory(selectedHardware[0].id)
+                : null;
+        }
 
         if (filterData !== null)
             setFilterCategory({

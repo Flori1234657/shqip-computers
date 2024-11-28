@@ -2,10 +2,14 @@ import { Button, IconButton, Stack } from '@mui/joy';
 
 import { GoSortAsc as SortIcon } from 'react-icons/go';
 import { MdOutlineFilterAlt as FilterIcon } from 'react-icons/md';
+import useFilterStore from 'src/features/filter/stores/filter';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function SortFilterButtons() {
     const { width } = useWindowDimensions();
+    const toggleFilterVisibility = useFilterStore(
+        (state) => state.setIsFilterVisible
+    );
 
     return width > 899 ? (
         <Button startDecorator={<SortIcon />}>Sort</Button>
@@ -28,6 +32,7 @@ export default function SortFilterButtons() {
                     bgcolor: theme.palette.primary[900],
                 })}
                 variant='solid'
+                onClick={() => toggleFilterVisibility()}
             >
                 <FilterIcon />
             </IconButton>

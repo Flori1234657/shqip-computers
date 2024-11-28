@@ -6,11 +6,16 @@ function valueText(value: number) {
 
 export default function PriceFilter() {
     return (
-        <Stack>
-            <Typography>Price</Typography>
-            <Box sx={{ width: 300 }}>
+        <Stack gap={{ xs: '1.25rem' }}>
+            <Typography
+                level='body-lg'
+                lineHeight='1.5'
+                sx={(theme) => ({ color: theme.palette.primary[900] })}
+            >
+                Price
+            </Typography>
+            <Box sx={{ width: '100%' }}>
                 <Slider
-                    track={false}
                     defaultValue={[0, 100]}
                     getAriaLabel={() => 'Amount'}
                     getAriaValueText={valueText}

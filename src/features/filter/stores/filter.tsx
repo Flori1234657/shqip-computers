@@ -8,7 +8,7 @@ export type CategoryKey =
     | 'hdd'
     | 'ssd'
     | 'cpu'
-    | 'dvd-rom'
+    | 'dvd'
     | 'motherboard'
     | 'gpu'
     | 'psu';
@@ -19,15 +19,20 @@ type CategoryData = {
 };
 
 interface State {
+    isFilterVisible: boolean;
     filterCategory?: CategoryData;
     categoryToRender: CategoryKey;
+    setIsFilterVisible: () => void;
     setFilterCategory: (data: CategoryData) => void;
     setCategoryToRender: (key: CategoryKey) => void;
 }
 
 const useFilterStore = create<State>()(
     devtools((set) => ({
+        isFilterVisible: false,
         categoryToRender: 'computer',
+        setIsFilterVisible: () =>
+            set((prev) => ({ isFilterVisible: !prev.isFilterVisible })),
         setFilterCategory: (data) =>
             set((prev) => ({
                 filterCategory: { ...prev.filterCategory, ...data },

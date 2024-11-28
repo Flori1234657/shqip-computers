@@ -5,7 +5,7 @@ import OptionsMap from './components/category-options/OptionsMap';
 
 export default function CategoryOptions() {
     return (
-        <Stack>
+        <Stack gap={{ xs: '1.5rem' }}>
             <PriceFilter />
             <NewUsedFilter />
             <OptionsMap />
