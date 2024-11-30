@@ -16,25 +16,29 @@ export default function Cards() {
                 position: 'relative',
 
                 bgcolor: theme.palette.neutral[800],
-                borderRadius: '0.75rem',
+                borderRadius: { xs: '0.75rem', md: '0.5rem' },
                 boxShadow: theme.shadow.categoryCardSelected,
             })}
         >
             <Image
                 ratio='2.03/1'
-                width={{ xs: '9.125rem' }}
+                width={{ xs: '9.125rem', md: '6.504rem' }}
                 objectFit='contain'
                 alt='category item'
                 src={category.image}
             />
             <Stack
-                p={{ xs: '0.25rem 0.5rem 0.5rem 0.5rem' }}
+                p={{
+                    xs: '0.25rem 0.5rem 0.5rem 0.5rem',
+                    md: '0.234rem 0.234rem 0.469rem 0.234rem',
+                }}
+                gap={{ md: '0.234rem' }}
                 alignItems='center'
             >
                 <Typography
                     fontFamily='Poppins'
                     fontWeight='500'
-                    fontSize={{ xs: '1rem' }}
+                    fontSize={{ xs: '1rem', md: '0.674rem' }}
                     lineHeight='1.5'
                     sx={(theme) => ({ color: theme.palette.primary[300] })}
                 >
@@ -51,6 +55,7 @@ export default function Cards() {
                                     level='body-md'
                                     lineHeight='1.32'
                                     sx={{ color: 'white' }}
+                                    fontSize={{ md: '0.563rem' }}
                                 >
                                     {`${type.text}${index === 2 ? '...' : ''}`}
                                 </Typography>

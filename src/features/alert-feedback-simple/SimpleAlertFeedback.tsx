@@ -17,7 +17,7 @@ export default function SimpleAlertFeedback() {
         <Alert
             color={data ? data.type : 'neutral'}
             sx={(theme) => ({
-                position: 'absolute',
+                position: { xs: 'absolute', md: 'fixed' },
                 zIndex: 10,
                 bottom: '5vh',
                 left: 0,
@@ -25,11 +25,12 @@ export default function SimpleAlertFeedback() {
                 mx: 'auto',
 
                 width: 'fit-content',
-                borderRadius: '0.75rem',
+                padding: { md: '0.469rem 0.75rem' },
+                borderRadius: { xs: '0.75rem', md: '0.469rem' },
                 boxShadow: theme.shadow.boxShadow69,
             })}
         >
-            <Typography>
+            <Typography fontSize={{ md: '0.563rem' }}>
                 {data ? data.description : 'No description is provided'}
             </Typography>
         </Alert>

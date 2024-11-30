@@ -16,7 +16,7 @@ export default function ProductCardsMap() {
     }, [currentPage]);
 
     return (
-        <Stack gap={{ xs: '2.5rem' }}>
+        <Stack gap={{ xs: '2.5rem', md: '1.641rem' }}>
             <Grid container>
                 {currentProductsData.map((product) => (
                     <Grid key={product.id}>
@@ -24,7 +24,11 @@ export default function ProductCardsMap() {
                     </Grid>
                 ))}
             </Grid>
-            <Stack direction='row' justifyContent='space-between'>
+            <Stack
+                direction='row'
+                justifyContent={{ xs: 'space-between', md: 'center' }}
+                gap={{ md: '0.469rem' }}
+            >
                 <Pagination
                     currentPage={currentPage}
                     onPageChange={(page) => setCurrentPage(page)}

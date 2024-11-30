@@ -5,7 +5,12 @@ export default function BreadCrumb() {
     return (
         <Breadcrumbs
             aria-label='breadcrumbs'
-            sx={{ padding: 0, lineHeight: '1.5', fontWeight: '500' }}
+            sx={{
+                padding: 0,
+                lineHeight: '1.5',
+                fontWeight: '500',
+                fontSize: { md: '0.563rem' },
+            }}
         >
             <Link
                 component={RouterLink}

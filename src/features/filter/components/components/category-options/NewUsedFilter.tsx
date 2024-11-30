@@ -1,16 +1,18 @@
 import { Chip, Stack } from '@mui/joy';
 import { useState } from 'react';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function NewUsedFilter() {
+    const { width } = useWindowDimensions();
     const [selectedChip, setSelectedChip] = useState({
         chip1: false,
         chip2: true,
     });
 
     return (
-        <Stack direction='row' gap={{ xs: '0.75rem' }}>
+        <Stack direction='row' gap={{ xs: '0.75rem', md: '0.703rem' }}>
             <Chip
-                size='lg'
+                size={width < 900 ? 'lg' : 'xs'}
                 color='primary'
                 sx={{ py: '0.53rem' }}
                 variant={selectedChip.chip1 ? 'solid' : 'outlined'}
@@ -19,7 +21,7 @@ export default function NewUsedFilter() {
                 New ✨
             </Chip>
             <Chip
-                size='lg'
+                size={width < 900 ? 'lg' : 'xs'}
                 color='primary'
                 sx={{ py: '0.53rem' }}
                 variant={selectedChip.chip2 ? 'solid' : 'outlined'}

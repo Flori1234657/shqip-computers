@@ -1,15 +1,23 @@
 import { Box, Slider, sliderClasses, Stack, Typography } from '@mui/joy';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 function valueText(value: number) {
     return `$${value}`;
 }
 
 export default function PriceFilter() {
+    const { width } = useWindowDimensions();
+
     return (
-        <Stack gap={{ xs: '1.25rem' }}>
+        <Stack
+            width={{ md: '85%' }}
+            gap={{ xs: '1.25rem', md: '0.75rem' }}
+            alignSelf={{ md: 'center' }}
+        >
             <Typography
                 level='body-lg'
                 lineHeight='1.5'
+                fontSize={{ md: '0.674rem' }}
                 sx={(theme) => ({ color: theme.palette.primary[900] })}
             >
                 Price
@@ -19,6 +27,7 @@ export default function PriceFilter() {
                     defaultValue={[0, 100]}
                     getAriaLabel={() => 'Amount'}
                     getAriaValueText={valueText}
+                    size={width < 900 ? 'md' : 'sm'}
                     marks={[
                         {
                             value: 0,

@@ -3,7 +3,7 @@ import { Typography } from '@mui/joy';
 export default function ProductCount() {
     return (
         <Typography
-            fontSize={{ xs: 'sm' }}
+            fontSize={{ xs: 'sm', md: '0.563rem' }}
             fontWeight='700'
             sx={(theme) => ({ color: theme.palette.neutral[500] })}
         >

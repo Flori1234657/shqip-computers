@@ -6,9 +6,11 @@ import {
     FaArrowRight as RightArrIcon,
     FaArrowLeft as LeftArrIcon,
 } from 'react-icons/fa6';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function CategoryCards() {
     const [moveCards, setMoveCards] = useState(0);
+    const { width } = useWindowDimensions();
 
     return (
         <Stack
@@ -18,7 +20,7 @@ export default function CategoryCards() {
             overflow='scroll'
         >
             <IconButton
-                size='sm'
+                size={width < 900 ? 'sm' : 'xs'}
                 variant='solid'
                 sx={(theme) => ({
                     position: 'sticky',
@@ -37,16 +39,17 @@ export default function CategoryCards() {
             </IconButton>
             <Stack
                 direction='row'
-                p={{ xs: '1.5rem 2rem' }}
-                gap={{ xs: '6rem' }}
+                p={{ xs: '1.5rem 2rem', md: '2rem 2.344rem' }}
+                gap={{ xs: '6rem', sm: '2.5rem', md: '2.109rem' }}
                 sx={{
                     transform: `translateX(${moveCards}rem)`,
+                    overflowY: { md: 'visible' },
                 }}
             >
                 <Cards />
             </Stack>
             <IconButton
-                size='sm'
+                size={width < 900 ? 'sm' : 'xs'}
                 variant='solid'
                 sx={(theme) => ({
                     position: 'sticky',

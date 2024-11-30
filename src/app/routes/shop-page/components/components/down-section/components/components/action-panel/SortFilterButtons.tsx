@@ -12,7 +12,22 @@ export default function SortFilterButtons() {
     );
 
     return width > 899 ? (
-        <Button startDecorator={<SortIcon />}>Sort</Button>
+        <Button
+            size='xs'
+            color='neutral'
+            variant='plain'
+            sx={(theme) => ({
+                py: '0.234rem',
+                maxHeight: 'fit-content',
+                bgcolor: 'white',
+                color: theme.palette.neutral[500],
+                borderRadius: '0.352rem',
+                boxShadow: '0 0.059rem 0.155rem 0.029rem rgba(0,0,0,0.25)',
+            })}
+            startDecorator={<SortIcon />}
+        >
+            Sort
+        </Button>
     ) : (
         <Stack direction='row' gap={{ xs: '0.5rem' }}>
             <IconButton

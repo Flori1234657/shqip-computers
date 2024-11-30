@@ -11,12 +11,15 @@ export default function UpperSection() {
 
     return (
         <Stack
-            gap={{ xs: '1rem', md: '0.469rem' }}
+            gap={{ xs: '1rem', md: 'unset' }}
             direction='row'
             alignItems='center'
             sx={(theme) => ({
-                pb: { xs: '0.5rem', md: '0.234rem' },
-                borderBottom: `1px solid ${theme.palette.neutral[500]}`,
+                pb: { xs: '0.5rem', md: 'unset' },
+                borderBottom: {
+                    xs: `1px solid ${theme.palette.neutral[500]}`,
+                    md: 'unset',
+                },
             })}
         >
             {width < 900 ? (
@@ -32,10 +35,16 @@ export default function UpperSection() {
                 ''
             )}
             <Typography
-                fontSize={{ xs: 'lg', md: '0.809rem' }}
+                fontSize={{ xs: 'lg', md: '0.563rem' }}
                 fontWeight='600'
                 lineHeight='1.2'
-                sx={(theme) => ({ color: theme.palette.primary[900] })}
+                sx={(theme) => ({
+                    color: {
+                        xs: theme.palette.primary[900],
+                        md: theme.palette.neutral[500],
+                    },
+                    textTransform: { md: 'uppercase' },
+                })}
             >
                 Filter
             </Typography>

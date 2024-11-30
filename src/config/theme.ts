@@ -57,6 +57,11 @@ declare module '@mui/joy/Checkbox' {
         md2: true;
     }
 }
+declare module '@mui/joy/Chip' {
+    interface ChipPropsSizeOverrides {
+        xs: true;
+    }
+}
 
 const theme = extendTheme({
     colorSchemes: {
@@ -125,11 +130,11 @@ const theme = extendTheme({
         },
     },
     shadow: {
-        selectedCard: '0 0 16px 12px rgba(255, 255, 255,0.25)',
-        overlayModal: '0 0 12.5px 4px rgba(255,255,255,1)',
-        categoryCardSelected: '0 0 24px 6px rgba(11,107,203,1)',
+        selectedCard: '0 0 1rem 0.75rem rgba(255, 255, 255,0.25)',
+        overlayModal: '0 0 0.781rem 0.25rem rgba(255,255,255,1)',
+        categoryCardSelected: '0 0 1.5rem 0.375rem rgba(11,107,203,1)',
         boxShadow69:
-            'rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px',
+            'rgba(17, 17, 26, 0.1) 0px 0.063rem 0px, rgba(17, 17, 26, 0.1) 0px 0.5rem 1.5rem, rgba(17, 17, 26, 0.1) 0px 1rem 3rem',
     },
     components: {
         JoyButton: {
@@ -219,6 +224,18 @@ const theme = extendTheme({
                 checkbox: {
                     borderRadius: '0.225em',
                 },
+            },
+        },
+        JoyChip: {
+            styleOverrides: {
+                root: ({ ownerState }) => ({
+                    ...(ownerState.size === 'xs' && {
+                        padding: '0.234rem 0.335rem !important',
+                        fontSize: '0.563rem',
+                        lineHeight: '1.5',
+                        maxHeight: 'fit-content',
+                    }),
+                }),
             },
         },
         JoyFormControl: {

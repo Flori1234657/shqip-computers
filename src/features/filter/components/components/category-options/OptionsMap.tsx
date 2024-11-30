@@ -20,7 +20,7 @@ export default function OptionsMap() {
     }, [pathname]);
 
     return (
-        <Stack gap={{ xs: '0.75rem' }}>
+        <Stack gap={{ xs: '0.75rem', md: '0.469rem' }}>
             {filterCategory
                 ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   //@ts-ignore
@@ -28,12 +28,17 @@ export default function OptionsMap() {
                       (option) => (
                           <Stack
                               key={`filter-option-map${option[0]}`}
-                              p={{ xs: '0.5rem' }}
-                              gap={{ xs: '0.5rem' }}
+                              p={{ xs: '0.5rem', md: '0.234rem' }}
+                              gap={{ xs: '0.5rem', md: '0.234rem' }}
                               sx={{
                                   bgcolor: 'white',
-                                  borderRadius: { xs: '0.75rem' },
-                                  boxShadow: '0 4px 5.7px 2px rgba(0,0,0,0.25)',
+                                  borderRadius: {
+                                      xs: '0.75rem',
+                                      md: '0.352rem',
+                                  },
+                                  boxShadow:
+                                      '0 0.25rem 0.356rem 0.125rem rgba(0,0,0,0.25)',
+                                  cursor: { md: 'pointer' },
                               }}
                               onClick={() =>
                                   setRenderValues((prev) =>
@@ -46,7 +51,7 @@ export default function OptionsMap() {
                               <Typography
                                   fontFamily='Poppins'
                                   fontWeight={'500'}
-                                  fontSize={{ xs: '1rem' }}
+                                  fontSize={{ xs: '1rem', md: '0.674rem' }}
                                   sx={(theme) => ({
                                       color: theme.palette.neutral[500],
                                   })}
@@ -56,13 +61,23 @@ export default function OptionsMap() {
                               </Typography>
                               {renderValues !== null &&
                               renderValues[option[0]] ? (
-                                  <List sx={{ gap: { xs: '0.25rem' } }}>
+                                  <List
+                                      sx={{
+                                          gap: {
+                                              xs: '0.25rem',
+                                              md: '0.118rem',
+                                          },
+                                      }}
+                                  >
                                       {option[1].map((value) => (
                                           <ListItem
                                               key={`filter-option-value-map${value}`}
                                           >
                                               <Typography
-                                                  fontSize={{ xs: '0.831rem' }}
+                                                  fontSize={{
+                                                      xs: '0.831rem',
+                                                      md: '0.563rem',
+                                                  }}
                                                   fontWeight='500'
                                                   sx={(theme) => ({
                                                       color: theme.palette

@@ -1,5 +1,6 @@
 import { usePagination } from 'src/hooks/usePagination';
 import { Button } from '@mui/joy';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 interface Props {
     onPageChange: (page: number) => void;
@@ -16,6 +17,8 @@ const Pagination = ({
     currentPage,
     pageSize,
 }: Props) => {
+    const { width } = useWindowDimensions();
+
     const paginationRange = usePagination({
         currentPage,
         totalCount,
@@ -37,12 +40,13 @@ const Pagination = ({
                     return (
                         <Button
                             key={`pagination-button${pageNumber}${index}`}
-                            size='sm'
+                            size={width < 900 ? 'sm' : 'xs'}
                             variant='outlined'
                             color='neutral'
                             sx={{
                                 borderRadius: '50%',
-                                maxWidth: { xs: '2rem' },
+                                maxWidth: { xs: '2rem', md: '1.45rem' },
+                                maxHeight: { md: '1.45rem' },
                             }}
                         >
                             ...
@@ -53,7 +57,7 @@ const Pagination = ({
                 return (
                     <Button
                         key={`pagination-button${pageNumber}${index}`}
-                        size='sm'
+                        size={width < 900 ? 'sm' : 'xs'}
                         variant='outlined'
                         color='neutral'
                         sx={(theme) => ({
@@ -64,7 +68,8 @@ const Pagination = ({
                                     : 'unset',
                             color:
                                 pageNumber == currentPage ? 'white' : 'unset',
-                            maxWidth: { xs: '2rem' },
+                            maxWidth: { xs: '2rem', md: '1.45rem' },
+                            maxHeight: { md: '1.45rem' },
                         })}
                         onClick={() => onPageChange(pageNumber)}
                     >
