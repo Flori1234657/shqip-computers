@@ -11,7 +11,7 @@ export default function ProductCard() {
         <Stack
             sx={(theme) => ({
                 maxWidth: { xs: '11.438rem', md: '7.998rem' },
-                borderRadius: { xs: '0.75rem' },
+                borderRadius: { xs: '0.75rem', md: '0.703rem' },
                 bgcolor:
                     pathname === '/' ? theme.palette.neutral[800] : 'white',
                 boxShadow:
@@ -23,7 +23,7 @@ export default function ProductCard() {
             <Image
                 src={PlaceholderImg}
                 ratio='1.53/1'
-                width='11.438rem'
+                width={{ xs: '11.438rem', md: '7.998rem' }}
                 objectFit='contain'
                 alt='Product '
             />

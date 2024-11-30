@@ -10,9 +10,9 @@ export default function UpperSection() {
     const hasStock = true;
 
     return (
-        <Stack gap={{ xs: '0.268rem' }}>
+        <Stack gap={{ xs: '0.268rem', md: '0.234rem' }}>
             <Typography
-                fontSize={{ xs: '1rem' }}
+                fontSize={{ xs: '1rem', md: '0.675rem' }}
                 fontWeight={pathname === '/' ? '500' : '600'}
                 lineHeight='1.15'
                 sx={(theme) => ({
@@ -24,7 +24,10 @@ export default function UpperSection() {
             </Typography>
             <Chip
                 size='productCard'
-                sx={(theme) => ({ color: theme.palette.success[500] })}
+                sx={(theme) => ({
+                    fontSize: { md: '0.469rem' },
+                    color: theme.palette.success[500],
+                })}
                 startDecorator={hasStock ? <TickIcon /> : <CloseIcon />}
             >
                 In Stock
