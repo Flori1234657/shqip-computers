@@ -29,6 +29,7 @@ declare module '@mui/joy/IconButton' {
 declare module '@mui/joy/Button' {
     interface ButtonPropsSizeOverrides {
         xs: true;
+        sm2: true;
         md2: true;
     }
 }
@@ -60,6 +61,7 @@ declare module '@mui/joy/Checkbox' {
 declare module '@mui/joy/Chip' {
     interface ChipPropsSizeOverrides {
         xs: true;
+        productCard: true;
     }
 }
 
@@ -160,6 +162,15 @@ const theme = extendTheme({
                         padding: '0.469rem 0.703rem',
                         borderRadius: '0.352rem',
                     }),
+                    ...(ownerState.size === 'sm2' && {
+                        '--Button-gap': '0.322em',
+                        minHeight: '2.18em',
+                        fontSize: '0.831rem',
+                        fontWeight: '400',
+                        lineHeight: '1.28',
+                        padding: '0.25em 0.902em',
+                        borderRadius: '0.602em',
+                    }),
                 }),
                 endDecorator: {
                     fontSize: '1.2em',
@@ -234,6 +245,14 @@ const theme = extendTheme({
                         fontSize: '0.563rem',
                         lineHeight: '1.5',
                         maxHeight: 'fit-content',
+                    }),
+                    ...(ownerState.size === 'productCard' && {
+                        padding: '0 !important',
+                        fontSize: '0.831rem',
+                        lineHeight: '1.5',
+                        gap: '0.25rem',
+                        maxHeight: 'fit-content',
+                        backgroundColor: 'transparent',
                     }),
                 }),
             },

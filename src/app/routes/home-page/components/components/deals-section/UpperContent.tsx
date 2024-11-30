@@ -29,13 +29,7 @@ export default function UpperContent() {
                     gridRow: { md: '1/3' },
                 }}
             >
-                <Stack
-                    sx={{
-                        border: '2px solid red',
-                        width: { xs: '11.438rem', md: '7.998rem' },
-                        height: { xs: '17.981rem', md: '12.321rem' },
-                    }}
-                >
+                <Stack>
                     <ProductCard />
                 </Stack>
             </Box>
