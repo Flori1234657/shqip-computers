@@ -17,7 +17,7 @@ export default function CategoryCards() {
             direction='row'
             alignItems='center'
             position='relative'
-            overflow='scroll'
+            overflow='visible'
         >
             <IconButton
                 size={width < 900 ? 'sm' : 'xs'}
@@ -39,7 +39,7 @@ export default function CategoryCards() {
             </IconButton>
             <Stack
                 direction='row'
-                p={{ xs: '1.5rem 2rem', md: '2rem 2.344rem' }}
+                p={{ xs: '1.5rem 2rem', md: '0 2.344rem' }}
                 gap={{ xs: '6rem', sm: '2.5rem', md: '2.109rem' }}
                 sx={{
                     transform: `translateX(${moveCards}rem)`,

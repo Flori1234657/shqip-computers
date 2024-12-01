@@ -15,6 +15,7 @@ export default function DownSection() {
             position='relative'
             direction={{ md: 'row' }}
             justifyContent={{ md: 'space-between' }}
+            gap={{ md: '0.615rem' }}
         >
             {showFilter ? (
                 <Suspense fallback=''>

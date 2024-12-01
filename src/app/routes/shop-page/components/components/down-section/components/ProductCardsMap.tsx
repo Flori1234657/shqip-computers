@@ -17,9 +17,14 @@ export default function ProductCardsMap() {
 
     return (
         <Stack gap={{ xs: '2.5rem', md: '1.641rem' }}>
-            <Grid container>
+            <Grid
+                container
+                rowGap={{ xs: '1.5rem', md: '0.615rem' }}
+                columnGap={{ sm: '1.5rem', md: 'unset' }}
+                sx={{ justifyContent: { xs: 'center', md: 'space-between' } }}
+            >
                 {currentProductsData.map((product) => (
-                    <Grid key={product.id}>
+                    <Grid key={product.id} sx={{ width: 'fit-content' }}>
                         <ProductCard />
                     </Grid>
                 ))}

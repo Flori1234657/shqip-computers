@@ -18,6 +18,7 @@ export default function Filter() {
                 width: { xs: '100vw', md: 'unset' },
                 height: { xs: '100vh', md: 'unset' },
                 bgcolor: { xs: theme.palette.primary[100], md: 'transparent' },
+                borderRight: { md: `1px solid ${theme.palette.neutral[500]}` },
             })}
         >
             <UpperSection />

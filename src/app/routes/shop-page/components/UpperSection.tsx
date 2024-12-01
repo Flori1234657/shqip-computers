@@ -4,7 +4,7 @@ import CategoryCards from './components/upper-section/CategoryCards';
 
 export default function UpperSection() {
     return (
-        <Stack>
+        <Stack gap={{ md: '1rem' }}>
             <BreadCrumb />
             <CategoryCards />
         </Stack>

@@ -10,7 +10,7 @@ export default function NewUsedFilter() {
     });
 
     return (
-        <Stack direction='row' gap={{ xs: '0.75rem', md: '0.703rem' }}>
+        <Stack direction='row' gap={{ xs: '0.5rem', md: '0.234rem' }}>
             <Chip
                 size={width < 900 ? 'lg' : 'xs'}
                 color='primary'
