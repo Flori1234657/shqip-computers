@@ -19,7 +19,7 @@ export default function ShoppingCart() {
             sx={(theme) => ({
                 top: 0,
                 right: 0,
-                zIndex: 2,
+                zIndex: 20,
 
                 width: { xs: '100vw', sm: '60vw', md: 'fit-content' },
                 minHeight: { xs: '100vh' },

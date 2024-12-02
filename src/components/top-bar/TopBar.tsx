@@ -6,7 +6,7 @@ import Logo from './components/Logo';
 export default function TopBar() {
     return (
         <header
-            style={{ width: '100%', position: 'fixed', top: 0, zIndex: 100 }}
+            style={{ width: '100%', position: 'fixed', top: 0, zIndex: 10 }}
         >
             <Stack
                 alignItems={{ md: 'center' }}

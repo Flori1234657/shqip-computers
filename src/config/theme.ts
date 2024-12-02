@@ -64,6 +64,11 @@ declare module '@mui/joy/Chip' {
         productCard: true;
     }
 }
+declare module '@mui/joy/Select' {
+    interface SelectPropsSizeOverrides {
+        xs: true;
+    }
+}
 
 const theme = extendTheme({
     colorSchemes: {
@@ -281,11 +286,32 @@ const theme = extendTheme({
                         lineHeight: '1.5',
                     }),
                     ...{
+                        fontFamily: 'Inter',
                         borderRadius: '0.602em', //8px
                     },
                 }),
                 startDecorator: {
                     fontSize: '1.3em',
+                },
+            },
+        },
+        JoySelect: {
+            styleOverrides: {
+                root: ({ ownerState }) => ({
+                    ...(ownerState.size === 'xs' && {
+                        fontSize: '0.831rem',
+                        maxHeight: '2.406em',
+                        width: 'fit-content',
+                        maxWidth: '5em',
+                        padding: '0 0.602em',
+                        borderRadius: '0.602em',
+                        boxShadow: '0 0 0.594em 0.15em rgba(0,0,0,0.5)',
+                    }),
+                }),
+                listbox: {
+                    padding: '0.602em',
+                    gap: '0.602em',
+                    borderRadius: '0.602em',
                 },
             },
         },
@@ -300,6 +326,7 @@ const theme = extendTheme({
                         borderRadius: '0.352rem',
                     }),
                     ...{
+                        fontFamily: 'Inter',
                         borderRadius: '0.602em', //8px
                         flexDirection: 'row',
                     },

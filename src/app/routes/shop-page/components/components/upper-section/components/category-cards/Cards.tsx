@@ -12,12 +12,27 @@ export default function Cards({ category }: { category: availableCategory }) {
     return (
         <Stack
             sx={(theme) => ({
-                position: 'relative',
+                position: { xs: 'relative', md: 'unset' },
 
                 bgcolor: theme.palette.neutral[800],
                 borderRadius: { xs: '0.75rem', md: '0.5rem' },
                 // toggle the box shadow basede on selected and the position on md size
-                boxShadow: theme.shadow.categoryCardSelected,
+                boxShadow: {
+                    xs: theme.shadow.categoryCardSelected,
+                    md: 'none',
+                },
+                '::before': {
+                    display: { xs: 'none', md: 'unset' },
+                    content: '""',
+                    width: '6.509rem',
+                    height: '7.383rem',
+                    bgcolor: 'transparent',
+                    boxShadow: theme.shadow.categoryCardSelected,
+                    borderRadius: '0.5rem',
+
+                    position: 'absolute',
+                    zIndex: 1,
+                },
             })}
         >
             <Image

@@ -12,7 +12,7 @@ function Categories() {
             sx={(theme) => ({
                 top: 0,
                 right: 0,
-                zIndex: 2,
+                zIndex: 20,
 
                 width: '100vw',
                 minHeight: '100vh',

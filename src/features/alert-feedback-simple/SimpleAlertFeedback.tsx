@@ -18,7 +18,7 @@ export default function SimpleAlertFeedback() {
             color={data ? data.type : 'neutral'}
             sx={(theme) => ({
                 position: { xs: 'absolute', md: 'fixed' },
-                zIndex: 10,
+                zIndex: 100,
                 bottom: '5vh',
                 left: 0,
                 right: 0,

@@ -8,7 +8,7 @@ export default function Filter() {
             minWidth={{ md: '7.969rem' }}
             position={{ xs: 'fixed', md: 'unset' }}
             sx={(theme) => ({
-                zIndex: 2,
+                zIndex: { xs: 20, md: 'unset' },
                 top: 0,
                 right: 0,
                 overflow: { xs: 'scroll', md: 'unset' },

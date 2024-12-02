@@ -26,6 +26,8 @@ export default function UpperSection() {
                 size='productCard'
                 sx={(theme) => ({
                     fontSize: { md: '0.469rem' },
+                    fontFamily: 'Inter',
+                    fontWeight: '600',
                     color: theme.palette.success[500],
                 })}
                 startDecorator={hasStock ? <TickIcon /> : <CloseIcon />}

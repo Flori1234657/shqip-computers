@@ -20,6 +20,7 @@ export default function SideButtons({
                 size={width < 900 ? 'sm' : 'xs'}
                 variant='solid'
                 sx={(theme) => ({
+                    zIndex: 2,
                     bgcolor: theme.palette.primary[900],
                     maxHeight: 'fit-content',
                 })}
@@ -32,6 +33,7 @@ export default function SideButtons({
                 size={width < 900 ? 'sm' : 'xs'}
                 variant='solid'
                 sx={(theme) => ({
+                    zIndex: 2,
                     bgcolor: theme.palette.primary[900],
                     maxHeight: 'fit-content',
                 })}

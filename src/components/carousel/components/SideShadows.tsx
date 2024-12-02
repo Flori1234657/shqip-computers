@@ -13,7 +13,7 @@ export default function SideShadows({
             <Stack
                 sx={{
                     position: 'absolute',
-                    left: 0,
+                    left: { sm: '2rem', md: 0 },
                     top: 0,
                     zIndex: 1,
 
@@ -32,7 +32,7 @@ export default function SideShadows({
             <Stack
                 sx={{
                     position: 'absolute',
-                    right: 0,
+                    right: { sm: '2rem', md: 0 },
                     top: 0,
                     zIndex: 1,
 

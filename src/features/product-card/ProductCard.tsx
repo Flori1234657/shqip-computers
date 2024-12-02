@@ -16,7 +16,7 @@ export default function ProductCard() {
                     pathname === '/' ? theme.palette.neutral[800] : 'white',
                 boxShadow:
                     pathname !== '/'
-                        ? '0 0.25rem 0.25rem 0.25rem rgba(0,0,0,0.25)'
+                        ? '0 0.1rem 0.25rem 0.1rem rgba(0,0,0,0.25)'
                         : 'unset',
             })}
         >

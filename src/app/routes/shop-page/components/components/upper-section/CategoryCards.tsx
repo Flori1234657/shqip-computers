@@ -23,7 +23,8 @@ export default function CategoryCards() {
                     p: { xs: '1.5rem 2rem', md: '0' },
                     pl: { sm: '3.75rem' },
                     gap: { xs: '6rem', sm: '2.5rem', md: '2.109rem' },
-                    overflow: { xs: 'hidden', md: 'visible' },
+                    overflow: 'hidden',
+                    position: 'unset !important',
                 }}
             />
         </Stack>

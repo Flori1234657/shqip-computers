@@ -68,8 +68,8 @@ const Pagination = ({
                                     : 'unset',
                             color:
                                 pageNumber == currentPage ? 'white' : 'unset',
-                            maxWidth: { xs: '2rem', md: '1.45rem' },
-                            maxHeight: { md: '1.45rem' },
+                            width: { xs: '2rem', md: '1.45rem' },
+                            height: { md: '1.45rem' },
                         })}
                         onClick={() => onPageChange(pageNumber)}
                     >
