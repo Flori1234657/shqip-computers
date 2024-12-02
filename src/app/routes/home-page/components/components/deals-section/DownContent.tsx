@@ -1,13 +1,31 @@
-import { IconButton, Stack } from '@mui/joy';
-import {
-    FaArrowRight as RightArrIcon,
-    FaArrowLeft as LeftArrIcon,
-} from 'react-icons/fa6';
-import CardImages from './components/down-content/CardImages';
-import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { Stack } from '@mui/joy';
+import Carousel from 'src/components/carousel/Carousel';
+import PlaceholderImage from 'src/assets/images/placeholder.png';
+import Image from 'src/components/Image';
 
 function DownContent() {
-    const { width } = useWindowDimensions();
+    const offerProducts = [
+        {
+            id: '1829hsbn8xhx2',
+            image: PlaceholderImage,
+        },
+        {
+            id: '8329c939jsnjsnj',
+            image: PlaceholderImage,
+        },
+        {
+            id: '91xsnuxajjasa2',
+            image: PlaceholderImage,
+        },
+        {
+            id: '190xnsuhjana9',
+            image: PlaceholderImage,
+        },
+        {
+            id: 'hduaaioj901ao',
+            image: PlaceholderImage,
+        },
+    ];
 
     return (
         <Stack
@@ -16,40 +34,35 @@ function DownContent() {
             alignItems='center'
             justifyContent='space-between'
         >
-            <IconButton
-                variant='solid'
-                color='primary'
-                size={width < 900 ? 'sm' : 'xs'}
-                sx={(theme) => ({
-                    backgroundColor: theme.palette.primary[900],
-                })}
-            >
-                <LeftArrIcon />
-            </IconButton>
-            <Stack
-                direction='row'
-                alignItems='center'
-                justifyContent='center'
-                gap={{ xs: '1.5rem', md: '1.641rem' }}
-                sx={{
+            <Carousel
+                elements={offerProducts.map((product) => (
+                    <Stack
+                        key={`card-image-product${product.id}`}
+                        sx={(theme) => ({
+                            backgroundColor: theme.palette.neutral[800],
+                            borderRadius: { xs: '0.5rem', md: '0.352rem' },
+                        })}
+                    >
+                        <Image
+                            ratio='1.54/1'
+                            src={product.image}
+                            width={{ xs: '10rem', md: '5.859rem' }}
+                            alt='product'
+                        />
+                    </Stack>
+                ))}
+                secondStackStyles={{
                     maxWidth: { xs: '10rem', sm: '20rem', md: '100%' },
                     height: { xs: '6.503rem', md: 'auto' },
+                    gap: { xs: '1.5rem', md: '1.641rem' },
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                     pl: { sm: '13rem', md: 0 },
-                    overflowX: 'scroll',
+                    borderRadius: { xs: '0.5rem', md: '0.352rem' },
+                    overflow: 'hidden',
                 }}
-            >
-                <CardImages />
-            </Stack>
-            <IconButton
-                variant='solid'
-                color='primary'
-                size={width < 900 ? 'sm' : 'xs'}
-                sx={(theme) => ({
-                    backgroundColor: theme.palette.primary[900],
-                })}
-            >
-                <RightArrIcon />
-            </IconButton>
+            />
         </Stack>
     );
 }

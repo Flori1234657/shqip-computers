@@ -114,3 +114,4 @@ const availableCategories = [
 ];
 
 export default availableCategories;
+export type availableCategory = (typeof availableCategories)[number];

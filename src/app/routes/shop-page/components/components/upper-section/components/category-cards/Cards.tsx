@@ -1,22 +1,22 @@
 import { List, ListItem, Stack, Typography } from '@mui/joy';
 // import { useParams } from 'react-router-dom';
-import availableCategories from 'src/app/routes/category/availableCategories';
+import { availableCategory } from 'src/app/routes/category/availableCategories';
 import Image from 'src/components/Image';
 
-export default function Cards() {
+export default function Cards({ category }: { category: availableCategory }) {
     // const { categoryId } = useParams();
     // const selectedCategory = availableCategories.filter(
     //     (category) => category.id === categoryId
     // ); // change styles for the selected category card
 
-    return availableCategories.map((category) => (
+    return (
         <Stack
-            key={`shop-category-card${category.id}`}
             sx={(theme) => ({
                 position: 'relative',
 
                 bgcolor: theme.palette.neutral[800],
                 borderRadius: { xs: '0.75rem', md: '0.5rem' },
+                // toggle the box shadow basede on selected and the position on md size
                 boxShadow: theme.shadow.categoryCardSelected,
             })}
         >
@@ -65,5 +65,5 @@ export default function Cards() {
                 </List>
             </Stack>
         </Stack>
-    ));
+    );
 }

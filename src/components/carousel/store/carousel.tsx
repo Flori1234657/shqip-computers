@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { CarouselProps } from '../Carousel';
 
 interface Props {
-    elementsArray: CarouselProps[] | undefined;
-    setElementsArray: (elements: CarouselProps[]) => void;
+    elementsArray: React.ReactNode[] | undefined;
+    setElementsArray: (elements: React.ReactNode[]) => void;
     moveElementsLeft: () => void;
     moveElementsRight: () => void;
 }
@@ -19,8 +18,10 @@ const useCarouselStore = create<Props>()(
             set((state) => {
                 if (state.elementsArray === undefined)
                     return { elementsArray: undefined };
+
                 //@ts-ignore
-                const firstElement: CarouselProps = state.elementsArray.shift();
+                const firstElement: React.ReactNode =
+                    state.elementsArray.shift();
                 return {
                     elementsArray: [
                         ...(state.elementsArray as []),
@@ -32,8 +33,9 @@ const useCarouselStore = create<Props>()(
             set((state) => {
                 if (state.elementsArray === undefined)
                     return { elementsArray: undefined };
+
                 //@ts-ignore
-                const lastElement: CarouselProps = state.elementsArray.pop();
+                const lastElement: React.ReactNode = state.elementsArray.pop();
                 return {
                     elementsArray: [
                         lastElement,

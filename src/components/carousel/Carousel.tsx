@@ -2,29 +2,32 @@ import { Stack } from '@mui/joy';
 import SideButtons from './components/SideButtons';
 import useCarouselStore from './store/carousel';
 import { useEffect } from 'react';
+import { SxProps } from '@mui/joy/styles/types';
+import SideShadows from './components/SideShadows';
 
-export interface CarouselProps {
-    id: string;
-    component: React.ReactNode;
+interface Props {
+    elements: React.ReactNode[];
+    secondStackStyles: SxProps;
 }
 
-export default function Carousel(elements: CarouselProps[]) {
+export default function Carousel({ elements, secondStackStyles }: Props) {
     const { setElementsArray: makeCopyArray, elementsArray } =
         useCarouselStore();
 
+    // taking too long to perform actions find a way to improve the performance
     useEffect(() => {
+        console.time();
         makeCopyArray(elements);
+        console.timeEnd();
     }, [elements]);
 
     return (
-        <Stack>
-            <SideButtons>
-                <Stack>
-                    {elementsArray?.map((element) => (
-                        <Stack key={element.id}>{element.component}</Stack>
-                    ))}
-                </Stack>
-            </SideButtons>
-        </Stack>
+        <SideButtons>
+            <Stack sx={secondStackStyles} position='relative'>
+                <SideShadows>
+                    {elementsArray?.map((element) => element)}
+                </SideShadows>
+            </Stack>
+        </SideButtons>
     );
 }
