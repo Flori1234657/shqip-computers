@@ -1,0 +1,27 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 3.125em;
+    --b: 0.5em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 0.063em;
+    background: conic-gradient(#0000 10%, rgb(11, 107, 203)) content-box; /*f03355*/
+    -webkit-mask: repeating-conic-gradient(
+            #0000 0deg,
+            #000 1deg 20deg,
+            #0000 21deg 36deg
+        ),
+        radial-gradient(
+            farthest-side,
+            #0000 calc(100% - var(--b) - 0.063em),
+            #000 calc(100% - var(--b))
+        );
+    -webkit-mask-composite: destination-in;
+    mask-composite: intersect;
+    animation: l4 1s infinite steps(10);
+}
+@keyframes l4 {
+    to {
+        transform: rotate(1turn);
+    }
+}

@@ -139,7 +139,7 @@ const theme = extendTheme({
     shadow: {
         selectedCard: '0 0 1rem 0.75rem rgba(255, 255, 255,0.25)',
         overlayModal: '0 0 0.781rem 0.25rem rgba(255,255,255,1)',
-        categoryCardSelected: '0 0 1.5rem 0.375rem rgba(11,107,203,1)',
+        categoryCardSelected: '0 0 1rem 0.25rem rgba(11,107,203,1)',
         boxShadow69:
             'rgba(17, 17, 26, 0.1) 0px 0.063rem 0px, rgba(17, 17, 26, 0.1) 0px 0.5rem 1.5rem, rgba(17, 17, 26, 0.1) 0px 1rem 3rem',
     },
