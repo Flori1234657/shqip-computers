@@ -1,8 +1,12 @@
+import { lazy, Suspense } from 'react';
 import { Stack } from '@mui/joy';
-import Products from './components/product-card-map/Products';
-import Loader from 'src/components/loader/Loader';
-import NoProductsAvailable from './components/product-card-map/NoProductsAvailable';
 import useUiStore from 'src/app/routes/shop-page/store/ui';
+import Loader from 'src/components/loader/Loader';
+
+const NoProductsAvailable = lazy(
+    () => import('./components/product-card-map/NoProductsAvailable')
+);
+const Products = lazy(() => import('./components/product-card-map/Products'));
 
 export default function ProductCardsMap() {
     const componentToRender = useUiStore(
@@ -13,10 +17,14 @@ export default function ProductCardsMap() {
         <Stack gap={{ xs: '2.5rem', md: '1.641rem' }} alignItems='center'>
             {componentToRender === 'loader' ? (
                 <Loader />
-            ) : componentToRender === 'feedback-message' ? (
-                <NoProductsAvailable text='We run into a problem while fetching the products 📡' />
             ) : (
-                <Products />
+                <Suspense fallback=''>
+                    {componentToRender === 'feedback-message' ? (
+                        <NoProductsAvailable text='We run into a problem while fetching the products 📡' />
+                    ) : (
+                        <Products />
+                    )}
+                </Suspense>
             )}
         </Stack>
     );
