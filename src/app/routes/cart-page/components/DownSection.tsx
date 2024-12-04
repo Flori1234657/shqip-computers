@@ -4,7 +4,7 @@ import OrderProcess from './components/down-section/OrderProcess';
 
 export default function DownSection() {
     return (
-        <Stack gap={{ xs: '2rem' }}>
+        <Stack gap={{ xs: '4.625rem' }}>
             <ProductsList />
             <OrderProcess />
         </Stack>

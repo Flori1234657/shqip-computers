@@ -1,11 +1,24 @@
+import { lazy, Suspense } from 'react';
 import { Stack } from '@mui/joy';
-import InformationText from './components/products-list/InformationText';
 import ProductCardsMap from './components/products-list/ProductCardsMap';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+
+const InformationText = lazy(
+    () => import('./components/products-list/InformationText')
+);
 
 export default function ProductsList() {
+    const { width } = useWindowDimensions();
+
     return (
         <Stack>
-            <InformationText />
+            {width > 899 ? (
+                <Suspense fallback=''>
+                    <InformationText />
+                </Suspense>
+            ) : (
+                ''
+            )}
             <ProductCardsMap />
         </Stack>
     );

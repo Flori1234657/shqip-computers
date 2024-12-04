@@ -16,6 +16,7 @@ declare module '@mui/joy/styles' {
         overlayModal: string;
         categoryCardSelected: string;
         boxShadow69: string;
+        productItem: string;
     }
 }
 
@@ -142,6 +143,7 @@ const theme = extendTheme({
         categoryCardSelected: '0 0 1rem 0.25rem rgba(11,107,203,1)',
         boxShadow69:
             'rgba(17, 17, 26, 0.1) 0px 0.063rem 0px, rgba(17, 17, 26, 0.1) 0px 0.5rem 1.5rem, rgba(17, 17, 26, 0.1) 0px 1rem 3rem',
+        productItem: '0 0.063rem 0.25rem 0 rgba(0,0,0,0.5)',
     },
     components: {
         JoyButton: {
