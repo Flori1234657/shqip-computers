@@ -1,6 +1,12 @@
 import { Typography } from '@mui/joy';
 
-export default function ActionText({ text }: { text: string }) {
+export default function ActionText({
+    text,
+    action,
+}: {
+    text: string;
+    action: () => void;
+}) {
     return (
         <Typography
             lineHeight='1'
@@ -11,6 +17,7 @@ export default function ActionText({ text }: { text: string }) {
                 textDecoration: 'underline',
                 cursor: { md: 'pointer' },
             })}
+            onClick={() => action()}
         >
             {text}
         </Typography>

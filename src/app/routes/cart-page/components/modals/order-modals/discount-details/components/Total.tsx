@@ -1,0 +1,34 @@
+import { Stack, Typography } from '@mui/joy';
+
+export default function Total() {
+    return (
+        <Stack
+            direction='row'
+            justifyContent='space-between'
+            sx={{ borderTop: '0.125rem solid white' }}
+        >
+            <Typography
+                fontFamily='Poppins'
+                lineHeight='1.6'
+                fontWeight='500'
+                sx={{
+                    fontSize: { xs: '0.831rem', md: '0.675rem' },
+                    color: 'white',
+                }}
+            >
+                TOTAL
+            </Typography>
+            <Typography
+                fontFamily='Poppins'
+                lineHeight='1.6'
+                fontWeight='500'
+                sx={{
+                    fontSize: { xs: '0.831rem', md: '0.675rem' },
+                    color: 'white',
+                }}
+            >
+                -$762.00
+            </Typography>
+        </Stack>
+    );
+}

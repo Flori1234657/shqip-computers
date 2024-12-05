@@ -6,8 +6,8 @@ import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 const InformationText = lazy(
     () => import('./components/products-list/InformationText')
 );
-const DeleteConfirmationModal = lazy(
-    () => import('./components/products-list/DeleteConfirmationModal')
+const DeleteItemConfirmationModal = lazy(
+    () => import('../../modals/DeleteItemConfirmationModal')
 );
 
 export default function ProductsList() {
@@ -24,7 +24,7 @@ export default function ProductsList() {
             )}
             <ProductItemsMap />
             <Suspense fallback=''>
-                <DeleteConfirmationModal />
+                <DeleteItemConfirmationModal />
             </Suspense>
         </Stack>
     );

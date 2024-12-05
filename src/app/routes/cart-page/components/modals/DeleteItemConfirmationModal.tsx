@@ -5,7 +5,7 @@ import {
     MdOutlineCancel as CancelIcon,
 } from 'react-icons/md';
 
-export default function DeleteConfirmationModal() {
+export default function DeleteItemConfirmationModal() {
     const { showDeleteItemConfiramtionModal } = useUiStore();
 
     return (
