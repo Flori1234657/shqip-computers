@@ -38,6 +38,7 @@ declare module '@mui/joy/Button' {
 declare module '@mui/joy/Autocomplete' {
     interface AutocompletePropsSizeOverrides {
         xs: true;
+        md2: true;
     }
 }
 declare module '@mui/joy/FormControl' {
@@ -233,9 +234,20 @@ const theme = extendTheme({
                         padding: '0.469rem 0.703rem',
                         minHeight: 'fit-content !important',
                     }),
+                    ...(ownerState.size === 'md2' && {
+                        '--Input-gap': '0.234rem',
+                        maxHeight: '1.6rem',
+                        padding: '0.323rem 0.352rem',
+                        fontSize: '0.563rem',
+                        lineHeight: '1.5',
+                        borderRadius: '0.352rem !important',
+                    }),
                 }),
                 endDecorator: {
                     fontSize: '1.25em',
+                },
+                startDecorator: {
+                    fontSize: '1.3em',
                 },
             },
         },
