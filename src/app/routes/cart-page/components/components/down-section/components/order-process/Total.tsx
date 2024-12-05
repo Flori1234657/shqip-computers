@@ -12,7 +12,7 @@ export default function Total() {
                 lineHeight='1.6'
                 fontWeight='500'
                 sx={{
-                    fontSize: { xs: '0.831rem' },
+                    fontSize: { xs: '0.831rem', md: '0.675rem' },
                     color: 'white',
                 }}
             >
@@ -23,7 +23,7 @@ export default function Total() {
                 lineHeight='1.6'
                 fontWeight='500'
                 sx={{
-                    fontSize: { xs: '0.831rem' },
+                    fontSize: { xs: '0.831rem', md: '0.675rem' },
                     color: 'white',
                 }}
             >

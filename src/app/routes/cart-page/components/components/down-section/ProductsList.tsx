@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Stack } from '@mui/joy';
-import ProductCardsMap from './components/products-list/ProductCardsMap';
+import ProductItemsMap from './components/products-list/ProductItemsMap';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 const InformationText = lazy(
@@ -11,7 +11,7 @@ export default function ProductsList() {
     const { width } = useWindowDimensions();
 
     return (
-        <Stack>
+        <Stack gap={{ md: '0.469rem' }} sx={{ width: { md: '25.899rem' } }}>
             {width > 899 ? (
                 <Suspense fallback=''>
                     <InformationText />
@@ -19,7 +19,7 @@ export default function ProductsList() {
             ) : (
                 ''
             )}
-            <ProductCardsMap />
+            <ProductItemsMap />
         </Stack>
     );
 }

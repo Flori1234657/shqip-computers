@@ -2,7 +2,7 @@ import { Stack } from '@mui/joy';
 import Placeholder from 'src/assets/images/placeholder.png';
 import ProductItem from './components/product-cards-map/ProductItem';
 
-export default function ProductCardsMap() {
+export default function ProductItemsMap() {
     const fakeData = [
         {
             id: '1283n8dcc19028j0',
@@ -28,17 +28,27 @@ export default function ProductCardsMap() {
     ];
 
     return (
-        <Stack gap={{ xs: '0.5rem' }}>
+        <Stack
+            gap={{ xs: '0.5rem', md: '0.234rem' }}
+            sx={{
+                maxHeight: { xs: '20.625rem', md: '13.43rem' },
+                overflowY: 'scroll',
+            }}
+        >
             {fakeData.map((product) => (
                 <Stack
                     key={`my-bag-product-item${product.id}`}
                     sx={(theme) => ({
-                        direction: { md: 'row' },
-                        p: { xs: '0.5rem' },
-                        gap: { xs: '0.5rem' },
+                        flexDirection: { md: 'row' },
+                        p: { xs: '0.5rem', md: '0.234rem' },
+                        gap: { xs: '0.5rem', md: '2.461rem' },
                         bgcolor: 'white',
-                        boxShadow: theme.shadow.productItem,
-                        borderRadius: { xs: '0.75rem' },
+                        boxShadow: {
+                            xs: theme.shadow.productItem,
+                            md: '0 0.029rem 0.118rem 0 rgba(0,0,0,0.5)',
+                        },
+                        borderRadius: { xs: '0.75rem', md: '0.352rem' },
+                        cursor: { md: 'pointer' },
 
                         ':hover': {
                             bgcolor: theme.palette.primary[200],

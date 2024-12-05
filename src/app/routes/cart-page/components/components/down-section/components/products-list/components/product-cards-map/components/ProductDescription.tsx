@@ -16,24 +16,24 @@ export default function ProductDescription({ image, title, price }: Props) {
         <Stack
             direction='row'
             alignItems='center'
-            sx={{ gap: { xs: '0.5rem' } }}
+            sx={{ gap: { xs: '0.5rem' }, width: { md: '10.401rem' } }}
         >
             <Image
                 ratio='1.57/1'
-                width={{ xs: '5rem' }}
+                width={{ xs: '5rem', md: '3.047rem' }}
                 src={image}
                 alt='Item'
                 objectFit='contain'
                 otherStyles={{
                     bgcolor: theme.palette.primary[900],
-                    borderRadius: { xs: '0.5rem' },
+                    borderRadius: { xs: '0.5rem', md: '0.352rem' },
                 }}
             />
             <Stack sx={{ gap: { xs: '0.25rem' } }}>
                 <Typography
                     lineHeight='1.2'
                     sx={(theme) => ({
-                        fontSize: { xs: '1rem' },
+                        fontSize: { xs: '1rem', md: '0.674rem' },
                         fontWeight: { xs: '500' },
                         color: theme.palette.primary[900],
                     })}

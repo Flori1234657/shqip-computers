@@ -7,7 +7,7 @@ export default function TextValue({ text }: { text: string }) {
             fontWeight='500'
             fontFamily='Poppins'
             sx={(theme) => ({
-                fontSize: { xs: '0.831rem' },
+                fontSize: { xs: '0.831rem', md: '0.675rem' },
                 color: theme.palette.primary[200],
             })}
         >

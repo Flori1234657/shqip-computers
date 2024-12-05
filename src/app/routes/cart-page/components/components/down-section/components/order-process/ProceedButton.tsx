@@ -1,13 +1,20 @@
 import { IoMdCard as CardIcon } from 'react-icons/io';
 import { Button, Stack, Typography } from '@mui/joy';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function ProceedButton() {
-    const hasShippingAddressAdded = true;
+    const hasShippingAddressAdded = false;
+    const { width } = useWindowDimensions();
 
     return (
-        <Stack width='100%' gap={{ xs: '0.5rem' }} alignItems='center'>
+        <Stack
+            width='100%'
+            gap={{ xs: '0.5rem', md: '0.352rem' }}
+            alignItems='center'
+        >
             <Button
                 fullWidth
+                size={width < 900 ? 'md' : 'md2'}
                 disabled={!hasShippingAddressAdded}
                 endDecorator={<CardIcon />}
             >
@@ -20,7 +27,7 @@ export default function ProceedButton() {
                     lineHeight='1'
                     fontWeight='500'
                     sx={(theme) => ({
-                        fontSize: { xs: '0.694rem' },
+                        fontSize: { xs: '0.694rem', md: '0.563rem' },
                         color: theme.palette.danger[500],
                     })}
                 >

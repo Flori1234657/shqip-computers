@@ -25,6 +25,7 @@ declare module '@mui/joy/IconButton' {
         xs: true;
         xs2: true;
         xs3: true;
+        xs4: true;
     }
 }
 declare module '@mui/joy/Button' {
@@ -210,6 +211,14 @@ const theme = extendTheme({
                         minHeight: '0.938rem',
                         minWidth: '0.938rem',
                         padding: '0.234rem',
+                        borderRadius: '0.352rem',
+                    }),
+                    ...(ownerState.size === 'xs4' && {
+                        fontSize: '0.41rem',
+                        minHeight: '1.289rem',
+                        maxHeight: '1.289rem',
+                        minWidth: '1.289rem',
+                        padding: '0',
                         borderRadius: '0.352rem',
                     }),
                 }),

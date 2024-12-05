@@ -4,7 +4,14 @@ import OrderProcess from './components/down-section/OrderProcess';
 
 export default function DownSection() {
     return (
-        <Stack gap={{ xs: '4.625rem' }}>
+        <Stack
+            direction={{ md: 'row' }}
+            gap={{ xs: '4.625rem', md: '1.641rem' }}
+            sx={{
+                width: { sm: '21rem', md: '100%' },
+                alignSelf: { sm: 'center' },
+            }}
+        >
             <ProductsList />
             <OrderProcess />
         </Stack>

@@ -14,32 +14,39 @@ export default function OrderProcess() {
                 ratio='1.16/1'
                 alt='Blob'
                 src={BlobImage}
-                width={{ xs: '20rem' }}
+                width={{ xs: '20rem', md: '20.479rem' }}
                 objectFit='contain'
                 otherStyles={{
                     position: 'absolute',
-                    top: '-2.625rem',
-                    right: '-4.875rem',
+                    top: { xs: '-2.625rem', md: '-3rem' },
+                    right: { xs: '-4.875rem', md: '-11.125rem' },
                     zIndex: -1,
                 }}
             />
             <Stack
                 sx={(theme) => ({
-                    p: { xs: '1.5rem' },
-                    gap: { xs: '1rem' },
-                    borderRadius: { xs: '0.75rem' },
+                    minWidth: { md: '12.891rem' },
+                    p: { xs: '1.5rem', md: '0.703rem' },
+                    gap: { xs: '1rem', md: '0.703rem' },
+                    borderRadius: { xs: '0.75rem', md: '0.469rem' },
                     bgcolor: theme.palette.primary[900],
+                    boxShadow: {
+                        md: '0 0.059rem 0.319rem 0.176rem rgba(0,0,0,0.5)',
+                    },
                 })}
             >
                 <Typography
                     fontFamily='Poppins'
                     fontWeight='500'
                     lineHeight='1.2'
-                    sx={{ fontSize: { xs: '1rem' }, color: 'white' }}
+                    sx={{
+                        fontSize: { xs: '1rem', md: '0.809rem' },
+                        color: 'white',
+                    }}
                 >
                     Order summary
                 </Typography>
-                <Stack gap={{ xs: '0.5rem' }}>
+                <Stack gap={{ xs: '0.5rem', dm: '0.469rem' }}>
                     <Subtotal />
                     <ShippingFees />
                     <Discount />

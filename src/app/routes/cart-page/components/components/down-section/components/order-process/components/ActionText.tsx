@@ -6,9 +6,10 @@ export default function ActionText({ text }: { text: string }) {
             lineHeight='1'
             fontWeight='500'
             sx={(theme) => ({
-                fontSize: { xs: '0.694rem' },
+                fontSize: { xs: '0.694rem', md: '0.563rem' },
                 color: theme.palette.primary[300],
                 textDecoration: 'underline',
+                cursor: { md: 'pointer' },
             })}
         >
             {text}
