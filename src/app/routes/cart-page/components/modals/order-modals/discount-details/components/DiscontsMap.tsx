@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/joy';
-import InformationHeading from '../../../../components/down-section/components/order-process/components/InformationHeading';
-import TextValue from '../../../../components/down-section/components/order-process/components/TextValue';
+import InformationHeading from '../../../../components/down-section/components/order-summary/components/InformationHeading';
+import TextValue from '../../../../components/down-section/components/order-summary/components/TextValue';
 
 export default function DiscountsMap() {
     const discountsData = [

@@ -5,7 +5,15 @@ import { Grid, Stack } from '@mui/joy';
 import Inputs from './components/form/Inputs';
 import Autofills from './components/form/Autofills';
 
+import useSimpleAlertStore from 'src/features/alert-feedback-simple/store/simpleAlert';
+import useRenderStore from 'src/stores/render';
+
 export default function Form() {
+    const setAlertFeedback = useSimpleAlertStore((state) => state.setData);
+    const showAlertFeedback = useRenderStore(
+        (state) => state.toggleIsSimpleAlertFeedbackVisible
+    );
+
     const initialValues = {
         fullName: '',
         houseNumber: 1,
@@ -25,6 +33,12 @@ export default function Form() {
             // 🌐 Post request to the server
             onSubmit={(values, action) => {
                 console.log(values);
+
+                setAlertFeedback(
+                    'success',
+                    'Your shipping address is added successfully!'
+                );
+                showAlertFeedback();
                 action.setValues(initialValues);
                 action.resetForm();
             }}

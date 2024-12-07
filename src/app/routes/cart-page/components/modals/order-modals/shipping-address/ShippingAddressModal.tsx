@@ -13,6 +13,8 @@ export default function ShippingAddressModal() {
                     borderRadius: { xs: '0.75rem', md: '0.469rem' },
                     border: 'none',
                     bgcolor: theme.palette.primary[900],
+
+                    overflow: { xs: 'scroll', md: 'unset' },
                 })}
             >
                 <Typography

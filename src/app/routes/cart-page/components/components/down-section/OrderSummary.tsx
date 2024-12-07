@@ -1,13 +1,13 @@
 import { Stack, Typography } from '@mui/joy';
-import Subtotal from './components/order-process/Subtotal';
-import ShippingFees from './components/order-process/ShippingFees';
-import Discount from './components/order-process/Discount';
-import Total from './components/order-process/Total';
-import ProceedButton from './components/order-process/ProceedButton';
+import Subtotal from './components/order-summary/Subtotal';
+import ShippingFees from './components/order-summary/ShippingFees';
+import Discount from './components/order-summary/Discount';
+import Total from './components/order-summary/Total';
+import ProceedButton from './components/order-summary/ProceedButton';
 import Image from 'src/components/Image';
 import BlobImage from 'src/assets/images/svg/cart-page/order-summary-blob.svg';
 
-export default function OrderProcess() {
+export default function OrderSummary() {
     return (
         <Stack position='relative'>
             <Image
