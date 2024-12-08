@@ -1,11 +1,13 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
+/* eslint-disable @stylistic/js/indent */
 import { FormControl, FormHelperText, FormLabel, Input, Stack } from '@mui/joy';
 import { BsPerson as PersonIcon } from 'react-icons/bs';
 import { TbMessageChatbot as AgeIcon } from 'react-icons/tb';
 import { ContactFormFormikInputProps } from '../../../interface/contactFormFormik';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function FirstInputs({ formik }: ContactFormFormikInputProps) {
+    const { width } = useWindowDimensions();
+
     const inputsData = [
         {
             label: 'Full Name',
@@ -22,9 +24,15 @@ export default function FirstInputs({ formik }: ContactFormFormikInputProps) {
     ];
 
     return (
-        <Stack direction='row'>
+        <Stack direction='row' gap={{ xs: '0.5rem' }}>
             {inputsData.map((input) => (
-                <FormControl>
+                <FormControl
+                    key={`contat-us-first-page-inputs${input.name}`}
+                    size={width > 899 ? 'md2' : 'md'}
+                    sx={{
+                        minWidth: input.name === 'age' ? '25%' : '70%',
+                    }}
+                >
                     <FormLabel sx={{ color: 'white', mb: '0.25rem' }}>
                         {input.label}
                     </FormLabel>
@@ -32,20 +40,30 @@ export default function FirstInputs({ formik }: ContactFormFormikInputProps) {
                         name={input.name}
                         placeholder={input.placeholder}
                         onChange={formik.handleChange}
-                        value={formik.values[input.name]}
+                        value={
+                            formik.values[
+                                input.name as keyof typeof formik.values
+                            ]
+                        }
                         startDecorator={input.icon}
                     />
 
-                    {formik.errors[input.name] &&
-                        formik.touched[input.name] && (
-                        <FormHelperText
-                            sx={(theme) => ({
-                                color: theme.palette.danger[500],
-                            })}
-                        >
-                            {formik.errors[input.name]}
-                        </FormHelperText>
-                    )}
+                    {formik.errors[input.name as keyof typeof formik.values] &&
+                        formik.touched[
+                            input.name as keyof typeof formik.values
+                        ] && (
+                            <FormHelperText
+                                sx={(theme) => ({
+                                    color: theme.palette.danger[500],
+                                })}
+                            >
+                                {
+                                    formik.errors[
+                                        input.name as keyof typeof formik.values
+                                    ]
+                                }
+                            </FormHelperText>
+                        )}
                 </FormControl>
             ))}
         </Stack>

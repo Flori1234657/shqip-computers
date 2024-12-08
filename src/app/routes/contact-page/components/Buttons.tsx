@@ -4,7 +4,7 @@ import { IoMdClose as ClearIcon } from 'react-icons/io';
 
 export default function Buttons() {
     return (
-        <Stack mt='0.25rem' gap='0.5rem'>
+        <Stack gap={{ xs: '0.75rem' }}>
             <Button
                 variant='outlined'
                 color='danger'

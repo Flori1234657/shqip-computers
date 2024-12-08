@@ -1,10 +1,13 @@
 import { FormControl, FormHelperText, FormLabel, Textarea } from '@mui/joy';
 import { TbMessageCircle as MsgIcon } from 'react-icons/tb';
-import { ContactInputProps } from './Inputs';
+import { ContactFormFormikInputProps } from '../interface/contactFormFormik';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
-function TextArea({ formik }: ContactInputProps) {
+function TextArea({ formik }: ContactFormFormikInputProps) {
+    const { width } = useWindowDimensions();
+
     return (
-        <FormControl>
+        <FormControl size={width > 899 ? 'md2' : 'md'}>
             <FormLabel sx={{ color: 'white', mb: '0.25rem' }}>
                 Contacting Reason
             </FormLabel>

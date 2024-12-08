@@ -2,18 +2,45 @@ import { List, ListItem, Stack, Typography } from '@mui/joy';
 
 export default function OtherWays() {
     return (
-        <Stack>
-            <Typography>Other way's</Typography>
+        <Stack gap={{ xs: '0.5rem' }}>
+            <Typography
+                level='body-lg'
+                lineHeight='1.2'
+                sx={(theme) => ({ color: theme.palette.primary[200] })}
+            >
+                Other way's
+            </Typography>
 
-            <List>
+            <List sx={{ gap: { xs: '0.25rem' } }}>
                 <ListItem>
-                    <Typography>📞 +355 68 839 3968</Typography>
+                    <Typography
+                        fontSize={{ xs: '0.831rem' }}
+                        fontWeight='500'
+                        lineHeight='1.2'
+                        sx={{ color: 'white' }}
+                    >
+                        📞 +355 68 839 3968
+                    </Typography>
                 </ListItem>
                 <ListItem>
-                    <Typography>📩 shqip_comps@mail.info</Typography>
+                    <Typography
+                        fontSize={{ xs: '0.831rem' }}
+                        fontWeight='500'
+                        lineHeight='1.2'
+                        sx={{ color: 'white' }}
+                    >
+                        📩 shqip_comps@mail.info
+                    </Typography>
                 </ListItem>
                 <ListItem>
-                    <Typography>📷 @shqip-computers</Typography>
+                    <Typography
+                        fontSize={{ xs: '0.831rem' }}
+                        fontWeight='500'
+                        lineHeight='1.2'
+                        sx={{ color: 'white' }}
+                    >
+                        📷 @shqip-computers
+                    </Typography>
                 </ListItem>
             </List>
         </Stack>
