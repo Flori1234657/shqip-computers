@@ -4,7 +4,10 @@ import ProductsMap from './components/suggested-products/ProductsMap';
 
 export default function SuggestedProducts() {
     return (
-        <Stack alignItems='center' gap={{ xs: '1.5rem' }}>
+        <Stack
+            alignItems={{ xs: 'center', md: 'flex-start' }}
+            gap={{ xs: '1.5rem', md: '0.938rem' }}
+        >
             <Title />
             <ProductsMap />
         </Stack>

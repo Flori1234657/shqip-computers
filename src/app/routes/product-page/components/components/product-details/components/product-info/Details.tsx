@@ -6,9 +6,9 @@ import Price from './components/details/Price';
 
 export default function Details() {
     return (
-        <Stack gap={{ xs: '0.75rem' }}>
+        <Stack gap={{ xs: '0.75rem', md: '0.375rem' }}>
             <Title />
-            <Stack gap={{ xs: '0.5rem' }}>
+            <Stack gap={{ xs: '0.5rem', md: '0.234rem' }}>
                 <Status />
                 <Parameters />
                 <Price />

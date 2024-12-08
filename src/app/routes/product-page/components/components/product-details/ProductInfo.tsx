@@ -7,7 +7,7 @@ export default function ProductInfo() {
     const { width } = useWindowDimensions();
 
     return (
-        <Stack>
+        <Stack direction={{ md: 'row' }} gap={{ md: '0.703rem' }}>
             {width < 900 ? (
                 <ImagesButton>
                     <Details />

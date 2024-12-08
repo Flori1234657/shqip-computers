@@ -9,7 +9,7 @@ interface Props {
 
 export default function ImagesButton({ children }: Props) {
     return (
-        <Stack gap={{ xs: '0.75rem' }}>
+        <Stack gap={{ xs: '0.75rem', md: '0.381rem' }}>
             <ImagesCollection />
             {children}
             <AddToCardButton />

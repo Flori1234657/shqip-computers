@@ -1,6 +1,17 @@
 import { Button } from '@mui/joy';
 import { MdOutlineShoppingCart as CardIcon } from 'react-icons/md';
+import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function AddToCardButton() {
-    return <Button endDecorator={<CardIcon />}>Add To The Card</Button>;
+    const { width } = useWindowDimensions();
+
+    return (
+        <Button
+            size={width < 900 ? 'md' : 'md2'}
+            sx={{ width: { md: '8.906rem' }, alignSelf: { md: 'flex-end' } }}
+            endDecorator={<CardIcon />}
+        >
+            Add To The Card
+        </Button>
+    );
 }

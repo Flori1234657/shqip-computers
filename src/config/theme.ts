@@ -67,6 +67,7 @@ declare module '@mui/joy/Chip' {
     interface ChipPropsSizeOverrides {
         xs: true;
         productCard: true;
+        md2: true;
     }
 }
 declare module '@mui/joy/Select' {
@@ -285,6 +286,13 @@ const theme = extendTheme({
                         gap: '0.25rem',
                         maxHeight: 'fit-content',
                         backgroundColor: 'transparent',
+                    }),
+                    ...(ownerState.size === 'md2' && {
+                        padding: '0.118rem 0.352rem',
+                        fontSize: '0.469rem',
+                        lineHeight: '1.5',
+                        gap: '0.176rem',
+                        maxHeight: 'fit-content',
                     }),
                 }),
             },

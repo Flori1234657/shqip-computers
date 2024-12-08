@@ -6,14 +6,14 @@ export default function Description() {
             <Typography
                 lineHeight='1.6'
                 fontWeight='600'
-                fontSize={{ xs: '1.2rem' }}
+                fontSize={{ xs: '1.2rem', md: '0.809rem' }}
                 sx={(theme) => ({ color: theme.palette.primary[900] })}
             >
                 Description
             </Typography>
             <Typography
                 lineHeight='1.4'
-                fontSize={{ xs: '1rem' }}
+                fontSize={{ xs: '1rem', md: '0.675rem' }}
                 sx={(theme) => ({ color: theme.palette.neutral[700] })}
             >
                 Lorem ipsum dolor sit amet consectetur. Volutpat integer
