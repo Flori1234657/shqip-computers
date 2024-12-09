@@ -4,9 +4,14 @@ import DownContent from './components/deals-section/DownContent';
 
 import Image from 'src/components/Image';
 import BigBlob from 'src/assets/images/svg/home/deals-blob.svg';
+import useDealStore from '../store/deal';
 
 function DealsSection() {
-    return (
+    const { deal } = useDealStore();
+
+    return !deal ? (
+        ''
+    ) : (
         <Stack
             width={{ sm: '100%', md: '43.359rem' }}
             alignItems={{ sm: 'center' }}
