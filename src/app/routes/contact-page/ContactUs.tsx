@@ -40,8 +40,9 @@ export default function ContactUs() {
                             p={{ xs: '1.25rem', md: '0.938rem' }}
                             gap={{ xs: '1rem', md: '0.469rem' }}
                             sx={(theme) => ({
-                                mt: { xs: '8rem' },
-                                mb: { xs: '2rem' },
+                                mt: { xs: '8rem', md: '4.688rem' },
+                                mb: { xs: '2rem', md: 0 },
+                                mx: 'auto',
                                 backgroundColor: theme.palette.primary[900],
                                 boxShadow: theme.shadow.boxShadow69,
                                 borderRadius: {
@@ -52,13 +53,13 @@ export default function ContactUs() {
                         >
                             <Image
                                 ratio=' 1.18/1'
-                                width={{ xs: '10.188rem' }}
+                                width={{ xs: '10.188rem', md: '8.989rem' }}
                                 src={MessageIllustration}
                                 objectFit='fill'
                                 otherStyles={{
                                     position: 'absolute',
-                                    top: { xs: '-4.438rem' },
-                                    left: { xs: '-1.5rem' },
+                                    top: { xs: '-4.438rem', md: 0 },
+                                    left: { xs: '-1.5rem', md: '17rem' },
                                     zIndex: -1,
                                 }}
                                 alt='Illustartion'
@@ -69,13 +70,13 @@ export default function ContactUs() {
                                 fontWeight='500'
                                 lineHeight='1.2'
                                 sx={{
-                                    fontSize: { xs: '1.2rem', md: '0.809rem' },
+                                    fontSize: { xs: '1.2rem', md: '0.972rem' },
                                     color: 'white',
                                 }}
                             >
                                 Contact us
                             </Typography>
-                            <Stack gap={{ xs: '0.75rem' }}>
+                            <Stack gap={{ xs: '0.75rem', md: '0.469rem' }}>
                                 <Inputs formik={formik} />
                                 <TextArea formik={formik} />
                             </Stack>
@@ -89,13 +90,13 @@ export default function ContactUs() {
 
                             <Image
                                 ratio='1.21/1'
-                                width={{ xs: '9.612rem' }}
+                                width={{ xs: '9.612rem', md: '9.242rem' }}
                                 src={EnvelopeIllustration}
                                 objectFit='fill'
                                 otherStyles={{
                                     position: 'absolute',
-                                    bottom: { xs: '-3.4rem' },
-                                    right: { xs: '-1.7rem' },
+                                    bottom: { xs: '-3.4rem', md: 0 },
+                                    right: { xs: '-1.7rem', md: '15rem' },
                                     zIndex: -1,
                                 }}
                                 alt='Illustartion'

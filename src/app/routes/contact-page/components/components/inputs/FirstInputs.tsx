@@ -24,7 +24,7 @@ export default function FirstInputs({ formik }: ContactFormFormikInputProps) {
     ];
 
     return (
-        <Stack direction='row' gap={{ xs: '0.5rem' }}>
+        <Stack direction='row' gap={{ xs: '0.5rem', md: '0.469rem' }}>
             {inputsData.map((input) => (
                 <FormControl
                     key={`contat-us-first-page-inputs${input.name}`}
