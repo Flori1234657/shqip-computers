@@ -5,11 +5,13 @@ import DownContent from './components/deals-section/DownContent';
 import Image from 'src/components/Image';
 import BigBlob from 'src/assets/images/svg/home/deals-blob.svg';
 import useDealStore from '../store/deal';
+import { hasDealExpired } from '../utils/deal';
 
 function DealsSection() {
-    const { deal } = useDealStore();
-
+    const deal = useDealStore((state) => state.deal);
     return !deal ? (
+        ''
+    ) : hasDealExpired(deal!.expireDate) ? (
         ''
     ) : (
         <Stack

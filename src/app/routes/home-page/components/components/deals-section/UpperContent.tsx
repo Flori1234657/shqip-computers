@@ -2,8 +2,9 @@ import { Box, Stack } from '@mui/joy';
 import ProductCard from 'src/features/product-card/ProductCard';
 import AvailableTimeCards from './components/upper-content/AvailableTimeCards';
 import HeadingText from './components/upper-content/HeadingText';
+import React from 'react';
 
-export default function UpperContent() {
+const UpperContent = React.memo(function UpperContent() {
     return (
         <Box
             sx={{
@@ -43,4 +44,6 @@ export default function UpperContent() {
             </Box>
         </Box>
     );
-}
+});
+
+export default UpperContent;
