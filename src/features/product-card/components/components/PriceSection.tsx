@@ -1,13 +1,19 @@
-import { Stack, Typography } from '@mui/joy';
 import { useLocation } from 'react-router-dom';
+import { Stack, Typography } from '@mui/joy';
+import { useContext } from 'react';
+import { ProductCardComtext } from '../../context/useProductCardContext';
 
 export default function PriceSection() {
+    const productCard = useContext(ProductCardComtext);
     const { pathname } = useLocation();
-    const hasDiscount = true;
 
     return (
-        <Stack direction='row' gap={{ xs: '0.389rem', md: '0.352rem' }}>
-            {hasDiscount ? (
+        <Stack
+            alignSelf='center'
+            direction='row'
+            gap={{ xs: '0.389rem', md: '0.352rem' }}
+        >
+            {productCard?.discount ? (
                 <Typography
                     variant='solid'
                     color='danger'
@@ -22,7 +28,7 @@ export default function PriceSection() {
                         textDecoration: 'line-throught',
                     }}
                 >
-                    $350.00
+                    ${productCard.discount.toFixed(2)}
                 </Typography>
             ) : (
                 ''
@@ -38,7 +44,9 @@ export default function PriceSection() {
                         pathname === '/' ? 'white' : theme.palette.neutral[800],
                 })}
             >
-                $230.00
+                {productCard?.defaultPrice
+                    ? `$${productCard.defaultPrice.toFixed(2)}`
+                    : '$000.00'}
             </Typography>
         </Stack>
     );

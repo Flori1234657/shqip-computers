@@ -11,10 +11,11 @@ import useGetDeal from './hooks/useGetDeal';
 const DealsSection = lazy(() => import('./components/DealsSection'));
 
 export default function Home() {
-    const { requestDeal } = useGetDeal();
+    const { requestDeal, requestDealProducts } = useGetDeal();
 
     useEffect(() => {
         requestDeal();
+        requestDealProducts();
     }, []);
 
     return (

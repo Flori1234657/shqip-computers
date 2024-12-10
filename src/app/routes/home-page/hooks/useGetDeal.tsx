@@ -2,7 +2,7 @@ import useDealStore from '../store/deal';
 import useSimpleAlertStore from 'src/features/alert-feedback-simple/store/simpleAlert';
 import useRenderStore from 'src/stores/render';
 import { hasDealExpired } from '../utils/deal';
-import { getDeal } from '../api/getDeal';
+import { getDeal, getDealProducts } from '../api/getDeal';
 
 export default function useGetDeal() {
     const useDeal = useDealStore();
@@ -27,5 +27,22 @@ export default function useGetDeal() {
         }
     };
 
-    return { requestDeal };
+    // also dont forget put them in themain products store
+    const requestDealProducts = async (nextPage?: number) => {
+        if (!useDeal.dealProducts || nextPage)
+            try {
+                const dealProducts = await getDealProducts(
+                    nextPage && useDeal.dealProducts ? nextPage : 1
+                );
+
+                useDeal.setDealProducts(dealProducts.data, dealProducts.meta);
+            } catch (error) {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                //@ts-ignore
+                fillAlert('danger', error.message);
+                showAlert();
+            }
+    };
+
+    return { requestDeal, requestDealProducts };
 }

@@ -8,8 +8,10 @@ import useCarouselStore from '../store/carousel';
 
 export default function SideButtons({
     children,
+    anotherFunction,
 }: {
     children: React.ReactNode;
+    anotherFunction?: () => void;
 }) {
     const { width } = useWindowDimensions();
     const { moveElementsLeft, moveElementsRight } = useCarouselStore();
@@ -24,7 +26,10 @@ export default function SideButtons({
                     bgcolor: theme.palette.primary[900],
                     maxHeight: 'fit-content',
                 })}
-                onClick={() => moveElementsLeft()}
+                onClick={() => {
+                    moveElementsLeft();
+                    if (anotherFunction) anotherFunction();
+                }}
             >
                 <LeftArrIcon />
             </IconButton>
@@ -37,7 +42,10 @@ export default function SideButtons({
                     bgcolor: theme.palette.primary[900],
                     maxHeight: 'fit-content',
                 })}
-                onClick={() => moveElementsRight()}
+                onClick={() => {
+                    moveElementsRight();
+                    if (anotherFunction) anotherFunction();
+                }}
             >
                 <RightArrIcon />
             </IconButton>

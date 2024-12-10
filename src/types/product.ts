@@ -1,3 +1,9 @@
+type RequestImage = {
+    id: number;
+    documentId: string;
+    url: string;
+};
+
 export type Product = {
     id: number;
     documentId: string;
@@ -14,4 +20,5 @@ export type Product = {
     publishedAt: string;
     category: string;
     type: string;
+    images: RequestImage[];
 };

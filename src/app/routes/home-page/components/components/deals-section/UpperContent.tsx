@@ -3,8 +3,27 @@ import ProductCard from 'src/features/product-card/ProductCard';
 import AvailableTimeCards from './components/upper-content/AvailableTimeCards';
 import HeadingText from './components/upper-content/HeadingText';
 import React from 'react';
+import useSelectProductStore from '../../../store/select';
+import useDealStore from '../../../store/deal';
 
 const UpperContent = React.memo(function UpperContent() {
+    const selectedProduct = useSelectProductStore(
+        (state) => state.selectedProduct
+    );
+    const dealProducts = useDealStore((state) => state.dealProducts?.data);
+
+    const findSelectedProduct = () => {
+        if (dealProducts && selectedProduct) {
+            const productFinded = dealProducts.filter(
+                (product) => product.documentId === selectedProduct
+            );
+            return productFinded[0];
+        }
+        if (dealProducts && !selectedProduct) return dealProducts[0];
+
+        return undefined;
+    };
+
     return (
         <Box
             sx={{
@@ -31,7 +50,7 @@ const UpperContent = React.memo(function UpperContent() {
                 }}
             >
                 <Stack>
-                    <ProductCard />
+                    <ProductCard data={findSelectedProduct()} />
                 </Stack>
             </Box>
             <Box

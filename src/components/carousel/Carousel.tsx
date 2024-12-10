@@ -8,9 +8,14 @@ import SideShadows from './components/SideShadows';
 interface Props {
     elements: React.ReactNode[];
     secondStackStyles: SxProps;
+    buttonFunction?: () => void;
 }
 
-export default function Carousel({ elements, secondStackStyles }: Props) {
+export default function Carousel({
+    elements,
+    secondStackStyles,
+    buttonFunction,
+}: Props) {
     const { setElementsArray: makeCopyArray, elementsArray } =
         useCarouselStore();
 
@@ -22,7 +27,7 @@ export default function Carousel({ elements, secondStackStyles }: Props) {
     }, [elements]);
 
     return (
-        <SideButtons>
+        <SideButtons anotherFunction={buttonFunction}>
             <Stack sx={secondStackStyles} position='relative'>
                 <SideShadows>
                     {elementsArray?.map((element) => element)}
