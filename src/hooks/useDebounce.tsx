@@ -18,7 +18,7 @@ export const useDebounce = ({ action, delay }: Props) => {
         return () => {
             clearTimeout(handler);
         };
-    }, [action, delay, searchValue]);
+    }, [delay, searchValue]); // if I also put the action not ending loop will start
 
     return { setSearchValue };
 };

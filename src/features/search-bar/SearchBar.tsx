@@ -5,53 +5,33 @@ import {
     Typography,
 } from '@mui/joy';
 import { BsSearch as SearchIcon } from 'react-icons/bs';
-import PlaceholderImg from 'src/assets/images/placeholder.png';
+import { useNavigate } from 'react-router-dom';
 import Image from 'src/components/Image';
+import Loader from 'src/components/loader/Loader';
 import { useDebounce } from 'src/hooks/useDebounce';
+import useSearch from 'src/hooks/useSearch';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function SearchBar() {
     const { width } = useWindowDimensions();
+    const navigate = useNavigate();
 
+    const { search, results, isLoading, setIsLoading } = useSearch();
     const { setSearchValue } = useDebounce({
-        action: (debouncedValue: string) => {
-            console.log(debouncedValue);
-        },
+        action: (debouncedValue: string) => search(debouncedValue),
         delay: 1500,
     });
-
-    /**
-         🌐 Build an api that will query only 
-         the data with the names that match 
-         the search (not all the product's).
-     */
-    const placeholderProducts = [
-        {
-            id: '12d2c21233r24rfvs',
-            name: 'Fujitsu Esprimo p900',
-            image: PlaceholderImg,
-        },
-        {
-            id: '16g*81x89^!!',
-            name: 'Fujitsu Esprimo p340',
-            image: PlaceholderImg,
-        },
-        {
-            id: '^!76xybg8191',
-            name: 'Fujitsu Esprimo p750',
-            image: PlaceholderImg,
-        },
-        {
-            id: '1901j0(!*(nz ',
-            name: 'Fujitsu Esprimo p690',
-            image: PlaceholderImg,
-        },
-    ];
 
     return (
         <FormControl id='home-search-bar' error={false}>
             <Autocomplete
-                onInputChange={(__, newValue) => setSearchValue(newValue)}
+                loading={isLoading}
+                loadingText={<Loader />}
+                onInputChange={(__, newValue) => {
+                    if (!isLoading) setIsLoading(true);
+                    if (!newValue) setIsLoading(false);
+                    setSearchValue(newValue);
+                }}
                 noOptionsText='Nothing matches your search ❌'
                 placeholder='Search'
                 slotProps={{
@@ -78,6 +58,11 @@ export default function SearchBar() {
                             alignSelf: 'center',
                         },
                     },
+                    loading: {
+                        style: {
+                            alignSelf: 'center',
+                        },
+                    },
                 }}
                 size={width < 900 ? 'lg' : 'xs'}
                 sx={(theme) => ({
@@ -87,7 +72,7 @@ export default function SearchBar() {
                     borderRadius: '2rem',
                     border: `2px solid ${theme.palette.primary[500]}`,
                 })}
-                options={placeholderProducts}
+                options={results ? results : []}
                 autoHighlight
                 getOptionLabel={(option) => option.name}
                 renderOption={(props, option) => (
@@ -98,10 +83,13 @@ export default function SearchBar() {
                             p: { xs: '0.25rem', md: '0.234rem' },
                             gap: { xs: '0.5rem', md: '0.469rem' },
                         }}
+                        onClick={() =>
+                            navigate(`/product/${option.documentId}`)
+                        }
                     >
                         <Image
                             ratio='1.55/1'
-                            src={option.image}
+                            src={`${import.meta.env.VITE_REACT_APP_BACKEND}${option.images[0].url}`}
                             alt='product'
                             width={{ xs: '3rem', md: '2.608rem' }}
                         />

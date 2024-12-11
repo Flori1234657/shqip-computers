@@ -3,9 +3,11 @@ import useSimpleAlertStore from 'src/features/alert-feedback-simple/store/simple
 import useRenderStore from 'src/stores/render';
 import { hasDealExpired } from '../utils/deal';
 import { getDeal, getDealProducts } from '../api/getDeal';
+import useProductStore from 'src/stores/products';
 
 export default function useGetDeal() {
     const useDeal = useDealStore();
+    const setProducts = useProductStore((state) => state.setProducts);
 
     const fillAlert = useSimpleAlertStore((state) => state.setData);
     const showAlert = useRenderStore(
@@ -27,7 +29,6 @@ export default function useGetDeal() {
         }
     };
 
-    // also dont forget put them in themain products store
     const requestDealProducts = async (nextPage?: number) => {
         if (!useDeal.dealProducts || nextPage)
             try {
@@ -36,6 +37,7 @@ export default function useGetDeal() {
                 );
 
                 useDeal.setDealProducts(dealProducts.data, dealProducts.meta);
+                setProducts(dealProducts.data);
             } catch (error) {
                 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 //@ts-ignore
