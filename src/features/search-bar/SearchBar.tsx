@@ -7,10 +7,18 @@ import {
 import { BsSearch as SearchIcon } from 'react-icons/bs';
 import PlaceholderImg from 'src/assets/images/placeholder.png';
 import Image from 'src/components/Image';
+import { useDebounce } from 'src/hooks/useDebounce';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function SearchBar() {
     const { width } = useWindowDimensions();
+
+    const { setSearchValue } = useDebounce({
+        action: (debouncedValue: string) => {
+            console.log(debouncedValue);
+        },
+        delay: 1500,
+    });
 
     /**
          🌐 Build an api that will query only 
@@ -43,6 +51,7 @@ export default function SearchBar() {
     return (
         <FormControl id='home-search-bar' error={false}>
             <Autocomplete
+                onInputChange={(__, newValue) => setSearchValue(newValue)}
                 noOptionsText='Nothing matches your search ❌'
                 placeholder='Search'
                 slotProps={{
