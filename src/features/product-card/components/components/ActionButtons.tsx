@@ -6,10 +6,12 @@ import {
 } from 'react-icons/md';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 import { ProductCardComtext } from '../../context/useProductCardContext';
+import useCartStore from 'src/features/shopping-cart/stores/shoppingCart';
 
 export default function ActionButtons() {
     const productCard = useContext(ProductCardComtext);
     const { width } = useWindowDimensions();
+    const addItemToTheCart = useCartStore((state) => state.setCartItems);
 
     return (
         <Stack direction='row' justifyContent='space-between'>
@@ -18,6 +20,9 @@ export default function ActionButtons() {
                 sx={{ fontSize: { md: '0.469rem' } }}
                 startDecorator={<CartIcon />}
                 disabled={!productCard || !productCard.name}
+                onClick={() =>
+                    productCard ? addItemToTheCart(productCard) : ''
+                }
             >
                 Add
             </Button>

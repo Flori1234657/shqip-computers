@@ -2,9 +2,11 @@ import { IconButton, Stack, Typography } from '@mui/joy';
 import { MdOutlineArrowForward as ArrowIcon } from 'react-icons/md';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 import useRenderStore from 'src/stores/render';
+import useCartStore from '../stores/shoppingCart';
 
 function UpperContent() {
     const { width } = useWindowDimensions();
+    const cartItems = useCartStore((state) => state.cartItems);
     const toggleShoppingCartVisibility = useRenderStore(
         (state) => state.toggleIsShoppingCartVisible
     );
@@ -44,7 +46,7 @@ function UpperContent() {
                 lineHeight='1.2'
                 sx={(theme) => ({ color: theme.palette.text.tertiary })}
             >
-                25 products
+                {cartItems ? length : 0} products
             </Typography>
         </Stack>
     );

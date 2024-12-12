@@ -42,7 +42,7 @@ function ImageNamePriceInfo(props: Props) {
                     level='title-sm'
                     fontSize={{ xs: '1rem', md: '0.563rem' }}
                 >
-                    ${props.price}
+                    ${Number(props.price).toFixed(2)}
                 </Typography>
             </Stack>
         </Stack>
