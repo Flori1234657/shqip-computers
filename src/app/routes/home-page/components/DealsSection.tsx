@@ -11,7 +11,7 @@ function DealsSection() {
     const deal = useDealStore((state) => state.deal);
     return !deal ? (
         ''
-    ) : hasDealExpired(deal!.expireDate) ? (
+    ) : hasDealExpired(deal.expireDate) ? (
         ''
     ) : (
         <Stack
