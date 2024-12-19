@@ -9,9 +9,8 @@ import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 function Buttons() {
     const { width } = useWindowDimensions();
     // to disable this function for working do it reading the value of confiramtion modal in the sesssion
-    const showConfiramtionModal = useCartStore(
-        (state) => state.toggleShowEmptyCartMessage
-    );
+    const { toggleShowEmptyCartMessage, showEmptyCartMessage, emptyTheCart } =
+        useCartStore();
 
     return (
         <Stack
@@ -28,7 +27,11 @@ function Buttons() {
                 endDecorator={<DeleteIcon />}
                 size={width < 900 ? 'md' : 'md2'}
                 color='danger'
-                onClick={() => showConfiramtionModal(true)}
+                onClick={() =>
+                    showEmptyCartMessage !== 'dont-show-again'
+                        ? toggleShowEmptyCartMessage(true)
+                        : emptyTheCart()
+                }
             >
                 Empty the Cart
             </Button>

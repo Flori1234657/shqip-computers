@@ -13,6 +13,9 @@ interface Props {
     text: string;
     yesIcon: React.ReactNode;
     noIcon: React.ReactNode;
+    yesAction: () => void;
+    noAction: () => void;
+    checkboxAction: () => void;
 }
 
 export default function ConfirmationModal({
@@ -20,6 +23,9 @@ export default function ConfirmationModal({
     text,
     noIcon,
     yesIcon,
+    yesAction,
+    noAction,
+    checkboxAction,
 }: Props) {
     const { width } = useWindowDimensions();
 
@@ -63,12 +69,14 @@ export default function ConfirmationModal({
                                 color='danger'
                                 endDecorator={yesIcon}
                                 size={width < 900 ? 'md' : 'md2'}
+                                onClick={yesAction}
                             >
                                 Yes
                             </Button>
                             <Button
                                 endDecorator={noIcon}
                                 size={width < 900 ? 'md' : 'md2'}
+                                onClick={noAction}
                             >
                                 No
                             </Button>
@@ -81,6 +89,7 @@ export default function ConfirmationModal({
                                 fontFamily: 'Poppins',
                             })}
                             label="Don't ask me again"
+                            onChange={checkboxAction}
                         />
                     </Stack>
                 </Stack>

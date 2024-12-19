@@ -11,4 +11,5 @@ export type CartState = {
     toggleShowEmptyCartMessage: (value: boolean | 'dont-show-again') => void;
     setCartItems: (item: Product) => void; // the set function includes the increment functionality also
     decrementCartItems: (id: string) => void;
+    emptyTheCart: () => void;
 };

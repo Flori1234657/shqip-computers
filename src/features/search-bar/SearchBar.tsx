@@ -2,6 +2,7 @@ import {
     Autocomplete,
     AutocompleteOption,
     FormControl,
+    Stack,
     Typography,
 } from '@mui/joy';
 import { BsSearch as SearchIcon } from 'react-icons/bs';
@@ -26,7 +27,11 @@ export default function SearchBar() {
         <FormControl id='home-search-bar' error={false}>
             <Autocomplete
                 loading={isLoading}
-                loadingText={<Loader />}
+                loadingText={
+                    <Stack py={{ xs: '1rem' }}>
+                        <Loader />
+                    </Stack>
+                }
                 onInputChange={(__, newValue) => {
                     if (!isLoading) setIsLoading(true);
                     if (!newValue) setIsLoading(false);
