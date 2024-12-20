@@ -9,7 +9,7 @@ import useProductStore from 'src/stores/products';
 import { Product } from 'src/types/product';
 import { getMatchingProducts } from '../api/getMatchingProducts';
 
-export default function useSearch() {
+export default function useSearch(signal: AbortSignal) {
     const [results, setResults] = useState<Product[] | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -31,7 +31,8 @@ export default function useSearch() {
 
         if (!productStoreResults) {
             const serverResults = await getMatchingProducts(
-                `[name][$contains]=${value}`
+                `[name][$contains]=${value}`,
+                signal
             );
 
             if (serverResults.length > 0) setProducts(serverResults);
@@ -42,7 +43,8 @@ export default function useSearch() {
             );
 
             const serverResults = await getMatchingProducts(
-                `[name][$contains]=${value}&${excludeFromSearch.join('&')}`
+                `[name][$contains]=${value}&${excludeFromSearch.join('&')}`,
+                signal
             );
 
             if (serverResults.length > 0) setProducts(serverResults);

@@ -14,8 +14,12 @@ export default function Home() {
     const { requestDeal, requestDealProducts } = useGetDeal();
 
     useEffect(() => {
-        requestDeal();
-        requestDealProducts();
+        const controller = new AbortController();
+
+        requestDeal(controller.signal);
+        requestDealProducts(controller.signal);
+
+        return () => controller.abort();
     }, []);
 
     return (

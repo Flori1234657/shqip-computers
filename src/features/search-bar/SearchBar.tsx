@@ -5,6 +5,7 @@ import {
     Stack,
     Typography,
 } from '@mui/joy';
+import { useEffect } from 'react';
 import { BsSearch as SearchIcon } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import Image from 'src/components/Image';
@@ -17,10 +18,17 @@ export default function SearchBar() {
     const { width } = useWindowDimensions();
     const navigate = useNavigate();
 
-    const { search, results, isLoading, setIsLoading } = useSearch();
+    const controller = new AbortController();
+    const { search, results, isLoading, setIsLoading } = useSearch(
+        controller.signal
+    );
     const { setSearchValue } = useDebounce({
         action: (debouncedValue: string) => search(debouncedValue),
         delay: 1500,
+    });
+
+    useEffect(() => {
+        return () => controller.abort();
     });
 
     return (

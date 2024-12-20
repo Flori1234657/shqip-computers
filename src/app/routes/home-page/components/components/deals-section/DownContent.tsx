@@ -4,6 +4,7 @@ import Image from 'src/components/Image';
 import useDealStore from '../../../store/deal';
 import useGetDeal from '../../../hooks/useGetDeal';
 import useSelectProductStore from '../../../store/select';
+import { useEffect } from 'react';
 
 function DownContent() {
     const offerProducts = useDealStore((state) => state.dealProducts?.data);
@@ -14,10 +15,15 @@ function DownContent() {
 
     const { requestDealProducts } = useGetDeal();
 
+    const controller = new AbortController();
     const fetchNextProducts = () => {
         if (meta && meta.pageCount > meta.page)
-            requestDealProducts(meta.page + 1);
+            requestDealProducts(controller.signal, meta.page + 1);
     };
+
+    useEffect(() => {
+        return () => controller.abort();
+    });
 
     return (
         <Stack

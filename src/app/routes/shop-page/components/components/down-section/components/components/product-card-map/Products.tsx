@@ -2,17 +2,18 @@ import { Grid, Stack } from '@mui/joy';
 import { useMemo, useState } from 'react';
 import Pagination from 'src/components/Pagination';
 import ProductCard from 'src/features/product-card/ProductCard';
+import useProductStore from 'src/stores/products';
 
-import mockedProductData from 'src/mocks/productsData';
 const pageSize = 10;
 
 export default function Products() {
+    const productsData = useProductStore((state) => state.products);
     const [currentPage, setCurrentPage] = useState(1);
 
     const currentProductsData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * pageSize;
         const lastPageIndex = firstPageIndex + pageSize;
-        return mockedProductData.slice(firstPageIndex, lastPageIndex);
+        return productsData!.slice(firstPageIndex, lastPageIndex);
     }, [currentPage]);
 
     return (
@@ -25,7 +26,7 @@ export default function Products() {
             >
                 {currentProductsData.map((product) => (
                     <Grid key={product.id} sx={{ width: 'fit-content' }}>
-                        <ProductCard />
+                        <ProductCard data={product} />
                     </Grid>
                 ))}
                 {/* <Loader fontSize='0.5rem' /> */}
@@ -39,7 +40,7 @@ export default function Products() {
                     currentPage={currentPage}
                     onPageChange={(page) => setCurrentPage(page)}
                     pageSize={pageSize}
-                    totalCount={mockedProductData.length}
+                    totalCount={productsData!.length}
                 />
             </Stack>
         </>

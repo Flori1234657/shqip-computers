@@ -14,10 +14,10 @@ export default function useGetDeal() {
         (state) => state.toggleIsSimpleAlertFeedbackVisible
     );
 
-    const requestDeal = async () => {
+    const requestDeal = async (signal: AbortSignal) => {
         if (!useDeal.deal || hasDealExpired(useDeal.deal.expireDate)) {
             try {
-                const dealData = await getDeal();
+                const dealData = await getDeal(signal);
 
                 useDeal.setDeal(dealData);
             } catch (error) {
@@ -29,11 +29,15 @@ export default function useGetDeal() {
         }
     };
 
-    const requestDealProducts = async (nextPage?: number) => {
+    const requestDealProducts = async (
+        signal: AbortSignal,
+        nextPage?: number
+    ) => {
         if (!useDeal.dealProducts || nextPage)
             try {
                 const dealProducts = await getDealProducts(
-                    nextPage && useDeal.dealProducts ? nextPage : 1
+                    nextPage && useDeal.dealProducts ? nextPage : 1,
+                    signal
                 );
 
                 useDeal.setDealProducts(dealProducts.data, dealProducts.meta);
