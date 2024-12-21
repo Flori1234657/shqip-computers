@@ -10,7 +10,7 @@ interface State {
 
 const useUiStore = create<State>()(
     devtools((set) => ({
-        productsSectionComponent: 'product-cards',
+        productsSectionComponent: 'loader',
         setProductsSectionComponent: (component) =>
             set(() => ({
                 productsSectionComponent: component,
