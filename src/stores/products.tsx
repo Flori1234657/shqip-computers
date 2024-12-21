@@ -1,4 +1,5 @@
 import { Product } from 'src/types/product';
+import { findAndFilterProducts } from 'src/utils/filterProducts';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
@@ -13,7 +14,7 @@ const useProductStore = create<State>()(
         setProducts: (newFetchedProducts) =>
             set((state) => ({
                 products: state.products
-                    ? [...state.products, ...newFetchedProducts]
+                    ? findAndFilterProducts(state.products, newFetchedProducts)
                     : newFetchedProducts,
             })),
     }))

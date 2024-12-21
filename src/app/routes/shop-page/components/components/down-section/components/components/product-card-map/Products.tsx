@@ -1,5 +1,6 @@
 import { Grid, Stack } from '@mui/joy';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import useShopStore from 'src/app/routes/shop-page/store/shop';
 import Pagination from 'src/components/Pagination';
 import ProductCard from 'src/features/product-card/ProductCard';
 import useProductStore from 'src/stores/products';
@@ -8,13 +9,13 @@ const pageSize = 10;
 
 export default function Products() {
     const productsData = useProductStore((state) => state.products);
-    const [currentPage, setCurrentPage] = useState(1);
+    const { totalProductsCount, setCurrentPage, currentPage } = useShopStore();
 
     const currentProductsData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * pageSize;
         const lastPageIndex = firstPageIndex + pageSize;
         return productsData!.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage]);
+    }, [currentPage, productsData]);
 
     return (
         <>
@@ -40,7 +41,11 @@ export default function Products() {
                     currentPage={currentPage}
                     onPageChange={(page) => setCurrentPage(page)}
                     pageSize={pageSize}
-                    totalCount={productsData!.length}
+                    totalCount={
+                        totalProductsCount
+                            ? totalProductsCount
+                            : productsData!.length
+                    }
                 />
             </Stack>
         </>
