@@ -15,3 +15,20 @@ export const getNextProducts = async (page = 1, signal: AbortSignal) => {
 
     return request;
 };
+
+export const getProductsByCategory = async (
+    page: number,
+    category: string,
+    signal: AbortSignal,
+    type?: string
+) => {
+    const request: { data: Product[]; meta: Meta } = await axios
+        .get(
+            `${import.meta.env.VITE_REACT_APP_BACKEND}api/products?pagination[page]=${page}&pagination[pageSize]=10&filters[category][$contains]=${category}${type ? `&filters[type][$contains]=${type}` : ''}&populate[images][fields][0]=url`,
+            { signal }
+        )
+        .then((res) => res.data)
+        .catch((error) => throwError(error));
+
+    return request;
+};

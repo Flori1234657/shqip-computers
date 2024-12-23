@@ -1,9 +1,13 @@
+/* eslint-disable @stylistic/js/indent */
 import useProductStore from 'src/stores/products';
-import { getNextProducts } from '../api/getProducts';
+import { getNextProducts, getProductsByCategory } from '../api/getProducts';
 import useShopStore from '../store/shop';
 import useUiStore from '../store/ui';
+import { useParams } from 'react-router-dom';
 
 export default function useFetchProducts() {
+    const queryParams = useParams();
+
     const setTotalProductsCount = useShopStore(
         (state) => state.setTotalProducts
     );
@@ -16,7 +20,14 @@ export default function useFetchProducts() {
         setProductComponent('loader');
 
         try {
-            const response = await getNextProducts(page, signal);
+            const response = queryParams.categoryId
+                ? await getProductsByCategory(
+                      page,
+                      queryParams.categoryId,
+                      signal,
+                      queryParams.typeId || ''
+                  )
+                : await getNextProducts(page, signal);
 
             setTotalProductsCount(response.meta.pagination.total);
             setProducts(response.data);

@@ -7,10 +7,33 @@ import useShopStore from './store/shop';
 
 export default function Shop() {
     const { getAndSetProducts } = useFetchProducts();
-    const currentPage = useShopStore((state) => state.currentPage);
+    const { currentPage } = useShopStore();
     const previousPage = useRef(currentPage);
 
+    /**
+     *  Find a way to solve category fetcjhing
+     *  and pagination not giving problems
+     */
+    // const queryParams = useParams();
+    // const isResettingPage = useRef(false);
+
+    // useEffect(() => {
+    //     if (!queryParams.categoryId) return;
+    //     console.log('rerendered useEffect0');
+    //     isResettingPage.current = true;
+    //     setCurrentPage(1);
+    //     previousPage.current.categories = 1;
+
+    //     const controller = new AbortController();
+    //     getAndSetProducts(controller.signal, 1).finally(() => {
+    //         isResettingPage.current = false;
+    //     });
+
+    //     return () => controller.abort();
+    // }, [queryParams.categoryId]);
+
     useEffect(() => {
+        // if (isResettingPage.current) return;
         if (previousPage.current > currentPage) return;
         previousPage.current = currentPage;
 
@@ -19,7 +42,7 @@ export default function Shop() {
         getAndSetProducts(controller.signal, currentPage);
 
         return () => controller.abort();
-    }, [getAndSetProducts, currentPage]);
+    }, [currentPage]);
 
     return (
         <Stack
