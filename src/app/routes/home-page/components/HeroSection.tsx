@@ -4,6 +4,8 @@ import SearchBar from 'src/features/search-bar/SearchBar';
 import Image from 'src/components/Image';
 import RightBlob from 'src/assets/images/svg/home/hero-blob-1.svg';
 import LeftBlob from 'src/assets/images/svg/home/hero-blob-2.svg';
+import { motion } from 'motion/react';
+import { heroBlobVariants } from 'src/animations/home-page/hero-variants';
 
 export default function HeroSection() {
     return (
@@ -23,6 +25,11 @@ export default function HeroSection() {
                     left: { xs: 0, sm: '2.083rem', md: '4.313rem' },
                     zIndex: '-1',
                 }}
+                animate={{
+                    variants: heroBlobVariants,
+                    initial: 'initialLeft',
+                    animate: 'animateLeft',
+                }}
             />
 
             <Stack gap={{ xs: '1rem', md: '0.703rem' }}>
@@ -36,6 +43,13 @@ export default function HeroSection() {
 
                         textAlign: 'center',
                     })}
+                    component={motion.h1}
+                    initial={{ translateY: 100, opacity: 0 }}
+                    animate={{
+                        translateY: 0,
+                        opacity: 1,
+                        transition: { duration: 0.5 },
+                    }}
                 >
                     Welcome to your online pc storage!
                 </Typography>
@@ -48,6 +62,13 @@ export default function HeroSection() {
                         textAlign: 'center',
                         fontSize: { md: '0.675rem' },
                     })}
+                    component={motion.h2}
+                    initial={{ translateY: 100, opacity: 0 }}
+                    animate={{
+                        translateY: 0,
+                        opacity: 1,
+                        transition: { duration: 0.75 },
+                    }}
                 >
                     Find everything you want, from desktop’s to small electronic
                     parts like transistor’s.
@@ -64,6 +85,11 @@ export default function HeroSection() {
                     top: { xs: '21.5rem', sm: '17.5rem', md: '5.469rem' },
                     right: { xs: '0.313rem', sm: '0.417rem', md: '6.688rem' },
                     zIndex: '-1',
+                }}
+                animate={{
+                    variants: heroBlobVariants,
+                    initial: 'initialRight',
+                    animate: 'animateRight',
                 }}
             />
         </Stack>

@@ -5,6 +5,7 @@ import {
     Stack,
     Typography,
 } from '@mui/joy';
+import { motion } from 'motion/react';
 import { useEffect } from 'react';
 import { BsSearch as SearchIcon } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
@@ -32,7 +33,17 @@ export default function SearchBar() {
     });
 
     return (
-        <FormControl id='home-search-bar' error={false}>
+        <FormControl
+            id='home-search-bar'
+            error={false}
+            component={motion.div}
+            initial={{ width: 0, opacity: 0 }}
+            animate={{
+                width: '100%',
+                opacity: 1,
+                transition: { delay: 0.75, duration: 0.5 },
+            }}
+        >
             <Autocomplete
                 loading={isLoading}
                 loadingText={
