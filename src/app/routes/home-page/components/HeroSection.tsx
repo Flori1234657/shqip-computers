@@ -5,7 +5,10 @@ import Image from 'src/components/Image';
 import RightBlob from 'src/assets/images/svg/home/hero-blob-1.svg';
 import LeftBlob from 'src/assets/images/svg/home/hero-blob-2.svg';
 import { motion } from 'motion/react';
-import { heroBlobVariants } from 'src/animations/home-page/hero-variants';
+import {
+    heroBlobVariants,
+    heroTextVariants,
+} from 'src/animations/home-page/hero-variants';
 
 export default function HeroSection() {
     return (
@@ -44,12 +47,9 @@ export default function HeroSection() {
                         textAlign: 'center',
                     })}
                     component={motion.h1}
-                    initial={{ translateY: 100, opacity: 0 }}
-                    animate={{
-                        translateY: 0,
-                        opacity: 1,
-                        transition: { duration: 0.5 },
-                    }}
+                    variants={heroTextVariants}
+                    initial='initial'
+                    animate='animate'
                 >
                     Welcome to your online pc storage!
                 </Typography>

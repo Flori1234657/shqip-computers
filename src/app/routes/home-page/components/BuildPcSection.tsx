@@ -4,6 +4,11 @@ import { FaArrowRight as RightArrIcon } from 'react-icons/fa6';
 import Image from 'src/components/Image';
 import Blob from 'src/assets/images/svg/home/build-pc-blob.svg';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { motion } from 'motion/react';
+import {
+    // heroBlobVariants,
+    heroTextVariants,
+} from 'src/animations/home-page/hero-variants';
 
 function BuildPcSection() {
     const { width } = useWindowDimensions();
@@ -27,6 +32,10 @@ function BuildPcSection() {
                     textAlign: 'center',
                     color: theme.palette.primary[800],
                 })}
+                component={motion.h2}
+                variants={heroTextVariants}
+                initial='initial'
+                whileInView='animate'
             >
                 Build your own pc 🛠️
             </Typography>

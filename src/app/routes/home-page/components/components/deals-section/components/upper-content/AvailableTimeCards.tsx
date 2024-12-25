@@ -1,5 +1,6 @@
 /* eslint-disable @stylistic/js/indent */
 import { Divider, Stack, Typography } from '@mui/joy';
+import { motion } from 'motion/react';
 import useRemainingTime from 'src/app/routes/home-page/hooks/useRemainingTime';
 
 // Here find a way to not rerender all the component
@@ -24,6 +25,17 @@ function AvailableTimeCards() {
                               backgroundColor: theme.palette.primary[100],
                               boxShadow: '0 4px 4px 0 rgba(0, 0, 0,0.25)',
                           })}
+                          component={motion.div}
+                          initial={{ transformOrigin: 'top', rotateX: 90 }}
+                          whileInView={{
+                              rotateX: 0,
+                              transition: {
+                                  delay: 0.8,
+                                  duration: 0.75,
+                                  type: 'spring',
+                                  damping: 5,
+                              },
+                          }}
                       >
                           <Typography
                               fontSize={{ xs: 'md', md: '0.675rem' }}

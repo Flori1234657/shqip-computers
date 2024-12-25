@@ -5,6 +5,7 @@
  */
 
 import { Stack, Typography } from '@mui/joy';
+import { motion } from 'motion/react';
 import useDealStore from 'src/app/routes/home-page/store/deal';
 
 function HeadingText() {
@@ -21,6 +22,13 @@ function HeadingText() {
                 level='title-sm' //\W?\d+?\W/g
                 fontSize={{ md: '1.4rem' }}
                 maxWidth={{ md: '9.938rem' }}
+                component={motion.h2}
+                initial={{ translateY: '-75%', opacity: 0 }}
+                whileInView={{
+                    translateY: 0,
+                    opacity: 1,
+                    transition: { duration: 0.75 },
+                }}
             >
                 <span dangerouslySetInnerHTML={{ __html: title }}></span>
             </Typography>
@@ -33,6 +41,17 @@ function HeadingText() {
                     alignSelf: { xs: 'flex-end', md: 'unset' },
                     color: theme.palette.danger[700],
                 })}
+                component={motion.h3}
+                initial={{ scale: 0 }}
+                whileInView={{
+                    scale: 1,
+                    transition: {
+                        delay: 0.75,
+                        duration: 0.5,
+                        type: 'spring',
+                        bounce: 0.5,
+                    },
+                }}
             >
                 Offer end's in:
             </Typography>

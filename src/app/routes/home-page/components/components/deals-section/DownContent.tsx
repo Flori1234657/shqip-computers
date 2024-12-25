@@ -5,6 +5,7 @@ import useDealStore from '../../../store/deal';
 import useGetDeal from '../../../hooks/useGetDeal';
 import useSelectProductStore from '../../../store/select';
 import { useEffect } from 'react';
+import { motion } from 'motion/react';
 
 function DownContent() {
     const offerProducts = useDealStore((state) => state.dealProducts?.data);
@@ -31,6 +32,18 @@ function DownContent() {
             direction='row'
             alignItems='center'
             justifyContent='space-between'
+            component={motion.div}
+            initial={{ width: 0, overflow: 'hidden' }}
+            whileInView={{
+                width: '100%',
+                overflow: 'visible',
+                transition: {
+                    duration: 0.5,
+                    type: 'spring',
+                    damping: 10,
+                    stiffness: 100,
+                },
+            }}
         >
             {offerProducts ? (
                 <Carousel
