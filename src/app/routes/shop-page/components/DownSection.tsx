@@ -3,6 +3,7 @@ import RightContent from './components/down-section/RightContent';
 import useFilterStore from 'src/features/filter/stores/filter';
 import { lazy, Suspense } from 'react';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { AnimatePresence } from 'motion/react';
 
 const Filter = lazy(() => import('src/features/filter/Filter'));
 
@@ -17,15 +18,17 @@ export default function DownSection() {
             justifyContent={{ md: 'space-between' }}
             gap={{ md: '0.615rem' }}
         >
-            {showFilter ? (
-                <Suspense fallback=''>
+            <AnimatePresence>
+                {showFilter ? (
+                    <Suspense fallback=''>
+                        <Filter />
+                    </Suspense>
+                ) : width > 899 ? (
                     <Filter />
-                </Suspense>
-            ) : width > 899 ? (
-                <Filter />
-            ) : (
-                ''
-            )}
+                ) : (
+                    ''
+                )}
+            </AnimatePresence>
             <RightContent />
         </Stack>
     );

@@ -1,13 +1,12 @@
 import { List, ListItem, Stack, Typography } from '@mui/joy';
-// import { useParams } from 'react-router-dom';
+import { motion } from 'motion/react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { availableCategory } from 'src/app/routes/category/availableCategories';
 import Image from 'src/components/Image';
 
 export default function Cards({ category }: { category: availableCategory }) {
-    // const { categoryId } = useParams();
-    // const selectedCategory = availableCategories.filter(
-    //     (category) => category.id === categoryId
-    // ); // change styles for the selected category card
+    const { categoryId } = useParams();
+    const navigate = useNavigate();
 
     return (
         <Stack
@@ -18,7 +17,10 @@ export default function Cards({ category }: { category: availableCategory }) {
                 borderRadius: { xs: '0.75rem', md: '0.5rem' },
                 // toggle the box shadow basede on selected and the position on md size
                 boxShadow: {
-                    xs: theme.shadow.categoryCardSelected,
+                    xs:
+                        categoryId === category.title.toLowerCase()
+                            ? theme.shadow.categoryCardSelected
+                            : 'none',
                     md: 'none',
                 },
                 '::before': {
@@ -27,13 +29,22 @@ export default function Cards({ category }: { category: availableCategory }) {
                     width: '6.509rem',
                     height: '7.383rem',
                     bgcolor: 'transparent',
-                    boxShadow: theme.shadow.categoryCardSelected,
+                    boxShadow:
+                        categoryId === category.title.toLowerCase()
+                            ? theme.shadow.categoryCardSelected
+                            : 'none',
                     borderRadius: '0.5rem',
 
                     position: 'absolute',
                     zIndex: 1,
                 },
             })}
+            onClick={() =>
+                navigate(`/shop/categories/${category.title.toLowerCase()}`)
+            }
+            component={motion.div}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, transition: { duration: 0.5 } }}
         >
             <Image
                 ratio='2.03/1'

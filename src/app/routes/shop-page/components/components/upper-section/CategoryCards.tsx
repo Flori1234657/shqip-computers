@@ -2,6 +2,8 @@ import { Stack } from '@mui/joy';
 import Cards from './components/category-cards/Cards';
 import Carousel from 'src/components/carousel/Carousel';
 import availableCategories from 'src/app/routes/category/availableCategories';
+import { cardsCarouselVariants } from 'src/animations/shared';
+import { motion } from 'motion/react';
 
 export default function CategoryCards() {
     return (
@@ -10,6 +12,10 @@ export default function CategoryCards() {
             alignItems='center'
             position='relative'
             overflow='visible'
+            component={motion.div}
+            variants={cardsCarouselVariants}
+            initial='initial'
+            whileInView='whileInView'
         >
             <Carousel
                 elements={availableCategories.map((category) => (

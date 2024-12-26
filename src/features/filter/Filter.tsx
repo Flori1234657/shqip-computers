@@ -1,6 +1,7 @@
 import { Stack } from '@mui/joy';
 import UpperSection from './components/UpperSection';
 import CategoriesOptions from './components/CategoryOptions';
+import { motion } from 'motion/react';
 
 export default function Filter() {
     return (
@@ -20,6 +21,10 @@ export default function Filter() {
                 bgcolor: { xs: theme.palette.primary[100], md: 'transparent' },
                 borderRight: { md: `1px solid ${theme.palette.neutral[500]}` },
             })}
+            component={motion.div}
+            initial={{ translateY: '100%' }}
+            whileInView={{ translateY: 0, transition: { duration: 0.5 } }}
+            exit={{ translateX: '100%', transition: { duration: 0.25 } }}
         >
             <UpperSection />
             <CategoriesOptions />
