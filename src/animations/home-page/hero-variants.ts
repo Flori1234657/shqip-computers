@@ -24,10 +24,16 @@ export const heroBlobVariants = {
 };
 
 export const heroTextVariants = {
-    initial: { translateY: 100, opacity: 0 },
-    animate: {
+    initialHeading: { translateY: 100, opacity: 0 },
+    animateHeading: {
         translateY: 0,
         opacity: 1,
         transition: { duration: 0.5 },
+    },
+    initialSubHeading: { translateY: 100, opacity: 0 },
+    animateSubHeading: {
+        translateY: 0,
+        opacity: 1,
+        transition: { duration: 0.75 },
     },
 };

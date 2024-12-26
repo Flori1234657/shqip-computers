@@ -1,5 +1,7 @@
 import { Link, List, ListItem, Stack, Typography } from '@mui/joy';
+import { motion } from 'motion/react';
 import { Link as RouterLink } from 'react-router-dom';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 
 function HomeNavigation() {
     const homeLinks = [
@@ -33,6 +35,10 @@ function HomeNavigation() {
                 fontSize={{ xs: 'lg', md: '0.809rem' }}
                 lineHeight='1.6'
                 sx={(theme) => ({ color: theme.palette.neutral[800] })}
+                component={motion.h3}
+                variants={heroTextVariants}
+                initial='initialHeading'
+                whileInView='animateHeading'
             >
                 Home navigation
             </Typography>
@@ -53,6 +59,10 @@ function HomeNavigation() {
                                     color: theme.palette.neutral[700],
                                     maxWidth: '12.375rem',
                                 })}
+                                component={motion.h4}
+                                variants={heroTextVariants}
+                                initial='initialSubHeading'
+                                whileInView='animateSubHeading'
                             >
                                 {link.text}
                             </Typography>{' '}

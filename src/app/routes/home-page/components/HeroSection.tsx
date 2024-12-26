@@ -48,8 +48,8 @@ export default function HeroSection() {
                     })}
                     component={motion.h1}
                     variants={heroTextVariants}
-                    initial='initial'
-                    animate='animate'
+                    initial='initialHeading'
+                    animate='animateHeading'
                 >
                     Welcome to your online pc storage!
                 </Typography>
@@ -63,12 +63,9 @@ export default function HeroSection() {
                         fontSize: { md: '0.675rem' },
                     })}
                     component={motion.h2}
-                    initial={{ translateY: 100, opacity: 0 }}
-                    animate={{
-                        translateY: 0,
-                        opacity: 1,
-                        transition: { duration: 0.75 },
-                    }}
+                    variants={heroTextVariants}
+                    initial='initialSubHeading'
+                    animate='animateSubHeading'
                 >
                     Find everything you want, from desktop’s to small electronic
                     parts like transistor’s.

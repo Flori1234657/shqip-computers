@@ -1,4 +1,6 @@
 import { Stack, Typography } from '@mui/joy';
+import { motion } from 'motion/react';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 import LogoCollection from 'src/assets/images/svg/home/brands-image.png';
 import Image from 'src/components/Image';
 
@@ -18,6 +20,10 @@ function BrandsSection() {
                     textAlign: 'center',
                     color: theme.palette.primary[800],
                 })}
+                component={motion.h2}
+                variants={heroTextVariants}
+                initial='initialHeading'
+                whileInView='animateHeading'
             >
                 Brand’s you can find here 🔎
             </Typography>
@@ -27,6 +33,7 @@ function BrandsSection() {
                 src={LogoCollection}
                 width={{ xs: '17rem', md: '14.619rem' }}
                 alt='logo collection'
+                objectFit='contain'
             />
         </Stack>
     );

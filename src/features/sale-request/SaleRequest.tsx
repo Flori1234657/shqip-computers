@@ -6,6 +6,7 @@ import Inputs from './components/Inputs';
 import TextArea from './components/TextArea';
 import Buttons from './components/Buttons';
 import useDisplayAlert from '../alert-feedback/hooks/useDisplayAlert';
+import { motion } from 'motion/react';
 
 export default function SaleRequest() {
     const { alertUser } = useDisplayAlert();
@@ -51,6 +52,12 @@ export default function SaleRequest() {
                                     md: '0.469rem',
                                 },
                             })}
+                            component={motion.div}
+                            initial={{ translateY: 50 }}
+                            whileInView={{
+                                translateY: 0,
+                                transition: { duration: 0.8 },
+                            }}
                         >
                             <Grid
                                 container

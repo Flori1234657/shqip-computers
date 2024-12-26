@@ -1,4 +1,5 @@
 import { Stack, Typography } from '@mui/joy';
+import { motion } from 'motion/react';
 import PlaceholderImg from 'src/assets/images/review-placeholder.png';
 import Image from 'src/components/Image';
 
@@ -43,6 +44,12 @@ function TestimonialCards() {
                         boxShadow: '0 1.86px 2.78px 1.39px rgba(0,0,0,0.25)',
                         alignSelf: index == 1 ? 'flex-end' : 'unset',
                     })}
+                    component={motion.div}
+                    initial={{ scale: 0 }}
+                    whileInView={{
+                        scale: 1,
+                        transition: { duration: 0.5 },
+                    }}
                 >
                     <Stack
                         alignItems='center'

@@ -6,6 +6,8 @@ import {
     PiFacebookLogoBold as FbIcon,
 } from 'react-icons/pi';
 import theme from 'src/config/theme';
+import { motion } from 'motion/react';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 
 function SocialNetworks() {
     const networks = [
@@ -37,6 +39,10 @@ function SocialNetworks() {
                 fontSize={{ xs: 'lg', md: '0.809rem' }}
                 lineHeight='1.6'
                 sx={(theme) => ({ color: theme.palette.neutral[800] })}
+                component={motion.h3}
+                variants={heroTextVariants}
+                initial='initialHeading'
+                whileInView='animateHeading'
             >
                 Social network's
             </Typography>
@@ -61,6 +67,10 @@ function SocialNetworks() {
                                     },
                                 }}
                                 startDecorator={network.icon}
+                                component={motion.h4}
+                                variants={heroTextVariants}
+                                initial='initialSubHeading'
+                                whileInView='animateSubHeading'
                             >
                                 {network.text}
                             </Typography>

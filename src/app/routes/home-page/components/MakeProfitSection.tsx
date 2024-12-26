@@ -3,6 +3,8 @@ import Image from 'src/components/Image';
 import SaleRequest from 'src/features/sale-request/SaleRequest';
 
 import Blob from 'src/assets/images/svg/home/make-profit-blob.svg';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
+import { motion } from 'motion/react';
 
 function MakeProfitSection() {
     return (
@@ -38,6 +40,10 @@ function MakeProfitSection() {
                     textAlign: 'center',
                     color: theme.palette.primary[800],
                 })}
+                component={motion.h2}
+                variants={heroTextVariants}
+                initial='initialHeading'
+                whileInView='animateHeading'
             >
                 Make profit from your pc 💸
             </Typography>
@@ -56,6 +62,10 @@ function MakeProfitSection() {
                         order: { md: '2' },
                         color: theme.palette.neutral[800],
                     })}
+                    component={motion.p}
+                    variants={heroTextVariants}
+                    initial='initialSubHeading'
+                    whileInView='animateSubHeading'
                 >
                     Do you have an old pc that you don’t use anymore? <br /> We
                     can buy it! Fill the form with the necessary information and

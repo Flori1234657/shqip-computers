@@ -5,10 +5,7 @@ import Image from 'src/components/Image';
 import Blob from 'src/assets/images/svg/home/build-pc-blob.svg';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 import { motion } from 'motion/react';
-import {
-    // heroBlobVariants,
-    heroTextVariants,
-} from 'src/animations/home-page/hero-variants';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 
 function BuildPcSection() {
     const { width } = useWindowDimensions();
@@ -34,8 +31,8 @@ function BuildPcSection() {
                 })}
                 component={motion.h2}
                 variants={heroTextVariants}
-                initial='initial'
-                whileInView='animate'
+                initial='initialHeading'
+                whileInView='animateHeading'
             >
                 Build your own pc 🛠️
             </Typography>
@@ -59,6 +56,13 @@ function BuildPcSection() {
                         zIndex: -1,
                         left: { xs: '-9.1rem', sm: '-5rem' },
                     }}
+                    animate={{
+                        initial: { opacity: 0 },
+                        whileInView: {
+                            opacity: 1,
+                            transition: { duration: 1 },
+                        },
+                    }}
                 />
 
                 <Stack
@@ -74,6 +78,10 @@ function BuildPcSection() {
                             textAlign: { xs: 'center', sm: 'left' },
                             color: theme.palette.neutral[800],
                         })}
+                        component={motion.p}
+                        variants={heroTextVariants}
+                        initial='initialSubHeading'
+                        whileInView='animateSubHeading'
                     >
                         By simply selecting all the necessary components in our
                         site you can build your own pc from scratch! <br />
@@ -85,6 +93,12 @@ function BuildPcSection() {
                         size={width < 900 ? 'md' : 'md2'}
                         sx={{ width: { md: 'fit-content' } }}
                         endDecorator={<RightArrIcon />}
+                        component={motion.button}
+                        initial={{ rotateX: 360 }}
+                        whileInView={{
+                            rotateX: 0,
+                            transition: { duration: 0.5 },
+                        }}
                     >
                         Go To The Store
                     </Button>

@@ -4,6 +4,8 @@ import { PiPhone as PhoneIcon, PiEnvelope as MailIcon } from 'react-icons/pi';
 import { SlLocationPin as LocationIcon } from 'react-icons/sl';
 import theme from 'src/config/theme';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { motion } from 'motion/react';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 
 function ContactUs() {
     const { width } = useWindowDimensions();
@@ -37,6 +39,10 @@ function ContactUs() {
                 fontSize={{ xs: 'lg', md: '0.809rem' }}
                 lineHeight='1.6'
                 sx={(theme) => ({ color: theme.palette.neutral[800] })}
+                component={motion.h3}
+                variants={heroTextVariants}
+                initial='initialHeading'
+                whileInView='animateHeading'
             >
                 Contact us
             </Typography>
@@ -66,6 +72,10 @@ function ContactUs() {
                                     },
                                 }}
                                 startDecorator={contact.icon}
+                                component={motion.h4}
+                                variants={heroTextVariants}
+                                initial='initialSubHeading'
+                                whileInView='animateSubHeading'
                             >
                                 {contact.text}
                             </Typography>
@@ -80,6 +90,10 @@ function ContactUs() {
                     mt: { xs: '0.25rem', md: 0 },
                     width: 'fit-content',
                 }}
+                component={motion.button}
+                variants={heroTextVariants}
+                initial='initialSubHeading'
+                whileInView='animateSubHeading'
             >
                 Contact Form
             </Button>

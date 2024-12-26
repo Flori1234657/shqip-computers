@@ -2,6 +2,8 @@ import { Stack, Typography } from '@mui/joy';
 import TestimonialCards from './components/testimonials-section/TestimonialCards';
 import Image from 'src/components/Image';
 import Blob from 'src/assets/images/svg/home/testimonials-blob.svg';
+import { motion } from 'motion/react';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 
 function TestimonialsSection() {
     return (
@@ -19,6 +21,10 @@ function TestimonialsSection() {
                     textAlign: 'center',
                     color: theme.palette.primary[800],
                 })}
+                component={motion.h2}
+                variants={heroTextVariants}
+                initial='initialHeading'
+                whileInView='animateHeading'
             >
                 What other’s say about us 💬
             </Typography>
