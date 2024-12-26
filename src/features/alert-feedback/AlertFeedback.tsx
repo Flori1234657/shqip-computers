@@ -10,6 +10,8 @@ import { MdClose as CloseIcpm } from 'react-icons/md';
 import useAlertStore from './store/alert';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 import useRenderStore from 'src/stores/render';
+import { motion } from 'motion/react';
+import { alertFeedbackVariants } from 'src/animations/shared';
 
 export default function AlertFeedback() {
     const { type, description } = useAlertStore();
@@ -49,6 +51,11 @@ export default function AlertFeedback() {
                             <CloseIcpm />
                         </IconButton>
                     }
+                    component={motion.div}
+                    variants={alertFeedbackVariants}
+                    initial='initial'
+                    animate='animate'
+                    exit='exit'
                 >
                     <Stack gap={{ xs: '0.25rem', md: '0.118rem' }}>
                         <Typography

@@ -13,6 +13,8 @@ export default function useGetDeal() {
     const showAlert = useRenderStore(
         (state) => state.toggleIsSimpleAlertFeedbackVisible
     );
+    // find a better way
+    let dontSetAlert = false;
 
     const requestDeal = async (signal: AbortSignal) => {
         if (!useDeal.deal || hasDealExpired(useDeal.deal.expireDate)) {
@@ -21,10 +23,11 @@ export default function useGetDeal() {
 
                 useDeal.setDeal(dealData);
             } catch (error) {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                //@ts-ignore
-                fillAlert('danger', error.message);
-                showAlert();
+                if (!dontSetAlert) {
+                    fillAlert('danger', error.message);
+                    showAlert();
+                    dontSetAlert = true;
+                }
             }
         }
     };
@@ -43,10 +46,11 @@ export default function useGetDeal() {
                 useDeal.setDealProducts(dealProducts.data, dealProducts.meta);
                 setProducts(dealProducts.data);
             } catch (error) {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                //@ts-ignore
-                fillAlert('danger', error.message);
-                showAlert();
+                if (!dontSetAlert) {
+                    fillAlert('danger', error.message);
+                    showAlert();
+                    dontSetAlert = true;
+                }
             }
     };
 

@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'motion/react';
 import { lazy, Suspense } from 'react';
 import useRenderStore from 'src/stores/render';
 
@@ -20,9 +21,11 @@ export default function DynamicImports() {
 
     return (
         <Suspense fallback=''>
-            {isShoppingCartVisible ? <ShoppingCart /> : ''}
-            {isAlertFeedbackVisible ? <AlertFeedback /> : ''}
-            {isSimpleAlertFeedbackVisible ? <SimpleAlertFeedback /> : ''}
+            <AnimatePresence>
+                {isShoppingCartVisible ? <ShoppingCart /> : ''}
+                {isAlertFeedbackVisible ? <AlertFeedback /> : ''}
+                {isSimpleAlertFeedbackVisible ? <SimpleAlertFeedback /> : ''}
+            </AnimatePresence>
         </Suspense>
     );
 }

@@ -2,6 +2,7 @@ import { Stack } from '@mui/joy';
 import UpperContent from './components/UpperContent';
 import { lazy, Suspense } from 'react';
 import useCartStore from './stores/shoppingCart';
+import { motion } from 'motion/react';
 
 const EmptyCartConfirmationModal = lazy(
     () => import('./components/EmptyCartConfirmationModal')
@@ -11,7 +12,6 @@ const Buttons = lazy(() => import('./components/Buttons'));
 const NoItemImage = lazy(() => import('./components/NoItemImage'));
 
 export default function ShoppingCart() {
-    // Supposing we have the zustand store
     const cartItems = useCartStore((state) => state.cartItems);
 
     return (
@@ -29,6 +29,10 @@ export default function ShoppingCart() {
 
                 bgcolor: theme.palette.primary[100],
             })}
+            component={motion.div}
+            initial={{ translateX: '100%' }}
+            animate={{ translateX: 0, transition: { duration: 0.5 } }}
+            exit={{ translateX: '100%', transition: { duration: 0.5 } }}
         >
             <UpperContent />
             <Suspense fallback='Loading'>

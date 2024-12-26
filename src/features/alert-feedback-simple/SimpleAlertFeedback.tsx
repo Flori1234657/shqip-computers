@@ -2,6 +2,8 @@ import { Alert, Typography } from '@mui/joy';
 import useSimpleAlertStore from './store/simpleAlert';
 import { useEffect } from 'react';
 import useRenderStore from 'src/stores/render';
+import { motion } from 'motion/react';
+import { alertFeedbackVariants } from 'src/animations/shared';
 
 export default function SimpleAlertFeedback() {
     const { data } = useSimpleAlertStore();
@@ -10,8 +12,9 @@ export default function SimpleAlertFeedback() {
     );
 
     useEffect(() => {
-        setTimeout(removeAlert, 3000);
-    });
+        const timer = setTimeout(removeAlert, 3000);
+        return () => clearTimeout(timer);
+    }, [removeAlert]);
 
     return (
         <Alert
@@ -29,6 +32,11 @@ export default function SimpleAlertFeedback() {
                 borderRadius: { xs: '0.75rem', md: '0.469rem' },
                 boxShadow: theme.shadow.boxShadow69,
             })}
+            component={motion.div}
+            variants={alertFeedbackVariants}
+            initial='initial'
+            animate='animate'
+            exit='exit'
         >
             <Typography fontSize={{ md: '0.563rem' }}>
                 {data ? data.description : 'No description is provided'}
