@@ -9,6 +9,8 @@ import OtherWays from './components/OtherWays';
 import Image from 'src/components/Image';
 import MessageIllustration from 'src/assets/images/svg/contact-us/conversation.svg';
 import EnvelopeIllustration from 'src/assets/images/svg/contact-us/envelope.svg';
+import { motion } from 'motion/react';
+import { formSvgVariants } from 'src/animations/contact-us-page/variants';
 
 export default function ContactUs() {
     const initialValues = {
@@ -50,6 +52,12 @@ export default function ContactUs() {
                                     md: '0.469rem',
                                 },
                             })}
+                            component={motion.div}
+                            initial={{ translateY: 75 }}
+                            animate={{
+                                translateY: 0,
+                                transition: { duration: 0.75 },
+                            }}
                         >
                             <Image
                                 ratio=' 1.18/1'
@@ -63,6 +71,11 @@ export default function ContactUs() {
                                     zIndex: -1,
                                 }}
                                 alt='Illustartion'
+                                animate={{
+                                    variants: formSvgVariants,
+                                    initial: 'initial',
+                                    animate: 'animate',
+                                }}
                             />
 
                             <Typography
@@ -100,6 +113,11 @@ export default function ContactUs() {
                                     zIndex: -1,
                                 }}
                                 alt='Illustartion'
+                                animate={{
+                                    variants: formSvgVariants,
+                                    initial: 'initial',
+                                    animate: 'animate',
+                                }}
                             />
                         </Stack>
                     </form>

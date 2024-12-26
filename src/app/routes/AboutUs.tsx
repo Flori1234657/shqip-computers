@@ -1,6 +1,8 @@
 import { Stack, Typography } from '@mui/joy';
 import Image from 'src/components/Image';
 import Blob from 'src/assets/images/svg/about-us/blob.svg';
+import { motion } from 'motion/react';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 
 export default function AboutUs() {
     return (
@@ -17,6 +19,10 @@ export default function AboutUs() {
                 level='title-md'
                 fontSize={{ xs: '1.2rem', md: '1.166rem' }}
                 sx={(theme) => ({ color: theme.palette.primary[900] })}
+                component={motion.h2}
+                variants={heroTextVariants}
+                initial='initialHeading'
+                animate='animateHeading'
             >
                 About our company
             </Typography>
@@ -36,6 +42,10 @@ export default function AboutUs() {
                 level='body-md'
                 fontSize={{ md: '0.675rem' }}
                 sx={(theme) => ({ color: theme.palette.neutral[700] })}
+                component={motion.p}
+                variants={heroTextVariants}
+                initial='initialSubHeading'
+                animate='animateSubHeading'
             >
                 Lorem ipsum dolor sit amet consectetur. Leo volutpat interdum
                 massa nunc. Morbi massa sit tellus velit eget tempus faucibus
