@@ -1,4 +1,5 @@
 import { Grid, Stack } from '@mui/joy';
+import { motion } from 'motion/react';
 import { useMemo } from 'react';
 import useShopStore from 'src/app/routes/shop-page/store/shop';
 import Pagination from 'src/components/Pagination';
@@ -26,7 +27,16 @@ export default function Products() {
                 sx={{ justifyContent: { xs: 'center', md: 'space-between' } }}
             >
                 {currentProductsData.map((product) => (
-                    <Grid key={product.id} sx={{ width: 'fit-content' }}>
+                    <Grid
+                        key={product.id}
+                        sx={{ width: 'fit-content' }}
+                        component={motion.div}
+                        initial={{ opacity: 0 }}
+                        whileInView={{
+                            opacity: 1,
+                            transition: { duration: 0.5 },
+                        }}
+                    >
                         <ProductCard data={product} />
                     </Grid>
                 ))}

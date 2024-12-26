@@ -1,4 +1,6 @@
 import { Typography } from '@mui/joy';
+import { motion } from 'motion/react';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 
 export default function NoProductsAvailable({ text }: { text?: string }) {
     return (
@@ -13,6 +15,10 @@ export default function NoProductsAvailable({ text }: { text?: string }) {
                 pt: { xs: '3rem' },
                 maxWidth: { md: '20.813rem' },
             })}
+            component={motion.p}
+            variants={heroTextVariants}
+            initial='initialHeading'
+            animate='animateHeading'
         >
             {text ?? 'For the moment there are no available products 📦'}
         </Typography>
