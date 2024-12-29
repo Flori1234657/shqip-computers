@@ -1,31 +1,9 @@
 import { Stack } from '@mui/joy';
-import Placeholder from 'src/assets/images/placeholder.png';
 import ProductItem from './components/product-cards-map/ProductItem';
+import useCartStore from 'src/features/shopping-cart/stores/shoppingCart';
 
 export default function ProductItemsMap() {
-    const fakeData = [
-        {
-            id: '1283n8dcc19028j0',
-            name: 'Fujitsu Esprimo p700',
-            image: Placeholder,
-            price: '123.00',
-            quantity: 1,
-        },
-        {
-            id: '387db8dbsa809jn2',
-            name: 'Lenovo Thinkbook g13th',
-            image: Placeholder,
-            price: '320.00',
-            quantity: 1,
-        },
-        {
-            id: '.z/x.p2-cin901-jax1',
-            name: 'Wired mouse M3',
-            image: Placeholder,
-            price: '25.00',
-            quantity: 3,
-        },
-    ];
+    const { cartItems } = useCartStore();
 
     return (
         <Stack
@@ -35,9 +13,9 @@ export default function ProductItemsMap() {
                 overflowY: 'scroll',
             }}
         >
-            {fakeData.map((product) => (
+            {cartItems!.map((product) => (
                 <Stack
-                    key={`my-bag-product-item${product.id}`}
+                    key={`my-bag-product-item${product.item.id}`}
                     sx={(theme) => ({
                         flexDirection: { md: 'row' },
                         p: { xs: '0.5rem', md: '0.234rem' },
@@ -55,12 +33,8 @@ export default function ProductItemsMap() {
                         },
                     })}
                 >
-                    <ProductItem
-                        image={product.image}
-                        price={product.price}
-                        quantity={product.quantity}
-                        title={product.name}
-                    />
+                    <ProductItem {...product} />{' '}
+                    {/** find a way to pass only the data that is needed */}
                 </Stack>
             ))}
         </Stack>

@@ -1,8 +1,10 @@
 import { Stack } from '@mui/joy';
 import UpperContent from './components/UpperContent';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import useCartStore from './stores/shoppingCart';
 import { motion } from 'motion/react';
+import { useLocation } from 'react-router-dom';
+import useRenderStore from 'src/stores/render';
 
 const EmptyCartConfirmationModal = lazy(
     () => import('./components/EmptyCartConfirmationModal')
@@ -13,6 +15,14 @@ const NoItemImage = lazy(() => import('./components/NoItemImage'));
 
 export default function ShoppingCart() {
     const cartItems = useCartStore((state) => state.cartItems);
+
+    // be careful this code maybe is throwing the error
+    const { pathname } = useLocation();
+    const { toggleIsShoppingCartVisible } = useRenderStore();
+
+    useEffect(() => {
+        if (pathname === '/cart') toggleIsShoppingCartVisible();
+    }, [pathname, toggleIsShoppingCartVisible]);
 
     return (
         <Stack

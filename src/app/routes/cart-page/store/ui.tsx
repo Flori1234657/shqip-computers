@@ -4,13 +4,15 @@ import { devtools } from 'zustand/middleware';
 interface UiState {
     showDeleteItemConfiramtionModal: {
         modal: boolean | 'dont-show-again';
-        itemToDelete?: string;
+        itemToDeleteName?: string;
+        itemToDeleteId?: string;
     };
     showDiscountModal: boolean;
     showShippingAddressModal: boolean;
     toggleShowDeleteItemConfiramtionModal: (
         value: boolean | 'dont-show-again',
-        itemToDelete: string
+        itemToDeleteName?: string,
+        itemToDeleteId?: string
     ) => void;
     toggleShowDiscountModal: () => void;
     toggleShippingAddressModal: () => void;
@@ -21,9 +23,17 @@ const useUiStore = create<UiState>()(
         showDeleteItemConfiramtionModal: { modal: false },
         showDiscountModal: false,
         showShippingAddressModal: false,
-        toggleShowDeleteItemConfiramtionModal: (value, itemToDelete) =>
+        toggleShowDeleteItemConfiramtionModal: (
+            value,
+            itemToDeleteName,
+            itemToDeleteId
+        ) =>
             set(() => ({
-                showDeleteItemConfiramtionModal: { modal: value, itemToDelete },
+                showDeleteItemConfiramtionModal: {
+                    modal: value,
+                    itemToDeleteName,
+                    itemToDeleteId,
+                },
             })),
         toggleShowDiscountModal: () =>
             set((state) => ({ showDiscountModal: !state.showDiscountModal })),

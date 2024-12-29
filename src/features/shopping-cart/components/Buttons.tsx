@@ -5,12 +5,14 @@ import {
 } from 'react-icons/md';
 import useCartStore from '../stores/shoppingCart';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { useNavigate } from 'react-router-dom';
 
 function Buttons() {
     const { width } = useWindowDimensions();
     // to disable this function for working do it reading the value of confiramtion modal in the sesssion
     const { toggleShowEmptyCartMessage, showEmptyCartMessage, emptyTheCart } =
         useCartStore();
+    const navigate = useNavigate();
 
     return (
         <Stack
@@ -20,6 +22,7 @@ function Buttons() {
             <Button
                 endDecorator={<CartIcon />}
                 size={width < 900 ? 'md' : 'md2'}
+                onClick={() => navigate('/cart')}
             >
                 View Cart
             </Button>

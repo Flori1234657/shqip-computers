@@ -1,13 +1,17 @@
 import { IconButton, Stack, Typography } from '@mui/joy';
 import { FaPlus as PlusIcon, FaMinus as MinusIcon } from 'react-icons/fa6';
+import useCartStore from 'src/features/shopping-cart/stores/shoppingCart';
+import { CartItem } from 'src/features/shopping-cart/types/store';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 interface Props {
     quantity: number;
+    cartItem: CartItem;
 }
 
-export default function QuantityButtons({ quantity }: Props) {
+export default function QuantityButtons({ quantity, cartItem }: Props) {
     const { width } = useWindowDimensions();
+    const { decrementCartItems, setCartItems } = useCartStore();
 
     return (
         <Stack
@@ -20,6 +24,7 @@ export default function QuantityButtons({ quantity }: Props) {
                 variant='solid'
                 color='primary'
                 size={width < 900 ? 'xs2' : 'xs4'}
+                onClick={() => decrementCartItems(cartItem.item.documentId)}
             >
                 <MinusIcon />
             </IconButton>
@@ -37,6 +42,7 @@ export default function QuantityButtons({ quantity }: Props) {
                 variant='solid'
                 color='primary'
                 size={width < 900 ? 'xs2' : 'xs4'}
+                onClick={() => setCartItems(cartItem.item)}
             >
                 <PlusIcon />
             </IconButton>

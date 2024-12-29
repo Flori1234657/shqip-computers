@@ -6,7 +6,7 @@ import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 interface Props {
     image: string;
     title: string;
-    price: string;
+    price: number;
 }
 
 export default function ProductDescription({ image, title, price }: Props) {
@@ -50,7 +50,7 @@ export default function ProductDescription({ image, title, price }: Props) {
                             color: theme.palette.neutral[500],
                         })}
                     >
-                        ${price}
+                        ${price.toFixed(2)}
                     </Typography>
                 ) : (
                     ''

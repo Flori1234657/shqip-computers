@@ -14,8 +14,10 @@ const useCartStore = create<CartState>()(
                     set(() => ({ showEmptyCartMessage: value })),
                 setCartItems: (item) =>
                     set((state) => addCartItem(state, item)),
-                decrementCartItems: (id) =>
-                    set((state) => decrementCartItem(state, id)),
+                decrementCartItems: (id, removeFromTheList) =>
+                    set((state) =>
+                        decrementCartItem(state, id, removeFromTheList)
+                    ),
                 emptyTheCart: () => set(() => ({ cartItems: null })),
             }),
             { name: 'shopping-cart' }

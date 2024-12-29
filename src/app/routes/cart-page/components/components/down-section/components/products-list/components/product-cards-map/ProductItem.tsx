@@ -2,18 +2,16 @@ import { Stack, Typography } from '@mui/joy';
 import QuantityButtons from './components/QuantityButtons';
 import DeleteButton from './components/DeleteButton';
 import ProductDescription from './components/ProductDescription';
+import { CartItem } from 'src/features/shopping-cart/types/store';
 
-interface Props {
-    image: string;
-    title: string;
-    price: string;
-    quantity: number;
-}
-
-export default function ProductItem({ image, title, price, quantity }: Props) {
+export default function ProductItem({ item, quantity }: CartItem) {
     return (
         <>
-            <ProductDescription image={image} title={title} price={price} />
+            <ProductDescription
+                image={`${import.meta.env.VITE_REACT_APP_BACKEND}${item.images[0].url}`}
+                title={item.name}
+                price={item.defaultPrice}
+            />
             <Stack
                 direction='row'
                 justifyContent='space-between'
@@ -27,7 +25,10 @@ export default function ProductItem({ image, title, price, quantity }: Props) {
                     width={{ md: '8.868rem' }}
                     gap={{ xs: '0.5rem', md: 'unset' }}
                 >
-                    <QuantityButtons quantity={quantity} />
+                    <QuantityButtons
+                        quantity={quantity}
+                        cartItem={{ item, quantity }}
+                    />
                     <Typography
                         fontWeight='600'
                         lineHeight='1.2'
@@ -36,10 +37,10 @@ export default function ProductItem({ image, title, price, quantity }: Props) {
                             color: theme.palette.primary[900],
                         })}
                     >
-                        ${(quantity * Number(price)).toFixed(2)}
+                        ${(quantity * item.defaultPrice).toFixed(2)}
                     </Typography>
                 </Stack>
-                <DeleteButton />
+                <DeleteButton id={item.documentId} />
             </Stack>
         </>
     );
