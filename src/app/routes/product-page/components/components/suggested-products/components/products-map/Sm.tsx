@@ -2,6 +2,8 @@ import { Stack } from '@mui/joy';
 import Carousel from 'src/components/carousel/Carousel';
 import Image from 'src/components/Image';
 import PlaceholderImage from 'src/assets/images/placeholder.png';
+import { motion } from 'motion/react';
+import { cardsCarouselVariants } from 'src/animations/shared';
 
 export default function Sm() {
     const offerProducts = [
@@ -34,6 +36,10 @@ export default function Sm() {
             alignItems='center'
             justifyContent='space-between'
             sx={{ pb: '0.5rem' }}
+            component={motion.div}
+            variants={cardsCarouselVariants}
+            initial='initial'
+            whileInView='whileInView'
         >
             <Carousel
                 elements={offerProducts.map((product) => (

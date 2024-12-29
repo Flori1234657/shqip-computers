@@ -6,6 +6,7 @@ import Blob from 'src/assets/images/svg/home/build-pc-blob.svg';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 import { motion } from 'motion/react';
 import { heroTextVariants } from 'src/animations/home-page/hero-variants';
+import { rotateButtonVariants } from 'src/animations/shared';
 
 function BuildPcSection() {
     const { width } = useWindowDimensions();
@@ -94,11 +95,9 @@ function BuildPcSection() {
                         sx={{ width: { md: 'fit-content' } }}
                         endDecorator={<RightArrIcon />}
                         component={motion.button}
-                        initial={{ rotateX: 360 }}
-                        whileInView={{
-                            rotateX: 0,
-                            transition: { duration: 0.5 },
-                        }}
+                        variants={rotateButtonVariants}
+                        initial='initial'
+                        whileInView='whileInView'
                     >
                         Go To The Store
                     </Button>

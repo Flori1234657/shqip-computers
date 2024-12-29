@@ -1,4 +1,5 @@
 import { Grid } from '@mui/joy';
+import { motion } from 'motion/react';
 import PlaceholderImage from 'src/assets/images/placeholder.png';
 import Image from 'src/components/Image';
 
@@ -40,7 +41,7 @@ export default function Tablet() {
                 maxWidth: { md: '12.422rem' },
             }}
         >
-            {offerProducts.map((image) => (
+            {offerProducts.map((image, index) => (
                 <Grid
                     key={image.id}
                     sx={(theme) => ({
@@ -71,6 +72,16 @@ export default function Tablet() {
                             },
                         },
                     })}
+                    component={motion.div}
+                    initial={{ translateY: 25 }}
+                    whileInView={{
+                        translateY: 0,
+                        transition: {
+                            type: 'spring',
+                            bounce: 1,
+                            damping: 3 + index,
+                        },
+                    }}
                 >
                     <Image
                         ratio='1.54/1'

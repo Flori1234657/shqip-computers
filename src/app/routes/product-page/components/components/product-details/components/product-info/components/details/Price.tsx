@@ -1,4 +1,5 @@
 import { Stack, Typography } from '@mui/joy';
+import { motion } from 'motion/react';
 
 export default function Price() {
     return (
@@ -12,6 +13,12 @@ export default function Price() {
                 lineHeight='1.6'
                 fontSize={{ xs: '1rem', md: '0.563rem' }}
                 sx={(theme) => ({ color: theme.palette.danger[500] })}
+                component={motion.span}
+                initial={{ width: 0, overflow: 'hidden' }}
+                animate={{
+                    width: 'fit-content',
+                    transition: { duration: 0.25, delay: 1 },
+                }}
             >
                 -$150.00
             </Typography>
@@ -22,6 +29,12 @@ export default function Price() {
                     fontSize: { md: '0.973rem' },
                     color: theme.palette.primary[900],
                 })}
+                component={motion.h4}
+                initial={{ width: 0, overflow: 'hidden' }}
+                animate={{
+                    width: 'fit-content',
+                    transition: { duration: 0.25, delay: 1.25 },
+                }}
             >
                 $920.00
             </Typography>

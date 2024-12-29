@@ -11,7 +11,7 @@ export default function ImagesCollection() {
             gap={{ xs: '0.5rem', md: '0.703rem' }}
         >
             <Stack gap={{ xs: '0.5rem', md: '0.703rem' }}>
-                {[1, 2, 3].map((image) => (
+                {[1, 2, 3].map((image, index) => (
                     <Image
                         key={image}
                         ratio='1/1'
@@ -22,9 +22,21 @@ export default function ImagesCollection() {
                             bgcolor: 'white',
                             borderRadius: { xs: '0.5rem', md: '0.352rem' },
                             boxShadow: theme.shadow.productPageImage,
+                            // border: `1px solid ${theme.palette.primary[500]}`,
                             cursor: 'pointer',
                         }}
                         alt='Product'
+                        animate={{
+                            initial: { translateY: '50%' },
+                            animate: {
+                                translateY: '0',
+                                transition: {
+                                    type: 'spring',
+                                    bounce: 1,
+                                    damping: 7 + index,
+                                },
+                            },
+                        }}
                     />
                 ))}
             </Stack>
@@ -39,6 +51,18 @@ export default function ImagesCollection() {
                     boxShadow: theme.shadow.productPageImage,
                 }}
                 alt='Product'
+                animate={{
+                    initial: { rotateX: '90deg', transformOrigin: 'top' },
+                    animate: {
+                        rotateX: 0,
+                        transition: {
+                            delay: 0.5,
+                            type: 'spring',
+                            bounce: 1,
+                            damping: 10,
+                        },
+                    },
+                }}
             />
         </Stack>
     );

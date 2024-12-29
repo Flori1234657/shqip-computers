@@ -1,4 +1,6 @@
 import { Stack, Typography } from '@mui/joy';
+import { motion } from 'motion/react';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 
 export default function Description() {
     return (
@@ -8,6 +10,10 @@ export default function Description() {
                 fontWeight='600'
                 fontSize={{ xs: '1.2rem', md: '0.809rem' }}
                 sx={(theme) => ({ color: theme.palette.primary[900] })}
+                component={motion.h3}
+                variants={heroTextVariants}
+                initial='initialHeading'
+                whileInView='animateHeading'
             >
                 Description
             </Typography>
@@ -15,6 +21,10 @@ export default function Description() {
                 lineHeight='1.4'
                 fontSize={{ xs: '1rem', md: '0.675rem' }}
                 sx={(theme) => ({ color: theme.palette.neutral[700] })}
+                component={motion.p}
+                variants={heroTextVariants}
+                initial='initialSubHeading'
+                whileInView='animateSubHeading'
             >
                 Lorem ipsum dolor sit amet consectetur. Volutpat integer
                 scelerisque risus proin nisl tempus sed vel. Nisl sed mi ut in
