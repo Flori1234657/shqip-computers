@@ -76,6 +76,11 @@ export default function Inputs({ formik }: ShippingAddressFields) {
                             {input.label}
                         </FormLabel>
                         <Input
+                            type={
+                                input.label === 'House Number'
+                                    ? 'number'
+                                    : 'string'
+                            }
                             name={input.name}
                             placeholder={input.placeholder}
                             onChange={formik.handleChange}
