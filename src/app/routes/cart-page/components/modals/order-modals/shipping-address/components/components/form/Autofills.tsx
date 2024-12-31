@@ -25,24 +25,28 @@ export default function Autofills({ formik }: ShippingAddressFields) {
             name: 'country',
             placeholder: 'Albania',
             icon: <MapIcon />,
+            options: ['', 'Albania', 'Kosovo', 'Macedonia'],
         },
         {
             label: 'State',
             name: 'state',
             placeholder: 'Vlore',
             icon: <StateIcon />,
+            options: ['', 'Vlora', 'Berati', 'Fieri'],
         },
         {
             label: 'City',
             name: 'city',
             placeholder: 'Ksamil',
             icon: <CityIcon />,
+            options: ['', 'Ksamili', 'Durrsi', 'Tirana'],
         },
         {
             label: 'Postal Code',
             name: 'postalCode',
             placeholder: '9706',
             icon: <PostalCodeIcon />,
+            options: ['', 9706, 9707, 9708],
         },
     ];
 
@@ -62,9 +66,9 @@ export default function Autofills({ formik }: ShippingAddressFields) {
                         <Autocomplete
                             name={input.name}
                             placeholder={input.placeholder}
-                            onChange={formik.handleChange}
-                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                            //@ts-ignore
+                            onChange={(__, newValue) => {
+                                formik.setFieldValue(input.name, newValue);
+                            }}
                             value={
                                 formik.values[
                                     input.name as keyof typeof formik.values
@@ -90,7 +94,8 @@ export default function Autofills({ formik }: ShippingAddressFields) {
                                     },
                                 },
                             }}
-                            options={['', 'option1', 'option2']}
+                            options={input.options as Array<string | number>}
+                            getOptionLabel={(option) => String(option)}
                             sx={{ borderRadius: { xs: '0.5rem' } }}
                         />
 
