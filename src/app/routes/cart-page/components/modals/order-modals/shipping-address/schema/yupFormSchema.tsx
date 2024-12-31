@@ -27,5 +27,5 @@ export const formSchema = Yup.object().shape({
     country: Yup.string().required('This field is reuired!'), // This values will be autofill
     state: Yup.string().required('This field is reuired!'), // This values will be autofill
     city: Yup.string().required('This field is reuired!'), // This values will be autofill
-    postalCode: Yup.string().required('This field is reuired!'), // This values will be autofill
+    postalCode: Yup.number().required('This field is reuired!'), // This values will be autofill
 });

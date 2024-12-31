@@ -1,6 +1,9 @@
 import { Stack, Typography } from '@mui/joy';
+import useCartPageStore from 'src/app/routes/cart-page/store/cart';
 
 export default function Total() {
+    const { orderSummary } = useCartPageStore();
+
     return (
         <Stack
             direction='row'
@@ -27,7 +30,9 @@ export default function Total() {
                     color: 'white',
                 }}
             >
-                $1,400.00
+                {orderSummary
+                    ? `$${(orderSummary.subtotal + orderSummary.shippingFees - orderSummary.discount).toFixed(2)}`
+                    : 0}
             </Typography>
         </Stack>
     );

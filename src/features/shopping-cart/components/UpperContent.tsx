@@ -46,7 +46,7 @@ function UpperContent() {
                 lineHeight='1.2'
                 sx={(theme) => ({ color: theme.palette.text.tertiary })}
             >
-                {cartItems ? length : 0} products
+                {cartItems ? cartItems.length : 0} products
             </Typography>
         </Stack>
     );

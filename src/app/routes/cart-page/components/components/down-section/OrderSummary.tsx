@@ -6,8 +6,16 @@ import Total from './components/order-summary/Total';
 import ProceedButton from './components/order-summary/ProceedButton';
 import Image from 'src/components/Image';
 import BlobImage from 'src/assets/images/svg/cart-page/order-summary-blob.svg';
+import useOrderSummary from '../../../hooks/useOrderSummary';
+import { useEffect } from 'react';
 
 export default function OrderSummary() {
+    const { getAndSetOrderDetails } = useOrderSummary();
+
+    useEffect(() => {
+        getAndSetOrderDetails();
+    }, [getAndSetOrderDetails]);
+
     return (
         <Stack position='relative'>
             <Image

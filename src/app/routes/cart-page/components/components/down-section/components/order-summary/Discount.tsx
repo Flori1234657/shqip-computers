@@ -4,6 +4,7 @@ import TextValue from './components/TextValue';
 import ActionText from './components/ActionText';
 import { lazy, Suspense } from 'react';
 import useUiStore from 'src/app/routes/cart-page/store/ui';
+import useCartPageStore from 'src/app/routes/cart-page/store/cart';
 
 const Modal = lazy(
     () =>
@@ -11,14 +12,14 @@ const Modal = lazy(
 );
 
 export default function Discount() {
-    const hasDiscount = true;
+    const { orderSummary } = useCartPageStore();
     const { showDiscountModal, toggleShowDiscountModal } = useUiStore();
 
     return (
         <Stack direction='row' justifyContent='space-between'>
             <Stack>
                 <InformationHeading text='Discount' />
-                {hasDiscount ? (
+                {orderSummary && orderSummary.discount > 0 ? (
                     <ActionText
                         text={'view details'}
                         action={toggleShowDiscountModal}
@@ -27,7 +28,11 @@ export default function Discount() {
                     ''
                 )}
             </Stack>
-            <TextValue text={hasDiscount ? '-$50.00' : '0'} />
+            <TextValue
+                text={
+                    orderSummary ? `-$${orderSummary.discount.toFixed(2)}` : '0'
+                }
+            />
             <Suspense fallback=''>
                 {showDiscountModal ? <Modal /> : ''}
             </Suspense>

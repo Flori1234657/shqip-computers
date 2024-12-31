@@ -4,6 +4,7 @@ import TextValue from './components/TextValue';
 import ActionText from './components/ActionText';
 import useUiStore from 'src/app/routes/cart-page/store/ui';
 import { lazy, Suspense } from 'react';
+import useCartPageStore from 'src/app/routes/cart-page/store/cart';
 
 const ShippingAddressModal = lazy(
     () =>
@@ -13,7 +14,7 @@ const ShippingAddressModal = lazy(
 );
 
 export default function ShippingFees() {
-    const hasShippingAddress = false;
+    const { orderSummary, shippingAddress } = useCartPageStore();
     const { showShippingAddressModal, toggleShippingAddressModal } =
         useUiStore();
 
@@ -23,14 +24,16 @@ export default function ShippingFees() {
                 <InformationHeading text='Shipping fees' />
                 <ActionText
                     text={
-                        hasShippingAddress
+                        shippingAddress
                             ? 'change your shipping address'
                             : '+ add your shipping address'
                     }
                     action={toggleShippingAddressModal}
                 />
             </Stack>
-            {hasShippingAddress && <TextValue text='$30.00' />}
+            {shippingAddress && (
+                <TextValue text={`$${orderSummary?.shippingFees.toFixed(2)}`} />
+            )}
             {showShippingAddressModal ? (
                 <Suspense fallback=''>
                     <ShippingAddressModal />
