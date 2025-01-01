@@ -10,6 +10,20 @@ export type ShippingAddress = {
     postalCode: number;
 };
 
+export type ShippingPrice = {
+    countryName: string;
+    states: {
+        name: string;
+        cities: {
+            name: string;
+            posts: {
+                zip: number;
+                price: number;
+            }[];
+        }[];
+    }[];
+};
+
 export type OrderSummary = {
     subtotal: number;
     shippingFees: number;
