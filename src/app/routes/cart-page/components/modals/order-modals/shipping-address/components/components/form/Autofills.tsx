@@ -15,9 +15,41 @@ import {
 } from 'react-icons/md';
 import { PiCity as CityIcon } from 'react-icons/pi';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import useGetAutofillsData from 'src/app/routes/cart-page/hooks/useGetAutofillsData';
+import { useEffect } from 'react';
+import useShippingAddressStore from 'src/app/routes/cart-page/store/shippingAddress';
+import { filterShippingStates } from 'src/app/routes/cart-page/utils/shippingAddress';
 
 export default function Autofills({ formik }: ShippingAddressFields) {
     const { width } = useWindowDimensions();
+    const {
+        availableCountries,
+        getAndSetAvailableCountries,
+        isLoading,
+        getAndSetShippingData,
+    } = useGetAutofillsData();
+    const { shippingPrices } = useShippingAddressStore();
+
+    useEffect(() => {
+        const controller = new AbortController();
+
+        getAndSetAvailableCountries(controller.signal);
+
+        return () => {
+            controller.abort();
+        };
+    }, []);
+
+    useEffect(() => {
+        const controller = new AbortController();
+
+        if (formik.values.country !== '')
+            getAndSetShippingData(formik.values.country, controller.signal);
+
+        return () => {
+            controller.abort();
+        };
+    }, [formik.values.country]);
 
     const autofillData = [
         {
@@ -25,34 +57,37 @@ export default function Autofills({ formik }: ShippingAddressFields) {
             name: 'country',
             placeholder: 'Albania',
             icon: <MapIcon />,
-            options: ['', 'Albania', 'Kosovo', 'Macedonia'],
+            options: availableCountries ? ['', ...availableCountries] : [''],
         },
         {
             label: 'State',
             name: 'state',
-            placeholder: 'Vlore',
+            placeholder: 'Vlorë',
             icon: <StateIcon />,
-            options: ['', 'Vlora', 'Berati', 'Fieri'],
+            options: filterShippingStates(
+                shippingPrices,
+                formik.values.country
+            ),
         },
         {
             label: 'City',
             name: 'city',
             placeholder: 'Ksamil',
             icon: <CityIcon />,
-            options: ['', 'Ksamili', 'Durrsi', 'Tirana'],
+            options: [''],
         },
         {
             label: 'Postal Code',
             name: 'postalCode',
             placeholder: '9706',
             icon: <PostalCodeIcon />,
-            options: ['', 9706, 9707, 9708],
+            options: [''],
         },
     ];
 
     return (
         <>
-            {autofillData.map((input) => (
+            {autofillData.map((input, index) => (
                 <Grid
                     key={`shipping-address-autofill${input.name}`}
                     sx={{ width: { xs: '50%' } }}
@@ -97,6 +132,16 @@ export default function Autofills({ formik }: ShippingAddressFields) {
                             options={input.options as Array<string | number>}
                             getOptionLabel={(option) => String(option)}
                             sx={{ borderRadius: { xs: '0.5rem' } }}
+                            loading={isLoading && input.name === 'country'}
+                            disabled={
+                                index !== 0
+                                    ? !isLoading &&
+                                      formik.values[
+                                          autofillData[index - 1]
+                                              .name as keyof typeof formik.values
+                                      ] === ''
+                                    : false
+                            } // we check if the field before is selected or not
                         />
 
                         {formik.errors[
