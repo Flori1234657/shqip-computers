@@ -14,7 +14,7 @@ export default function OrderSummary() {
 
     useEffect(() => {
         getAndSetOrderDetails();
-    }, [getAndSetOrderDetails]);
+    }, []);
 
     return (
         <Stack position='relative'>
