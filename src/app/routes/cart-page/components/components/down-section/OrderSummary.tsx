@@ -9,14 +9,26 @@ import BlobImage from 'src/assets/images/svg/cart-page/order-summary-blob.svg';
 import useOrderSummary from '../../../hooks/useOrderSummary';
 import { useEffect } from 'react';
 import useShippingAddressStore from '../../../store/shippingAddress';
+import useGetDeal from 'src/app/routes/home-page/hooks/useGetDeal';
+import useDealStore from 'src/app/routes/home-page/store/deal';
 
 export default function OrderSummary() {
+    const { requestDeal } = useGetDeal();
+    const { deal } = useDealStore();
+
     const { getAndSetOrderDetails } = useOrderSummary();
     const { shippingAddress } = useShippingAddressStore();
 
     useEffect(() => {
+        const controller = new AbortController();
+
+        requestDeal(controller.signal);
         getAndSetOrderDetails();
-    }, [shippingAddress]);
+
+        return () => {
+            controller.abort();
+        };
+    }, [shippingAddress, deal]);
 
     return (
         <Stack position='relative'>
