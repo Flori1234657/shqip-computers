@@ -16,7 +16,7 @@ export const filterShippingData = (
     selectedCountry: string,
     selectedState?: string,
     selectedCity?: string
-): string[] => {
+): Array<string | number> => {
     if (shippingPlaces.length === 0 || selectedCountry === '') return [''];
 
     const countryData = shippingPlaces.find(
@@ -42,7 +42,5 @@ export const filterShippingData = (
     );
     if (!cityData) return [''];
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
     return ['', ...cityData.posts.map((post) => post.zip)];
 };

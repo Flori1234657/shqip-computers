@@ -1,10 +1,20 @@
 import { IoMdCard as CardIcon } from 'react-icons/io';
 import { Button, Stack, Typography } from '@mui/joy';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import useShippingAddressStore from 'src/app/routes/cart-page/store/shippingAddress';
+import useMakeOrder from 'src/app/routes/cart-page/hooks/useMakeOrder';
+import { useEffect } from 'react';
 
 export default function ProceedButton() {
-    const hasShippingAddressAdded = false;
+    const { shippingAddress } = useShippingAddressStore();
     const { width } = useWindowDimensions();
+
+    const { makeOrder, isLoading } = useMakeOrder();
+    const controller = new AbortController();
+
+    useEffect(() => {
+        return () => controller.abort();
+    }, []);
 
     return (
         <Stack
@@ -15,12 +25,16 @@ export default function ProceedButton() {
             <Button
                 fullWidth
                 size={width < 900 ? 'md' : 'md2'}
-                disabled={!hasShippingAddressAdded}
+                disabled={!shippingAddress}
                 endDecorator={<CardIcon />}
+                loading={isLoading}
+                onClick={() => {
+                    makeOrder(controller.signal);
+                }}
             >
                 Proceed to Payment
             </Button>
-            {hasShippingAddressAdded ? (
+            {shippingAddress ? (
                 ''
             ) : (
                 <Typography

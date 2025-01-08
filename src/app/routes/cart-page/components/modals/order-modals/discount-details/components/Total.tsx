@@ -1,6 +1,12 @@
 import { Stack, Typography } from '@mui/joy';
+import { getDiscount } from 'src/app/routes/cart-page/utils/order-summary';
+import useDealStore from 'src/app/routes/home-page/store/deal';
+import useCartStore from 'src/features/shopping-cart/stores/shoppingCart';
 
 export default function Total() {
+    const { cartItems } = useCartStore();
+    const { deal } = useDealStore();
+
     return (
         <Stack
             direction='row'
@@ -27,7 +33,7 @@ export default function Total() {
                     color: 'white',
                 }}
             >
-                -$762.00
+                -${getDiscount(cartItems!, deal!.percentage)}
             </Typography>
         </Stack>
     );

@@ -5,6 +5,7 @@ import ActionText from './components/ActionText';
 import useUiStore from 'src/app/routes/cart-page/store/ui';
 import { lazy, Suspense } from 'react';
 import useCartPageStore from 'src/app/routes/cart-page/store/cart';
+import useShippingAddressStore from 'src/app/routes/cart-page/store/shippingAddress';
 
 const ShippingAddressModal = lazy(
     () =>
@@ -14,7 +15,8 @@ const ShippingAddressModal = lazy(
 );
 
 export default function ShippingFees() {
-    const { orderSummary, shippingAddress } = useCartPageStore();
+    const { orderSummary } = useCartPageStore();
+    const { shippingAddress } = useShippingAddressStore();
     const { showShippingAddressModal, toggleShippingAddressModal } =
         useUiStore();
 

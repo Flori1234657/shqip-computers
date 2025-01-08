@@ -93,6 +93,7 @@ export default function Autofills({ formik }: ShippingAddressFields) {
         <>
             {autofillData.map((input, index) => (
                 <ShippingAutocomplete
+                    key={`shipping-address-autofill${input.name}`}
                     autofillData={autofillData}
                     formik={formik}
                     index={index}

@@ -7,8 +7,13 @@ import Autofills from './components/form/Autofills';
 
 import useSimpleAlertStore from 'src/features/alert-feedback-simple/store/simpleAlert';
 import useRenderStore from 'src/stores/render';
+import useShippingAddressStore from 'src/app/routes/cart-page/store/shippingAddress';
+import useUiStore from 'src/app/routes/cart-page/store/ui';
 
 export default function Form() {
+    const { setShippingAddress } = useShippingAddressStore();
+    const { toggleShippingAddressModal } = useUiStore();
+
     const setAlertFeedback = useSimpleAlertStore((state) => state.setData);
     const showAlertFeedback = useRenderStore(
         (state) => state.toggleIsSimpleAlertFeedbackVisible
@@ -32,7 +37,7 @@ export default function Form() {
             validationSchema={formSchema}
             // 🌐 Post request to the server
             onSubmit={(values, action) => {
-                console.log(values);
+                setShippingAddress(values); // ignore for the moment
 
                 setAlertFeedback(
                     'success',
@@ -41,6 +46,8 @@ export default function Form() {
                 showAlertFeedback();
                 action.setValues(initialValues);
                 action.resetForm();
+
+                toggleShippingAddressModal();
             }}
             onReset={(_, action) => action.setValues(initialValues)}
         >
