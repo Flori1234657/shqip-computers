@@ -2,13 +2,14 @@ import { Stack } from '@mui/joy';
 import ProductsList from './components/down-section/ProductsList';
 import OrderSummary from './components/down-section/OrderSummary';
 import { lazy } from 'react';
+import useCartPageStore from '../store/cart';
 
 const OrderSuccessfull = lazy(
     () => import('./components/down-section/OrderSuccessfully')
 );
 
 export default function DownSection() {
-    const isOrderSuccessfull = false;
+    const { isOrderSuccessfull } = useCartPageStore();
 
     return (
         <Stack
