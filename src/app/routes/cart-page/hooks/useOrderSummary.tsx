@@ -6,20 +6,22 @@ import {
     getSubtotal,
 } from '../utils/order-summary';
 import useDealStore from '../../home-page/store/deal';
+import useShippingAddressStore from '../store/shippingAddress';
 
 export default function useOrderSummary() {
-    const { setOrderSummary, shippingAddress } = useCartPageStore();
+    const { setOrderSummary } = useCartPageStore();
+    const { shippingAddress, shippingPrices } = useShippingAddressStore();
     const { cartItems } = useCartStore();
     const { deal } = useDealStore();
 
-    const getAndSetOrderDetails = async () => {
+    const getAndSetOrderDetails = () => {
         const subtotoal = getSubtotal(cartItems!);
         const discount = deal?.percentage
             ? getDiscount(cartItems!, deal.percentage)
             : 0;
         const shippingFees = !shippingAddress
             ? 0
-            : await getShippingFees(shippingAddress);
+            : getShippingFees(shippingAddress, shippingPrices!);
 
         setOrderSummary({
             subtotal: subtotoal,

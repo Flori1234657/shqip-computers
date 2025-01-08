@@ -8,13 +8,15 @@ import Image from 'src/components/Image';
 import BlobImage from 'src/assets/images/svg/cart-page/order-summary-blob.svg';
 import useOrderSummary from '../../../hooks/useOrderSummary';
 import { useEffect } from 'react';
+import useShippingAddressStore from '../../../store/shippingAddress';
 
 export default function OrderSummary() {
     const { getAndSetOrderDetails } = useOrderSummary();
+    const { shippingAddress } = useShippingAddressStore();
 
     useEffect(() => {
         getAndSetOrderDetails();
-    }, []);
+    }, [shippingAddress]);
 
     return (
         <Stack position='relative'>

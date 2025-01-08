@@ -15,7 +15,7 @@ type Props = {
         name: string;
         placeholder: string;
         icon: JSX.Element;
-        options: string[];
+        options: Array<string | number>;
     };
     formik: FormikProps<{
         fullName: string;
@@ -64,12 +64,7 @@ export default function ShippingAutocomplete({
     };
 
     return (
-        <Grid
-            key={`shipping-address-autofill${input.name}`}
-            sx={{ width: { xs: '50%' } }}
-            xs={12}
-            sm={6}
-        >
+        <Grid sx={{ width: { xs: '50%' } }} xs={12} sm={6}>
             <FormControl size={width > 899 ? 'md2' : 'md'}>
                 <FormLabel sx={{ color: 'white', mb: '0.25rem' }}>
                     {input.label}

@@ -1,5 +1,5 @@
 import { CartItem } from 'src/features/shopping-cart/types/store';
-import { ShippingAddress } from '../types/order';
+import { ShippingAddress, ShippingPrice } from '../types/order';
 
 export const getSubtotal = (cartItems: CartItem[]) => {
     let subtotal = 0;
@@ -27,33 +27,15 @@ export const getDiscount = (cartItems: CartItem[], dealPercentage: number) => {
     return discount;
 };
 
-export const getShippingFees = (shippingAddress: ShippingAddress) => {
-    // suppose we have the data of shipping fees based on zip code
-    const shipingFees = [
-        {
-            zip: 9706,
-            fee: 30,
-        },
-        {
-            zip: 9707,
-            fee: 35,
-        },
-        {
-            zip: 9708,
-            fee: 40,
-        },
-    ];
+export const getShippingFees = (
+    shippingAddres: ShippingAddress,
+    shippingPlaces: ShippingPrice[]
+) => {
+    const shippingPrice = shippingPlaces
+        .find((place) => place.countryName === shippingAddres.country)
+        ?.states.find((state) => state.name === shippingAddres.state)
+        ?.cities.find((city) => city.name === shippingAddres.city)
+        ?.posts.find((post) => post.zip === shippingAddres.postalCode)?.price;
 
-    /**
-       Do a server request to get
-       the data of shipping cost based
-       on the zip code
-
-     */
-
-    const shippingFee = shipingFees.filter(
-        (place) => place.zip === shippingAddress.postalCode
-    );
-
-    return shippingFee[0].fee;
+    return shippingPrice ? shippingPrice : 0;
 };
