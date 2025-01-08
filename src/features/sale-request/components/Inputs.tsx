@@ -1,24 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
+/* eslint-disable @stylistic/js/indent */
 import { FormControl, FormHelperText, FormLabel, Grid, Input } from '@mui/joy';
-import { FormikProps } from 'formik';
-
 import {
     MdComputer as PcIcon,
     MdOutlineLocalPhone as PhoneIcon,
 } from 'react-icons/md';
 import { BsEnvelope as MailIcon, BsPerson as PersonIcon } from 'react-icons/bs';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
-
-export interface SaleRequestInputs {
-    formik: FormikProps<{
-        fullName: string;
-        pcModel: string;
-        email: string;
-        phoneNumber: string;
-        sellingReason: string;
-    }>;
-}
+import { SaleRequestInputs } from '../types/data';
 
 export default function Inputs({ formik }: SaleRequestInputs) {
     const { width } = useWindowDimensions();
@@ -67,20 +55,32 @@ export default function Inputs({ formik }: SaleRequestInputs) {
                             name={input.name}
                             placeholder={input.placeholder}
                             onChange={formik.handleChange}
-                            value={formik.values[input.name]}
+                            value={
+                                formik.values[
+                                    input.name as keyof typeof formik.values
+                                ]
+                            }
                             startDecorator={input.icon}
                         />
 
-                        {formik.errors[input.name] &&
-                            formik.touched[input.name] && (
-                            <FormHelperText
-                                sx={(theme) => ({
-                                    color: theme.palette.danger[500],
-                                })}
-                            >
-                                {formik.errors[input.name]}
-                            </FormHelperText>
-                        )}
+                        {formik.errors[
+                            input.name as keyof typeof formik.errors
+                        ] &&
+                            formik.touched[
+                                input.name as keyof typeof formik.values
+                            ] && (
+                                <FormHelperText
+                                    sx={(theme) => ({
+                                        color: theme.palette.danger[500],
+                                    })}
+                                >
+                                    {
+                                        formik.errors[
+                                            input.name as keyof typeof formik.errors
+                                        ]
+                                    }
+                                </FormHelperText>
+                            )}
                     </FormControl>
                 </Grid>
             ))}
