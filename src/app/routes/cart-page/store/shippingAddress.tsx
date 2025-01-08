@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { ShippingAddress, ShippingPrice } from '../types/order';
 import { devtools, persist } from 'zustand/middleware';
+import { filterDuplicatedShippingPlaces } from '../utils/shippingAddress';
 
 interface Props {
     shippingAddress: null | ShippingAddress;
@@ -22,7 +23,10 @@ const useShippingAddressStore = create<Props>()(
                 setShippingPrices: (place) =>
                     set((state) => ({
                         shippingPrices: state.shippingPrices
-                            ? [...state.shippingPrices, place]
+                            ? filterDuplicatedShippingPlaces(
+                                state.shippingPrices,
+                                place
+                            )
                             : [place],
                     })),
             }),

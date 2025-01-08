@@ -11,22 +11,38 @@ export const filterDuplicatedShippingPlaces = (
     return [...newArray, newPlace];
 };
 
-export const filterShippingStates = (
-    shippingPlaces: ShippingPrice[] | null,
-    selectedCountry: string
-) => {
-    if (shippingPlaces && shippingPlaces.length > 0 && selectedCountry !== '') {
-        const shippingPlaceData = shippingPlaces.filter(
-            (place) => place.countryName === selectedCountry
-        );
-        console.log(shippingPlaceData);
+export const filterShippingData = (
+    shippingPlaces: ShippingPrice[],
+    selectedCountry: string,
+    selectedState?: string,
+    selectedCity?: string
+): string[] => {
+    if (shippingPlaces.length === 0 || selectedCountry === '') return [''];
 
-        if (shippingPlaceData.length > 0)
-            return [
-                '',
-                ...shippingPlaceData[0].states.map((state) => state.name),
-            ];
+    const countryData = shippingPlaces.find(
+        (place) => place.countryName === selectedCountry
+    );
+    if (!countryData) return [''];
+
+    if (!selectedState) {
+        return ['', ...countryData.states.map((state) => state.name)];
     }
 
-    return [''];
+    const stateData = countryData.states.find(
+        (state) => state.name === selectedState
+    );
+    if (!stateData) return [''];
+
+    if (!selectedCity) {
+        return ['', ...stateData.cities.map((city) => city.name)];
+    }
+
+    const cityData = stateData.cities.find(
+        (city) => city.name === selectedCity
+    );
+    if (!cityData) return [''];
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    return ['', ...cityData.posts.map((post) => post.zip)];
 };
