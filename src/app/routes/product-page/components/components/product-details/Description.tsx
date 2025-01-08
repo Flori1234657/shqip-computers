@@ -1,8 +1,12 @@
 import { Stack, Typography } from '@mui/joy';
 import { motion } from 'motion/react';
+import { useContext } from 'react';
 import { heroTextVariants } from 'src/animations/home-page/hero-variants';
+import { SingleProductPageContext } from '../../../context/useSingleProductPageContext';
 
 export default function Description() {
+    const productData = useContext(SingleProductPageContext);
+
     return (
         <Stack>
             <Typography
@@ -26,13 +30,7 @@ export default function Description() {
                 initial='initialSubHeading'
                 whileInView='animateSubHeading'
             >
-                Lorem ipsum dolor sit amet consectetur. Volutpat integer
-                scelerisque risus proin nisl tempus sed vel. Nisl sed mi ut in
-                consectetur donec ornare malesuada eget. Aliquam etiam integer
-                suspendisse ultricies quam at. Tempus quis ultricies nec tellus
-                faucibus rhoncus lacus hendrerit in. Velit faucibus natoque
-                sollicitudin amet arcu felis nulla. Et adipiscing cras est ut
-                adipiscing.
+                {productData?.description}
             </Typography>
         </Stack>
     );

@@ -1,10 +1,13 @@
 import { Chip, Stack, Typography } from '@mui/joy';
 import { motion } from 'motion/react';
+import { useContext } from 'react';
 import { heroTextVariants } from 'src/animations/home-page/hero-variants';
+import { SingleProductPageContext } from 'src/app/routes/product-page/context/useSingleProductPageContext';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function Status() {
     const { width } = useWindowDimensions();
+    const productData = useContext(SingleProductPageContext);
 
     return (
         <Stack gap={{ xs: '0.25rem', md: '0.118rem' }}>
@@ -35,7 +38,7 @@ export default function Status() {
                         transition: { duration: 0.75, delay: 0.25 },
                     }}
                 >
-                    ⚙️ Used
+                    {productData?.used ? '⚙️ Used' : '⚙️ New'}
                 </Chip>
                 <Chip
                     size={width < 900 ? 'md' : 'md2'}
@@ -51,7 +54,7 @@ export default function Status() {
                         transition: { duration: 0.75, delay: 0.3 },
                     }}
                 >
-                    ✔️ In Stock
+                    {productData?.available ? '✔️ In Stock' : '❌ No Stock'}
                 </Chip>
             </Stack>
         </Stack>

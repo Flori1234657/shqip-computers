@@ -1,8 +1,12 @@
 import { Typography } from '@mui/joy';
 import { motion } from 'motion/react';
+import { useContext } from 'react';
 import { heroTextVariants } from 'src/animations/home-page/hero-variants';
+import { SingleProductPageContext } from 'src/app/routes/product-page/context/useSingleProductPageContext';
 
 export default function Title() {
+    const productData = useContext(SingleProductPageContext);
+
     return (
         <Typography
             level='title-sm'
@@ -16,7 +20,7 @@ export default function Title() {
             initial='initialHeading'
             animate='animateHeading'
         >
-            Lenovo thinkpad g13th max ram 128gb
+            {productData?.name}
         </Typography>
     );
 }

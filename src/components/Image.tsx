@@ -12,6 +12,7 @@ interface Props<T> {
     objectFit?: CSSProperties['objectFit'];
     otherStyles?: SxProps;
     animate?: MotionProps;
+    action?: () => void;
 }
 
 function Image({
@@ -22,6 +23,7 @@ function Image({
     objectFit,
     otherStyles,
     animate,
+    action,
 }: Props<{ xs?: string; sm?: string; md?: string; lg?: string; xl?: string }>) {
     return (
         <AspectRatio
@@ -37,6 +39,7 @@ function Image({
                 },
             }}
             {...(animate ? { ...animate } : '')}
+            onClick={action ? action : () => {}}
         >
             <img src={src} alt={alt} />
         </AspectRatio>

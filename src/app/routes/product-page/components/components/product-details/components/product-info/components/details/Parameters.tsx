@@ -1,33 +1,13 @@
 import { Chip, Grid, Stack, Typography } from '@mui/joy';
 import { motion } from 'motion/react';
+import { useContext } from 'react';
 import { heroTextVariants } from 'src/animations/home-page/hero-variants';
+import { SingleProductPageContext } from 'src/app/routes/product-page/context/useSingleProductPageContext';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 export default function Parameters() {
     const { width } = useWindowDimensions();
-
-    const parameters = [
-        {
-            id: 'ssdsd2',
-            text: '🐏 128Gb Ram',
-        },
-        {
-            id: 'ssdsd3',
-            text: '💾 1Tb Ssd',
-        },
-        {
-            id: 'ssdsd5',
-            text: '💾 500Gb Hdd',
-        },
-        {
-            id: 'ssdsd6',
-            text: '📺 2Gb Dedicated Gpu',
-        },
-        {
-            id: 'ssdsd24',
-            text: '🤖 Amd Ryzen 7 Cpu',
-        },
-    ];
+    const productData = useContext(SingleProductPageContext);
 
     return (
         <Stack gap={{ xs: '0.25rem', md: '0' }}>
@@ -48,9 +28,9 @@ export default function Parameters() {
                 Parameters
             </Typography>
             <Grid container gap={{ xs: '0.5rem', md: '0.234rem' }}>
-                {parameters.map((parameter, index) => (
+                {productData?.parameters.map((parameter, index) => (
                     <Grid
-                        key={parameter.id}
+                        key={`product-parameter${parameter}`}
                         sx={{ maxHeight: { md: '0.939rem' } }}
                     >
                         <Chip
@@ -74,7 +54,7 @@ export default function Parameters() {
                                 },
                             }}
                         >
-                            {parameter.text}
+                            {parameter}
                         </Chip>
                     </Grid>
                 ))}

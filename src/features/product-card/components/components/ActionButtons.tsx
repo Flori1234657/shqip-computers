@@ -7,10 +7,12 @@ import {
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 import { ProductCardComtext } from '../../context/useProductCardContext';
 import useCartStore from 'src/features/shopping-cart/stores/shoppingCart';
+import { useNavigate } from 'react-router-dom';
 
 export default function ActionButtons() {
     const productCard = useContext(ProductCardComtext);
     const { width } = useWindowDimensions();
+    const navigate = useNavigate();
     const addItemToTheCart = useCartStore((state) => state.setCartItems);
 
     return (
@@ -31,6 +33,7 @@ export default function ActionButtons() {
                 sx={{ fontSize: { md: '0.469rem' } }}
                 endDecorator={<ArrowIcon />}
                 disabled={!productCard || !productCard.name}
+                onClick={() => navigate(`/product/${productCard?.documentId}`)}
             >
                 View
             </Button>
