@@ -12,6 +12,7 @@ import {
     MdOutlineLocalPhone as ContactIcon,
 } from 'react-icons/md';
 import { BsShop as ShopIcon, BsInfoLg as InfoIcon } from 'react-icons/bs';
+import { motion } from 'motion/react';
 
 function NavLinks() {
     const navigate = useNavigate();
@@ -55,7 +56,7 @@ function NavLinks() {
                 justifyContent: 'flex-end',
             }}
         >
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
                 <ListItem
                     key={`monile-nav-links${link.path}`}
                     sx={{
@@ -77,6 +78,11 @@ function NavLinks() {
                             ':hover': {
                                 backgroundColor: 'transparent !important',
                             },
+                        }}
+                        component={motion.div}
+                        whileTap={{
+                            translateY: -160,
+                            transition: { duration: 0.75 },
                         }}
                     >
                         <ListItemDecorator
@@ -106,6 +112,16 @@ function NavLinks() {
                                     height: '1rem',
                                 },
                             })}
+                            component={motion.span}
+                            initial={{ translateY: 20, opacity: 0 }}
+                            animate={{
+                                translateY: 0,
+                                opacity: 1,
+                                transition: {
+                                    delay: 0.25,
+                                    duration: `0.${5 + index}5`,
+                                },
+                            }}
                         >
                             {link.icon}
                         </ListItemDecorator>
@@ -119,6 +135,16 @@ function NavLinks() {
                                         location.pathname == link.path
                                             ? '500'
                                             : '400',
+                                }}
+                                component={motion.span}
+                                initial={{ translateY: 15, opacity: 0 }}
+                                animate={{
+                                    translateY: 0,
+                                    opacity: 1,
+                                    transition: {
+                                        delay: 0.25,
+                                        duration: `0.${6 + index}5`,
+                                    },
                                 }}
                             >
                                 {link.text}

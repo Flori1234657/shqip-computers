@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 import useShippingAddressStore from '../../../store/shippingAddress';
 import useGetDeal from 'src/app/routes/home-page/hooks/useGetDeal';
 import useDealStore from 'src/app/routes/home-page/store/deal';
+import { motion } from 'motion/react';
+import { modalSimpleVariants } from 'src/animations/shared';
 
 export default function OrderSummary() {
     const { requestDeal } = useGetDeal();
@@ -56,6 +58,10 @@ export default function OrderSummary() {
                         md: '0 0.059rem 0.319rem 0.176rem rgba(0,0,0,0.5)',
                     },
                 })}
+                component={motion.div}
+                variants={modalSimpleVariants}
+                initial='initial'
+                animate='animate'
             >
                 <Typography
                     fontFamily='Poppins'

@@ -2,6 +2,7 @@ import { IconButton, Stack } from '@mui/joy';
 import { MdOutlinePages as CategoryIcon } from 'react-icons/md';
 import NavLinks from './components/mobile-navigation/NavLinks';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 export default function MobileVersion() {
     const navigate = useNavigate();
@@ -31,6 +32,9 @@ export default function MobileVersion() {
 
                         maxHeight: '4.063rem',
                     })}
+                    component={motion.div}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, transition: { duration: 0.5 } }}
                 >
                     <IconButton
                         variant='solid'
@@ -47,6 +51,18 @@ export default function MobileVersion() {
                             left: '-0.75rem',
                         }}
                         onClick={() => navigate('/categories')}
+                        component={motion.button}
+                        initial={{ scale: 0, rotateZ: 360 }}
+                        animate={{
+                            scale: 1,
+                            rotateZ: 0,
+                            transition: {
+                                delay: 0.25,
+                                type: 'spring',
+                                bounce: 0.5,
+                                damping: 12,
+                            },
+                        }}
                     >
                         <CategoryIcon />
                     </IconButton>

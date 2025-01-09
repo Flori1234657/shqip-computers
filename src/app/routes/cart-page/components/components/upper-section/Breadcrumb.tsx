@@ -1,4 +1,5 @@
 import { Breadcrumbs, Link, Typography } from '@mui/joy';
+import { motion } from 'motion/react';
 import { Link as RouterLink } from 'react-router-dom';
 
 export default function BreadCrumb() {
@@ -10,6 +11,12 @@ export default function BreadCrumb() {
                 lineHeight: '1.5',
                 fontWeight: '500',
                 fontSize: { md: '0.563rem' },
+            }}
+            component={motion.nav}
+            initial={{ width: 0, overflow: 'hidden', maxHeight: '1.25rem' }}
+            animate={{
+                width: 'fit-content',
+                transition: { duration: 0.5 },
             }}
         >
             <Link

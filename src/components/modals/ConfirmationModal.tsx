@@ -6,6 +6,8 @@ import {
     Stack,
     Typography,
 } from '@mui/joy';
+import { motion } from 'motion/react';
+import { modalSimpleVariants } from 'src/animations/shared';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 interface Props {
@@ -43,6 +45,10 @@ export default function ConfirmationModal({
                     p: { xs: '1rem', md: '0.938rem' },
                     minWidth: 'fit-content',
                 })}
+                component={motion.div}
+                variants={modalSimpleVariants}
+                initial='initial'
+                animate='animate'
             >
                 <Stack
                     gap={{ xs: '1rem', md: '0.938rem' }}

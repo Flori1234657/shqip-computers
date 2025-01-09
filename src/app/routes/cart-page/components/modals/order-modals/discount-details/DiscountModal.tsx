@@ -2,6 +2,8 @@ import { Modal, ModalDialog, Stack, Typography } from '@mui/joy';
 import DiscountsMap from './components/DiscontsMap';
 import Total from './components/Total';
 import CloseButton from './components/CloseButton';
+import { modalSimpleVariants } from 'src/animations/shared';
+import { motion } from 'motion/react';
 
 export default function DiscountModal() {
     return (
@@ -15,6 +17,10 @@ export default function DiscountModal() {
                     border: 'none',
                     bgcolor: theme.palette.primary[900],
                 })}
+                component={motion.div}
+                variants={modalSimpleVariants}
+                initial='initial'
+                animate='animate'
             >
                 <Typography
                     fontFamily='Poppins'
