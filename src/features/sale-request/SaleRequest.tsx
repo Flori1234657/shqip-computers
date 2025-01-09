@@ -5,11 +5,20 @@ import Inputs from './components/Inputs';
 
 import TextArea from './components/TextArea';
 import Buttons from './components/Buttons';
-import useDisplayAlert from '../alert-feedback/hooks/useDisplayAlert';
 import { motion } from 'motion/react';
+import useMakeSaleRequest from './hooks/useMakeSaleRequest';
+import { useEffect } from 'react';
 
 export default function SaleRequest() {
-    const { alertUser } = useDisplayAlert();
+    const { isLoading, makeSaleRequest } = useMakeSaleRequest();
+    const controller = new AbortController();
+
+    useEffect(() => {
+        return () => {
+            controller.abort();
+        };
+    }, []);
+
     const initialValues = {
         fullName: '',
         pcModel: '',
@@ -24,12 +33,8 @@ export default function SaleRequest() {
             validationSchema={formSchema}
             // 🌐 Post request to the server
             onSubmit={(values, action) => {
-                alertUser({
-                    type: 'Success',
-                    description:
-                        'Your form is submitted successfully! Now wait for our response. ',
-                });
-                console.log(values);
+                makeSaleRequest(values, controller.signal);
+
                 action.setValues(initialValues);
                 action.resetForm();
             }}
@@ -74,7 +79,7 @@ export default function SaleRequest() {
                                 <TextArea formik={formik} />
                             </Grid>
 
-                            <Buttons />
+                            <Buttons isLoading={isLoading} />
                         </Stack>
                     </form>
                 );

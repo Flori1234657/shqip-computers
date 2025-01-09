@@ -2,8 +2,8 @@
 import { FormControl, FormHelperText, FormLabel, Input, Stack } from '@mui/joy';
 import { BsPerson as PersonIcon } from 'react-icons/bs';
 import { TbMessageChatbot as AgeIcon } from 'react-icons/tb';
-import { ContactFormFormikInputProps } from '../../../interface/contactFormFormik';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { ContactFormFormikInputProps } from '../../../types/data';
 
 export default function FirstInputs({ formik }: ContactFormFormikInputProps) {
     const { width } = useWindowDimensions();

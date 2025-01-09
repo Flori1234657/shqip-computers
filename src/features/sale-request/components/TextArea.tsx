@@ -5,9 +5,9 @@ import {
     Grid,
     Textarea,
 } from '@mui/joy';
-import { SaleRequestInputs } from './Inputs';
 import { TbMessageCircle as MsgIcon } from 'react-icons/tb';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { SaleRequestInputs } from '../types/data';
 
 function TextArea({ formik }: SaleRequestInputs) {
     const { width } = useWindowDimensions();

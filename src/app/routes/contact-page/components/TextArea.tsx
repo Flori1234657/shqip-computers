@@ -1,7 +1,8 @@
+/* eslint-disable @stylistic/js/indent */
 import { FormControl, FormHelperText, FormLabel, Textarea } from '@mui/joy';
 import { TbMessageCircle as MsgIcon } from 'react-icons/tb';
-import { ContactFormFormikInputProps } from '../interface/contactFormFormik';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { ContactFormFormikInputProps } from '../types/data';
 
 function TextArea({ formik }: ContactFormFormikInputProps) {
     const { width } = useWindowDimensions();
@@ -22,14 +23,14 @@ function TextArea({ formik }: ContactFormFormikInputProps) {
             />
             {formik.errors.contactingReason &&
                 formik.touched.contactingReason && (
-                <FormHelperText
-                    sx={(theme) => ({
-                        color: theme.palette.danger[500],
-                    })}
-                >
-                    {formik.errors.contactingReason}
-                </FormHelperText>
-            )}
+                    <FormHelperText
+                        sx={(theme) => ({
+                            color: theme.palette.danger[500],
+                        })}
+                    >
+                        {formik.errors.contactingReason}
+                    </FormHelperText>
+                )}
         </FormControl>
     );
 }

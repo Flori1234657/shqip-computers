@@ -2,8 +2,8 @@
 import { FormControl, FormHelperText, FormLabel, Input, Stack } from '@mui/joy';
 import { BsEnvelope as MailIcon } from 'react-icons/bs';
 import { MdOutlineLocalPhone as PhoneIcon } from 'react-icons/md';
-import { ContactFormFormikInputProps } from '../../../interface/contactFormFormik';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { ContactFormFormikInputProps } from '../../../types/data';
 
 export default function SecondInputs({ formik }: ContactFormFormikInputProps) {
     const { width } = useWindowDimensions();
