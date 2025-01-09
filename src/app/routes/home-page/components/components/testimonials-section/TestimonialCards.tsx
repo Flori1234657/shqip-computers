@@ -1,6 +1,9 @@
 import { Stack, Typography } from '@mui/joy';
 import { motion } from 'motion/react';
-import PlaceholderImg from 'src/assets/images/review-placeholder.png';
+
+import AhmedImg from 'src/assets/images/svg/home/review-ahmed.webp';
+import EsmaImg from 'src/assets/images/svg/home/review-esma.webp';
+import AmrImg from 'src/assets/images/svg/home/review-amr.webp';
 import Image from 'src/components/Image';
 
 function TestimonialCards() {
@@ -9,21 +12,21 @@ function TestimonialCards() {
             name: 'Ahmed',
             review: `“ At this store i can find everything
                     i want! Also the staff here is very kind. ”`,
-            image: PlaceholderImg,
+            image: AhmedImg,
         },
         {
             name: 'Esma',
             review: `“ I have build an entire pc only from the 
                     products that i found here! It’s very easy 
                     you can find everything.”`,
-            image: PlaceholderImg,
+            image: EsmaImg,
         },
         {
             name: 'Amr',
             review: `“ Very polite, very helpful staff, always 
                     when I have problems with my pc I find the 
                     parts here”`,
-            image: PlaceholderImg,
+            image: AmrImg,
         },
     ];
 

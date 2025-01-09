@@ -1,7 +1,7 @@
 import { Stack, Typography } from '@mui/joy';
 import { motion } from 'motion/react';
 import { heroTextVariants } from 'src/animations/home-page/hero-variants';
-import LogoCollection from 'src/assets/images/svg/home/brands-image.png';
+import LogoCollection from 'src/assets/images/svg/home/brands-image.svg';
 import Image from 'src/components/Image';
 
 function BrandsSection() {
