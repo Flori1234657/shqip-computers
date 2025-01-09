@@ -1,5 +1,7 @@
 import { Modal, ModalDialog, Typography } from '@mui/joy';
 import Form from './components/Form';
+import { motion } from 'motion/react';
+import { modalSimpleVariants } from 'src/animations/shared';
 
 export default function ShippingAddressModal() {
     return (
@@ -16,6 +18,10 @@ export default function ShippingAddressModal() {
 
                     overflow: { xs: 'scroll', md: 'unset' },
                 })}
+                component={motion.div}
+                variants={modalSimpleVariants}
+                initial='initial'
+                animate='animate'
             >
                 <Typography
                     fontFamily='Poppins'
