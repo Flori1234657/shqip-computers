@@ -1,4 +1,5 @@
 import { List, ListItem, Link, Typography } from '@mui/joy';
+import { motion } from 'motion/react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 function PcNavigation() {
@@ -26,8 +27,16 @@ function PcNavigation() {
     return (
         <nav>
             <List sx={{ flexDirection: 'row', gap: '2.344rem' }}>
-                {navLinks.map((link) => (
-                    <ListItem key={`pc-navigation-link${link.path}`}>
+                {navLinks.map((link, index) => (
+                    <ListItem
+                        key={`pc-navigation-link${link.path}`}
+                        component={motion.li}
+                        initial={{ translateY: 30 }}
+                        animate={{
+                            translateY: 0,
+                            transition: { duration: `0.${5 + index}5` },
+                        }}
+                    >
                         <Link component={RouterLink} to={link.path}>
                             <Typography
                                 fontSize='0.563rem'

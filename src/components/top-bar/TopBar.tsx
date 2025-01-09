@@ -2,6 +2,7 @@ import { Stack } from '@mui/joy';
 import Navigation from '../navigation/Navigation';
 import Buttons from './components/Buttons';
 import Logo from './components/Logo';
+import { motion } from 'motion/react';
 
 export default function TopBar() {
     return (
@@ -17,6 +18,9 @@ export default function TopBar() {
                     py: { xs: '0.5rem', sm: '0.563rem', md: '0.234rem' },
                 }}
                 bgcolor='white'
+                component={motion.div}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 0.75 } }}
             >
                 <Logo />
                 <Navigation />

@@ -1,5 +1,7 @@
 import { Stack, Typography } from '@mui/joy';
 import Buttons from './components/success-order/Buttons';
+import { motion } from 'motion/react';
+import { modalSimpleVariants } from 'src/animations/shared';
 
 export default function OrderSuccessfully() {
     return (
@@ -17,6 +19,10 @@ export default function OrderSuccessfully() {
                     md: '0 0.059rem 0.319rem 0.176rem rgba(0,0,0,0.5)',
                 },
             })}
+            component={motion.div}
+            variants={modalSimpleVariants}
+            initial='initial'
+            animate='animate'
         >
             <Typography
                 fontFamily='Poppins'

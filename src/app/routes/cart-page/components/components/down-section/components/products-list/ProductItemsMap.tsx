@@ -1,6 +1,7 @@
 import { Stack } from '@mui/joy';
 import ProductItem from './components/product-cards-map/ProductItem';
 import useCartStore from 'src/features/shopping-cart/stores/shoppingCart';
+import { motion } from 'motion/react';
 
 export default function ProductItemsMap() {
     const { cartItems } = useCartStore();
@@ -13,7 +14,7 @@ export default function ProductItemsMap() {
                 overflowY: 'scroll',
             }}
         >
-            {cartItems!.map((product) => (
+            {cartItems!.map((product, index) => (
                 <Stack
                     key={`my-bag-product-item${product.item.id}`}
                     sx={(theme) => ({
@@ -32,6 +33,12 @@ export default function ProductItemsMap() {
                             bgcolor: theme.palette.primary[200],
                         },
                     })}
+                    component={motion.div}
+                    initial={{ translateY: 20 }}
+                    animate={{
+                        translateY: 0,
+                        transition: { duration: `0.${5 + index}5` },
+                    }}
                 >
                     <ProductItem {...product} />{' '}
                     {/** find a way to pass only the data that is needed */}

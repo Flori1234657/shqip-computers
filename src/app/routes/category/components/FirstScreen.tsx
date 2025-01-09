@@ -5,6 +5,8 @@ import availableCategories from '../availableCategories';
 import { MdClose as CloseIcon } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { motion } from 'motion/react';
+import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 
 function FirstScreen() {
     const navigate = useNavigate();
@@ -20,6 +22,10 @@ function FirstScreen() {
                 level='title-md'
                 fontSize={{ xs: '1.688rem', md: '1.4rem' }}
                 sx={{ color: 'white', pb: { xs: '1rem', md: '0.234rem' } }}
+                component={motion.h2}
+                variants={heroTextVariants}
+                initial='initialHeading'
+                animate='animateHeading'
             >
                 Category
             </Typography>
@@ -34,7 +40,7 @@ function FirstScreen() {
                     maxWidth: { md: '25.957rem' },
                 }}
             >
-                {availableCategories.map((category) => (
+                {availableCategories.map((category, index) => (
                     <Grid
                         xs={6}
                         md={4}
@@ -57,6 +63,16 @@ function FirstScreen() {
                             onClick={() =>
                                 navigate(`/categories/${category.id}`)
                             }
+                            component={motion.div}
+                            initial={{ translateY: 50 }}
+                            animate={{
+                                translateY: 0,
+                                transition: {
+                                    type: 'spring',
+                                    bounce: 0.5,
+                                    damping: `5.${1 + index}`,
+                                },
+                            }}
                         >
                             <Typography
                                 fontSize={{ xs: '1.2rem', md: '0.809rem' }}
@@ -91,6 +107,10 @@ function FirstScreen() {
                 startDecorator={<CloseIcon />}
                 onClick={() => navigate(-1)}
                 sx={(theme) => ({ bgcolor: theme.palette.neutral[800] })}
+                component={motion.button}
+                variants={heroTextVariants}
+                initial='initialSubHeading'
+                animate='animateSubHeading'
             >
                 Close
             </Button>
