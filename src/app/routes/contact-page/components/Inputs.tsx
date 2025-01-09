@@ -1,6 +1,6 @@
+import { ContactFormFormikInputProps } from '../types/data';
 import FirstInputs from './components/inputs/FirstInputs';
 import SecondInputs from './components/inputs/SecondInputs';
-import { ContactFormFormikInputProps } from '../interface/contactFormFormik';
 
 export default function Inputs({ formik }: ContactFormFormikInputProps) {
     return (

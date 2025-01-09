@@ -11,8 +11,19 @@ import MessageIllustration from 'src/assets/images/svg/contact-us/conversation.s
 import EnvelopeIllustration from 'src/assets/images/svg/contact-us/envelope.svg';
 import { motion } from 'motion/react';
 import { formSvgVariants } from 'src/animations/contact-us-page/variants';
+import useMakeContactRequest from './hooks/useMakeContactRequest';
+import { useEffect } from 'react';
 
 export default function ContactUs() {
+    const { isLoading, makeContactRequest } = useMakeContactRequest();
+    const controller = new AbortController();
+
+    useEffect(() => {
+        return () => {
+            controller.abort();
+        };
+    }, []);
+
     const initialValues = {
         fullName: '',
         age: 0,
@@ -25,8 +36,12 @@ export default function ContactUs() {
         <Formik
             initialValues={initialValues}
             validationSchema={formSchema}
-            // 🌐 Post request to the server
-            onSubmit={(values) => console.log(values)}
+            onSubmit={(values, action) => {
+                makeContactRequest(values, controller.signal);
+
+                action.setValues(initialValues);
+                action.resetForm();
+            }}
         >
             {(formik) => {
                 const { handleSubmit } = formik;
@@ -93,7 +108,7 @@ export default function ContactUs() {
                                 <Inputs formik={formik} />
                                 <TextArea formik={formik} />
                             </Stack>
-                            <Buttons />
+                            <Buttons isLoading={isLoading} />
 
                             {/** Has nothing to do with form but only
                              * for a way for users to find other ways

@@ -3,7 +3,7 @@ import { TbSend as SendIcon } from 'react-icons/tb';
 import { IoMdClose as ClearIcon } from 'react-icons/io';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
-export default function Buttons() {
+export default function Buttons({ isLoading }: { isLoading: boolean }) {
     const { width } = useWindowDimensions();
 
     return (
@@ -16,6 +16,7 @@ export default function Buttons() {
                 variant='outlined'
                 color='danger'
                 endDecorator={<ClearIcon />}
+                disabled={isLoading}
             >
                 Clear
             </Button>
@@ -23,6 +24,7 @@ export default function Buttons() {
                 size={width < 900 ? 'md' : 'md2'}
                 type='submit'
                 endDecorator={<SendIcon />}
+                loading={isLoading}
             >
                 Send To Us
             </Button>
