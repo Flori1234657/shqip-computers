@@ -30,7 +30,11 @@ function HeadingText() {
                     transition: { duration: 0.75 },
                 }}
             >
-                <span dangerouslySetInnerHTML={{ __html: title }}></span>
+                <span
+                    dangerouslySetInnerHTML={{
+                        __html: title || 'fallback title',
+                    }}
+                ></span>
             </Typography>
             <Typography
                 fontSize={{ xs: 'md', md: '0.81rem' }}

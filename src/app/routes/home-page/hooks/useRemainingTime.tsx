@@ -14,7 +14,9 @@ type TimeLeftFormat =
 export default function useRemainingTime() {
     const deal = useDealStore((state) => state.deal);
     const [timeLeft, setTimeLeft] = useState<TimeLeftFormat | 0>(0);
-    const intervalRef = useRef<null | ReturnType<typeof setInterval>>(null);
+    const intervalRef = useRef<undefined | ReturnType<typeof setInterval>>(
+        undefined
+    );
 
     useEffect(() => {
         if (!intervalRef.current)
@@ -28,7 +30,7 @@ export default function useRemainingTime() {
             return () => {
                 clearInterval(intervalRef.current);
             };
-    }, []);
+    }, [deal]);
 
     if (timeLeft)
         return {

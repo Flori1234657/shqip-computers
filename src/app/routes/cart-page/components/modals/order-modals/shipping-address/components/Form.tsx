@@ -37,6 +37,7 @@ export default function Form() {
             validationSchema={formSchema}
             // 🌐 Post request to the server
             onSubmit={(values, action) => {
+                /* @ts-expect-error the problem is with one of te values that will come as number, but it is ok*/
                 setShippingAddress(values); // ignore for the moment
 
                 setAlertFeedback(

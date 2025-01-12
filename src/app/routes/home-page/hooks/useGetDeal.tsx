@@ -24,7 +24,12 @@ export default function useGetDeal() {
                 useDeal.setDeal(dealData);
             } catch (error) {
                 if (!dontSetAlert) {
-                    fillAlert('danger', error.message);
+                    fillAlert(
+                        'danger',
+                        error instanceof Error
+                            ? error.message
+                            : 'Unexpected error'
+                    );
                     showAlert();
                     dontSetAlert = true;
                 }
@@ -47,7 +52,12 @@ export default function useGetDeal() {
                 setProducts(dealProducts.data);
             } catch (error) {
                 if (!dontSetAlert) {
-                    fillAlert('danger', error.message);
+                    fillAlert(
+                        'danger',
+                        error instanceof Error
+                            ? error.message
+                            : 'Unexpected error'
+                    );
                     showAlert();
                     dontSetAlert = true;
                 }
