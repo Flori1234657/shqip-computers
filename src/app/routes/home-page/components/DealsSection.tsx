@@ -1,14 +1,31 @@
 import { Stack } from '@mui/joy';
-import UpperContent from './components/deals-section/UpperContent';
-import DownContent from './components/deals-section/DownContent';
-
 import Image from 'src/components/Image';
 import BigBlob from 'src/assets/images/svg/home/deals-blob.svg';
 import useDealStore from '../store/deal';
 import { hasDealExpired } from '../utils/deal';
+import useGetDeal from '../hooks/useGetDeal';
+import { lazy, Suspense, useEffect } from 'react';
+
+const UpperContent = lazy(
+    () => import('./components/deals-section/UpperContent')
+);
+const DownContent = lazy(
+    () => import('./components/deals-section/DownContent')
+);
 
 function DealsSection() {
     const deal = useDealStore((state) => state.deal);
+    const { requestDeal, requestDealProducts } = useGetDeal();
+
+    useEffect(() => {
+        const controller = new AbortController();
+
+        requestDeal(controller.signal);
+        requestDealProducts(controller.signal);
+
+        return () => controller.abort();
+    }, []);
+
     return !deal ? (
         ''
     ) : hasDealExpired(deal.expireDate) ? (
@@ -36,9 +53,10 @@ function DealsSection() {
                     zIndex: -1,
                 }}
             />
-
-            <UpperContent />
-            <DownContent />
+            <Suspense fallback=''>
+                <UpperContent />
+                <DownContent />
+            </Suspense>
         </Stack>
     );
 }

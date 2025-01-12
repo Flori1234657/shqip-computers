@@ -1,12 +1,13 @@
 import { Box, Stack } from '@mui/joy';
-import ProductCard from 'src/features/product-card/ProductCard';
 import AvailableTimeCards from './components/upper-content/AvailableTimeCards';
 import HeadingText from './components/upper-content/HeadingText';
-import React from 'react';
+import { lazy, memo, Suspense } from 'react';
 import useSelectedDealProduct from '../../../hooks/useSelectedDealProduct';
 import { motion } from 'motion/react';
 
-const UpperContent = React.memo(function UpperContent() {
+const ProductCard = lazy(() => import('src/features/product-card/ProductCard'));
+
+const UpperContent = memo(function UpperContent() {
     const { findSelectedProduct } = useSelectedDealProduct();
 
     return (
@@ -46,7 +47,9 @@ const UpperContent = React.memo(function UpperContent() {
                     }}
                     transition={{ duration: 1, type: 'spring' }}
                 >
-                    <ProductCard data={findSelectedProduct()} />
+                    <Suspense fallback=''>
+                        <ProductCard data={findSelectedProduct()} />
+                    </Suspense>
                 </Stack>
             </Box>
             <Box

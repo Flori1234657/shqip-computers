@@ -41,7 +41,7 @@ function Image({
             {...(animate ? { ...animate } : '')}
             onClick={action ? action : () => {}}
         >
-            <img src={src} alt={alt} />
+            <img src={src} alt={alt} loading='lazy' />
         </AspectRatio>
     );
 }
