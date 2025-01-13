@@ -4,37 +4,31 @@ import DownSection from './components/DownSection';
 import useFetchProducts from './hooks/useFetchProducts';
 import { useEffect, useRef } from 'react';
 import useShopStore from './store/shop';
+import { useParams } from 'react-router-dom';
 
 export default function Shop() {
     const { getAndSetProducts } = useFetchProducts();
-    const { currentPage } = useShopStore();
+    const { currentPage, setCurrentPage } = useShopStore();
     const previousPage = useRef(currentPage);
 
-    /**
-     *  Find a way to solve category fetcjhing
-     *  and pagination not giving problems
-     */
-    // const queryParams = useParams();
-    // const isResettingPage = useRef(false);
-
-    // useEffect(() => {
-    //     if (!queryParams.categoryId) return;
-    //     console.log('rerendered useEffect0');
-    //     isResettingPage.current = true;
-    //     setCurrentPage(1);
-    //     previousPage.current.categories = 1;
-
-    //     const controller = new AbortController();
-    //     getAndSetProducts(controller.signal, 1).finally(() => {
-    //         isResettingPage.current = false;
-    //     });
-
-    //     return () => controller.abort();
-    // }, [queryParams.categoryId]);
+    const isResetingPage = useRef(false);
+    const queryParams = useParams();
 
     useEffect(() => {
-        // if (isResettingPage.current) return;
-        if (previousPage.current > currentPage) return;
+        // This is the page reset function
+
+        if (isResetingPage.current) isResetingPage.current = false;
+        if (currentPage === 1 || !queryParams.categoryId) return;
+
+        isResetingPage.current = true;
+        setCurrentPage(1);
+        previousPage.current = 1;
+    }, [queryParams, isResetingPage.current]);
+
+    useEffect(() => {
+        if (previousPage.current > currentPage || isResetingPage.current)
+            return;
+
         previousPage.current = currentPage;
 
         const controller = new AbortController();
