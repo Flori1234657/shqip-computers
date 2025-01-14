@@ -8,9 +8,7 @@ import { useParams } from 'react-router-dom';
 export default function useFetchProducts() {
     const queryParams = useParams();
 
-    const setTotalProductsCount = useShopStore(
-        (state) => state.setTotalProducts
-    );
+    const { setTotalProducts, searchValue } = useShopStore();
     const setProducts = useProductStore((state) => state.setProducts);
     const setProductComponent = useUiStore(
         (state) => state.setProductsSectionComponent
@@ -25,11 +23,16 @@ export default function useFetchProducts() {
                       page,
                       queryParams.categoryId,
                       signal,
-                      queryParams.typeId || ''
+                      queryParams.typeId || '',
+                      searchValue ? searchValue : ''
                   )
-                : await getNextProducts(page, signal);
+                : await getNextProducts(
+                      page,
+                      signal,
+                      searchValue ? searchValue : ''
+                  );
 
-            setTotalProductsCount(response.meta.pagination.total);
+            setTotalProducts(response.meta.pagination.total);
             setProducts(response.data);
 
             setProductComponent('product-cards');

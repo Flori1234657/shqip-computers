@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/js/indent */
 import { Grid, Stack } from '@mui/joy';
 import { motion } from 'motion/react';
 import { useMemo } from 'react';
@@ -12,22 +13,27 @@ const pageSize = 10;
 
 export default function Products() {
     const productsData = useProductStore((state) => state.products);
-    const { totalProductsCount, setCurrentPage, currentPage } = useShopStore();
+    const { totalProductsCount, setCurrentPage, currentPage, searchValue } =
+        useShopStore();
     const queryParams = useParams();
 
     const currentProductsData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * pageSize;
         const lastPageIndex = firstPageIndex + pageSize;
 
-        if (queryParams.categoryId)
-            //@ts-expect-error declare query params type globaly
-            return filterByCategory(productsData!, queryParams).slice(
-                firstPageIndex,
-                lastPageIndex
-            );
+        const filteredProducts = (
+            queryParams.categoryId
+                ? //@ts-expect-error only need to globaly declare types
+                  filterByCategory(productsData!, queryParams)
+                : productsData
+        )!.filter((product) =>
+            searchValue
+                ? product.name.toLowerCase().includes(searchValue.toLowerCase())
+                : true
+        );
 
-        return productsData!.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage, productsData]);
+        return filteredProducts.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage, productsData, searchValue, queryParams]);
 
     return (
         <>
