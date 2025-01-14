@@ -1,8 +1,10 @@
 import { Stack } from '@mui/joy';
-import Navigation from '../navigation/Navigation';
-import Buttons from './components/Buttons';
 import Logo from './components/Logo';
 import { motion } from 'motion/react';
+import { lazy, Suspense } from 'react';
+
+const Buttons = lazy(() => import('./components/Buttons'));
+const Navigation = lazy(() => import('../navigation/Navigation'));
 
 export default function TopBar() {
     return (
@@ -23,8 +25,10 @@ export default function TopBar() {
                 animate={{ opacity: 1, transition: { duration: 0.75 } }}
             >
                 <Logo />
-                <Navigation />
-                <Buttons />
+                <Suspense fallback=''>
+                    <Navigation />
+                    <Buttons />
+                </Suspense>
             </Stack>
         </header>
     );

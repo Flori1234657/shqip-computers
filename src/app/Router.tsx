@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './Layout';
-import Home from './routes/home-page/Home';
 import { lazy, Suspense } from 'react';
 
+const Home = lazy(() => import('./routes/home-page/Home'));
 const Category = lazy(() => import('./routes/category/components/Category'));
 const Categories = lazy(() => import('./routes/category/Categories'));
 const Shop = lazy(() => import('./routes/shop-page/Shop'));
@@ -18,7 +18,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home />,
+                element: (
+                    <Suspense fallback=''>
+                        <Home />
+                    </Suspense>
+                ),
             },
             {
                 path: '/categories',
@@ -41,7 +45,7 @@ const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: (
-                    <Suspense fallback='fallback-component'>
+                    <Suspense fallback=''>
                         <Shop />
                     </Suspense>
                 ),
@@ -61,7 +65,7 @@ const router = createBrowserRouter([
             {
                 path: '/cart',
                 element: (
-                    <Suspense fallback='fallback-component'>
+                    <Suspense fallback=''>
                         <Cart />
                     </Suspense>
                 ),
@@ -69,7 +73,7 @@ const router = createBrowserRouter([
             {
                 path: '/product/:id',
                 element: (
-                    <Suspense fallback='fallback-component'>
+                    <Suspense fallback=''>
                         <Product />
                     </Suspense>
                 ),
@@ -77,7 +81,7 @@ const router = createBrowserRouter([
             {
                 path: '/about-us',
                 element: (
-                    <Suspense fallback='fallback-component'>
+                    <Suspense fallback=''>
                         <AboutUs />
                     </Suspense>
                 ),
@@ -85,7 +89,7 @@ const router = createBrowserRouter([
             {
                 path: '/contact-us',
                 element: (
-                    <Suspense fallback='fallback-component'>
+                    <Suspense fallback=''>
                         <ContactUs />
                     </Suspense>
                 ),

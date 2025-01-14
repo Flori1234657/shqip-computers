@@ -18,8 +18,9 @@ export default function Products() {
     const currentProductsData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * pageSize;
         const lastPageIndex = firstPageIndex + pageSize;
-        // declare query params type globaly
+
         if (queryParams.categoryId)
+            //@ts-expect-error declare query params type globaly
             return filterByCategory(productsData!, queryParams).slice(
                 firstPageIndex,
                 lastPageIndex

@@ -1,12 +1,13 @@
-import { IconButton, Stack } from '@mui/joy';
-import { MdOutlinePages as CategoryIcon } from 'react-icons/md';
-import NavLinks from './components/mobile-navigation/NavLinks';
-import { useNavigate } from 'react-router-dom';
+import { Stack } from '@mui/joy';
 import { motion } from 'motion/react';
+import { lazy, Suspense } from 'react';
+
+const CategoryButton = lazy(
+    () => import('./components/mobile-navigation/CategoryButton')
+);
+const NavLinks = lazy(() => import('./components/mobile-navigation/NavLinks'));
 
 export default function MobileVersion() {
-    const navigate = useNavigate();
-
     return (
         <Stack
             sx={{
@@ -36,37 +37,10 @@ export default function MobileVersion() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, transition: { duration: 0.5 } }}
                 >
-                    <IconButton
-                        variant='solid'
-                        color='primary'
-                        size='lg'
-                        sx={{
-                            width: '3rem',
-                            height: '3rem',
-                            borderRadius: '100%',
-                            border: '0.25rem solid #051423',
-
-                            position: 'relative',
-                            top: '-0.938rem',
-                            left: '-0.75rem',
-                        }}
-                        onClick={() => navigate('/categories')}
-                        component={motion.button}
-                        initial={{ scale: 0, rotateZ: 360 }}
-                        animate={{
-                            scale: 1,
-                            rotateZ: 0,
-                            transition: {
-                                delay: 0.25,
-                                type: 'spring',
-                                bounce: 0.5,
-                                damping: 12,
-                            },
-                        }}
-                    >
-                        <CategoryIcon />
-                    </IconButton>
-                    <NavLinks />
+                    <Suspense fallback=''>
+                        <CategoryButton />
+                        <NavLinks />
+                    </Suspense>
                 </Stack>
             </nav>
         </Stack>

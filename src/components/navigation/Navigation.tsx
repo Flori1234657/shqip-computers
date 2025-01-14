@@ -8,7 +8,7 @@ export default function Navigation() {
     const { width } = useWindowDimensions();
 
     return (
-        <Suspense fallback='fallback animation 🌀'>
+        <Suspense fallback=''>
             {width < 900 ? <MobileVersion /> : <PcVersion />}
         </Suspense>
     );

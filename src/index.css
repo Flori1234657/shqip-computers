@@ -54,37 +54,75 @@ html {
     }
 }
 
-/* Improve performance by not loading all the fonts at once
-   exp >> create different css files with font faces and import
-   them only on the desierd component's */
-
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins/Poppins-Light.ttf');
+    src: url('/src/assets/fonts/Poppins/poppins-latin-300-normal.woff2')
+        format('woff2');
     font-weight: 300;
 }
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins/Poppins-Regular.ttf');
+    src: url('/src/assets/fonts/Poppins/poppins-latin-400-normal.woff2')
+        format('woff2');
     font-weight: 400;
 }
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins/Poppins-Medium.ttf');
+    src: url('/src/assets/fonts/Poppins/poppins-latin-500-normal.woff2')
+        format('woff2');
     font-weight: 500;
 }
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins/Poppins-SemiBold.ttf');
+    src: url('/src/assets/fonts/Poppins/poppins-latin-700-normal.woff2')
+        format('woff2');
     font-weight: 600;
 }
 @font-face {
     font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins/Poppins-Bold.ttf');
-    font-weight: 600;
-}
-@font-face {
-    font-family: 'Poppins';
-    src: url('./assets/fonts/Poppins/Poppins-ExtraBold.ttf');
+    src: url('/src/assets/fonts/Poppins/poppins-latin-800-normal.woff2')
+        format('woff2');
     font-weight: 700;
+}
+
+/* Inter fonts*/
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    /* font-display: swap; */
+    src: url('/src/assets/fonts/Inter/inter-latin-400-normal.woff2')
+        format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    /* font-display: swap; */
+    src: url('/src/assets/fonts/Inter/inter-latin-400-italic.woff2')
+        format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    /* font-display: swap; */
+    src: url('/src/assets/fonts/Inter/inter-latin-500-normal.woff2')
+        format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    /* font-display: swap; */
+    src: url('/src/assets/fonts/Inter/inter-latin-600-normal.woff2')
+        format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    /* font-display: swap; */
+    src: url('/src/assets/fonts/Inter/inter-latin-700-normal.woff2')
+        format('woff2');
 }
