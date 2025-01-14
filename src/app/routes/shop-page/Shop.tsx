@@ -16,6 +16,7 @@ export default function Shop() {
 
     useEffect(() => {
         // This is the page reset function
+        console.log('useEffect 1 run');
 
         if (isResetingPage.current) isResetingPage.current = false;
         if (currentPage === 1 || !queryParams.categoryId) return;
@@ -26,6 +27,7 @@ export default function Shop() {
     }, [queryParams, isResetingPage.current]);
 
     useEffect(() => {
+        console.log('useEffect 2 run');
         if (previousPage.current > currentPage || isResetingPage.current)
             return;
 
@@ -36,7 +38,7 @@ export default function Shop() {
         getAndSetProducts(controller.signal, currentPage);
 
         return () => controller.abort();
-    }, [currentPage]);
+    }, [currentPage, queryParams]);
 
     return (
         <Stack

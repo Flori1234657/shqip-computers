@@ -19,11 +19,8 @@ export default function Carousel({
     const { setElementsArray: makeCopyArray, elementsArray } =
         useCarouselStore();
 
-    // taking too long to perform actions find a way to improve the performance
     useEffect(() => {
-        console.time();
         makeCopyArray(elements);
-        console.timeEnd();
     }, [elements]);
 
     return (

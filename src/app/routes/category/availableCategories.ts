@@ -58,13 +58,13 @@ const availableCategories = [
             { id: 'hdd', text: 'Hdd 📦' },
             { id: 'ssd', text: 'Ssd 💾' },
             { id: 'cpu', text: 'Cpu 🧠' },
-            { id: 'dvd-rom', text: 'Dvd rom 💽' },
+            { id: 'dvd', text: 'Dvd rom 💽' },
             { id: 'motherboard', text: 'Motherboard 🤖' },
             { id: 'psu', text: 'Psu ⚡' },
         ],
     },
     {
-        id: 'accessory',
+        id: 'accessories',
         title: 'Accessories',
         image: AccessoryImage,
         imageStyles: {
