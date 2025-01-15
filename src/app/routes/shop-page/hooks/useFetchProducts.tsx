@@ -4,9 +4,11 @@ import { getNextProducts, getProductsByCategory } from '../api/getProducts';
 import useShopStore from '../store/shop';
 import useUiStore from '../store/ui';
 import { useParams } from 'react-router-dom';
+import useFilterStore from 'src/features/filter/stores/filter';
 
 export default function useFetchProducts() {
     const queryParams = useParams();
+    const { filterQuery } = useFilterStore();
 
     const { setTotalProducts, searchValue } = useShopStore();
     const setProducts = useProductStore((state) => state.setProducts);
@@ -24,12 +26,14 @@ export default function useFetchProducts() {
                       queryParams.categoryId,
                       signal,
                       queryParams.typeId || '',
-                      searchValue ? searchValue : ''
+                      searchValue || '',
+                      filterQuery || ''
                   )
                 : await getNextProducts(
                       page,
                       signal,
-                      searchValue ? searchValue : ''
+                      searchValue || '',
+                      filterQuery || ''
                   );
 
             setTotalProducts(response.meta.pagination.total);

@@ -5,6 +5,7 @@ import useFetchProducts from './hooks/useFetchProducts';
 import { useEffect, useRef } from 'react';
 import useShopStore from './store/shop';
 import { useLocation } from 'react-router-dom';
+import useFilterStore from 'src/features/filter/stores/filter';
 
 export default function Shop() {
     const { getAndSetProducts } = useFetchProducts();
@@ -13,6 +14,7 @@ export default function Shop() {
 
     const isResetingPage = useRef(false);
     const { pathname } = useLocation();
+    const { filterQuery } = useFilterStore();
 
     useEffect(() => {
         // This is the page reset function
@@ -23,7 +25,7 @@ export default function Shop() {
 
         isResetingPage.current = true;
         setCurrentPage(1);
-    }, [pathname, searchValue, isResetingPage.current]);
+    }, [pathname, searchValue, isResetingPage.current, filterQuery]);
 
     useEffect(() => {
         if (previousPage.current > currentPage || isResetingPage.current)
@@ -36,7 +38,7 @@ export default function Shop() {
         getAndSetProducts(controller.signal, currentPage);
 
         return () => controller.abort();
-    }, [currentPage, pathname, searchValue]);
+    }, [currentPage, pathname, searchValue, filterQuery]);
 
     return (
         <Stack

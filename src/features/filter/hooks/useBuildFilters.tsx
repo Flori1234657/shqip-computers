@@ -91,9 +91,7 @@ export default function useBuildFilters() {
                 [filterData.category.name]: filterData.category.options,
             });
 
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-        if (hardwareRegex) setCategoryToRender(hardwareRegex[1]);
+        if (hardwareRegex) setCategoryToRender(hardwareRegex[1] as CategoryKey);
         else setCategoryToRender('computer');
     };
 

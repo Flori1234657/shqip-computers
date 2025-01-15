@@ -7,11 +7,12 @@ import { throwError } from 'src/utils/throwError';
 export const getNextProducts = async (
     page = 1,
     signal: AbortSignal,
-    searchText?: string
+    searchText?: string,
+    filterQueries?: string
 ) => {
     const request: { data: Product[]; meta: Meta } = await axios
         .get(
-            `${import.meta.env.VITE_REACT_APP_BACKEND}api/products?pagination[page]=${page}&pagination[pageSize]=10${searchText ? `&filters[name][$contains]=${searchText}` : ''}&populate[images][fields][0]=url`,
+            `${import.meta.env.VITE_REACT_APP_BACKEND}api/products?pagination[page]=${page}&pagination[pageSize]=10${searchText ? `&filters[name][$contains]=${searchText}` : ''}${filterQueries || ''}&populate[images][fields][0]=url`,
             { signal }
         )
         .then((res) => res.data)
@@ -25,11 +26,12 @@ export const getProductsByCategory = async (
     category: string,
     signal: AbortSignal,
     type?: string,
-    searchText?: string
+    searchText?: string,
+    filterQueries?: string
 ) => {
     const request: { data: Product[]; meta: Meta } = await axios
         .get(
-            `${import.meta.env.VITE_REACT_APP_BACKEND}api/products?pagination[page]=${page}&pagination[pageSize]=10&filters[category][$contains]=${category}${type ? `&filters[type][$contains]=${type}` : ''}${searchText ? `&filters[name][$contains]=${searchText}` : ''}&populate[images][fields][0]=url`,
+            `${import.meta.env.VITE_REACT_APP_BACKEND}api/products?pagination[page]=${page}&pagination[pageSize]=10&filters[category][$contains]=${category}${type ? `&filters[type][$contains]=${type}` : ''}${searchText ? `&filters[name][$contains]=${searchText}` : ''}${filterQueries || ''}&populate[images][fields][0]=url`,
             { signal }
         )
         .then((res) => res.data)
