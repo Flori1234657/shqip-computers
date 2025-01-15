@@ -1,4 +1,10 @@
 import { Box, Slider, sliderClasses, Stack, Typography } from '@mui/joy';
+import { useState } from 'react';
+import useFilterStore from 'src/features/filter/stores/filter';
+import {
+    buildPriceQuery,
+    calculateLableValue,
+} from 'src/features/filter/utils/globalFilters';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
 
 function valueText(value: number) {
@@ -7,13 +13,12 @@ function valueText(value: number) {
 
 export default function PriceFilter() {
     const { width } = useWindowDimensions();
+    const [sliderValue, setSliderValue] = useState([0, 100]); // its bettr to use useRef but values will not be showing without at least 1 rerender after user leave slider
+
+    const { setFilterQuery } = useFilterStore();
 
     return (
-        <Stack
-            width={{ md: '85%' }}
-            gap={{ xs: '1.25rem', md: '0.75rem' }}
-            alignSelf={{ md: 'center' }}
-        >
+        <Stack width={{ md: '85%' }} alignSelf={{ md: 'center' }}>
             <Typography
                 level='body-lg'
                 lineHeight='1.5'
@@ -31,14 +36,19 @@ export default function PriceFilter() {
                     marks={[
                         {
                             value: 0,
-                            label: '$0',
+                            label: `$${calculateLableValue(sliderValue)[0]}`,
                         },
                         {
                             value: 100,
-                            label: '$3,500',
+                            label: `$${calculateLableValue(sliderValue)[1]}`,
                         },
                     ]}
-                    valueLabelDisplay='on'
+                    onChange={(__, value) => {
+                        setSliderValue(value as number[]);
+                    }}
+                    onChangeCommitted={() =>
+                        setFilterQuery(buildPriceQuery(sliderValue))
+                    }
                     sx={{
                         // Need both of the selectors to make it works on the server-side and client-side
                         [`& [style*="left:0%"], & [style*="left: 0%"]`]: {

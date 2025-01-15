@@ -22,15 +22,18 @@ interface State {
     isFilterVisible: boolean;
     filterCategory?: CategoryData;
     categoryToRender: CategoryKey;
+    filterQuery: string | null;
     setIsFilterVisible: () => void;
     setFilterCategory: (data: CategoryData) => void;
     setCategoryToRender: (key: CategoryKey) => void;
+    setFilterQuery: (query: string | null) => void;
 }
 
 const useFilterStore = create<State>()(
     devtools((set) => ({
         isFilterVisible: false,
         categoryToRender: 'computer',
+        filterQuery: null,
         setIsFilterVisible: () =>
             set((prev) => ({ isFilterVisible: !prev.isFilterVisible })),
         setFilterCategory: (data) =>
@@ -38,6 +41,12 @@ const useFilterStore = create<State>()(
                 filterCategory: { ...prev.filterCategory, ...data },
             })),
         setCategoryToRender: (key) => set(() => ({ categoryToRender: key })),
+        setFilterQuery: (query) =>
+            set((state) => ({
+                filterQuery: state.filterQuery
+                    ? `${state.filterQuery}${query}`
+                    : query,
+            })),
     }))
 );
 

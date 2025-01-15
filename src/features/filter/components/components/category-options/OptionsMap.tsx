@@ -1,12 +1,12 @@
 /* eslint-disable @stylistic/js/indent */
 import { List, ListItem, Stack, Typography } from '@mui/joy';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useBuildFilters from 'src/features/filter/hooks/useBuildFilters';
 import useFilterStore from 'src/features/filter/stores/filter';
 
 export default function OptionsMap() {
-    const { pathname } = useLocation();
+    const queryParams = useParams();
     const { createFilters } = useBuildFilters();
     const { filterCategory, categoryToRender } = useFilterStore();
 
@@ -15,9 +15,8 @@ export default function OptionsMap() {
     } | null>(null);
 
     useEffect(() => {
-        if (/shop\Wcategories\W\w+/g.test(pathname)) createFilters();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pathname]);
+        if (queryParams.categoryId) createFilters();
+    }, [queryParams]);
 
     return (
         <Stack gap={{ xs: '0.75rem', md: '0.469rem' }}>

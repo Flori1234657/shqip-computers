@@ -30,7 +30,7 @@ export default function Cards({ category }: { category: availableCategory }) {
                     height: '7.383rem',
                     bgcolor: 'transparent',
                     boxShadow:
-                        categoryId === category.title.toLowerCase()
+                        categoryId === category.id
                             ? theme.shadow.categoryCardSelected
                             : 'none',
                     borderRadius: '0.5rem',
@@ -39,9 +39,7 @@ export default function Cards({ category }: { category: availableCategory }) {
                     zIndex: 1,
                 },
             })}
-            onClick={() =>
-                navigate(`/shop/categories/${category.title.toLowerCase()}`)
-            }
+            onClick={() => navigate(`/shop/categories/${category.id}`)}
             component={motion.div}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, transition: { duration: 0.5 } }}

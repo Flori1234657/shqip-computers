@@ -4,13 +4,13 @@ import { getNextProducts, getProductsByCategory } from '../api/getProducts';
 import useShopStore from '../store/shop';
 import useUiStore from '../store/ui';
 import { useParams } from 'react-router-dom';
+import useFilterStore from 'src/features/filter/stores/filter';
 
 export default function useFetchProducts() {
     const queryParams = useParams();
+    const { filterQuery } = useFilterStore();
 
-    const setTotalProductsCount = useShopStore(
-        (state) => state.setTotalProducts
-    );
+    const { setTotalProducts, searchValue } = useShopStore();
     const setProducts = useProductStore((state) => state.setProducts);
     const setProductComponent = useUiStore(
         (state) => state.setProductsSectionComponent
@@ -25,11 +25,18 @@ export default function useFetchProducts() {
                       page,
                       queryParams.categoryId,
                       signal,
-                      queryParams.typeId || ''
+                      queryParams.typeId || '',
+                      searchValue || '',
+                      filterQuery || ''
                   )
-                : await getNextProducts(page, signal);
+                : await getNextProducts(
+                      page,
+                      signal,
+                      searchValue || '',
+                      filterQuery || ''
+                  );
 
-            setTotalProductsCount(response.meta.pagination.total);
+            setTotalProducts(response.meta.pagination.total);
             setProducts(response.data);
 
             setProductComponent('product-cards');
