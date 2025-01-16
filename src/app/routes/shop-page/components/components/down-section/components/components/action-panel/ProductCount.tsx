@@ -10,7 +10,14 @@ export default function ProductCount() {
             fontWeight='700'
             sx={(theme) => ({ color: theme.palette.neutral[500] })}
         >
-            10 of {totalProductsCount} products
+            {`${
+                totalProductsCount
+                    ? totalProductsCount < 10
+                        ? totalProductsCount
+                        : 10
+                    : 0
+            } `}
+            of {totalProductsCount} products
         </Typography>
     );
 }

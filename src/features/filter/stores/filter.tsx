@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
+import { updateFilterQuery } from '../utils/globalFilters';
 
 /** The filter options will be displayed based on this categoy keys */
 export type CategoryKey =
@@ -44,7 +45,7 @@ const useFilterStore = create<State>()(
         setFilterQuery: (query) =>
             set((state) => ({
                 filterQuery: state.filterQuery
-                    ? `${state.filterQuery}${query}`
+                    ? updateFilterQuery(state.filterQuery, query!)
                     : query,
             })),
     }))

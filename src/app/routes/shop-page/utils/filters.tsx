@@ -18,16 +18,19 @@ export const filterByCategory = (
 
 export const filterByFilterOption = (filterQuery: string, product: Product) => {
     const pricesFilter = getMinMaxPrices(filterQuery);
-    if (
+    const usedFilter = getUsedFilter(filterQuery);
+
+    const matchesPrice =
         typeof pricesFilter.min === 'number' &&
         typeof pricesFilter.max === 'number'
-    )
-        return (
-            product.defaultPrice >= pricesFilter.min &&
-            product.defaultPrice <= pricesFilter.max
-        );
+            ? product.defaultPrice >= pricesFilter.min &&
+              product.defaultPrice <= pricesFilter.max
+            : true;
 
-    return false;
+    const matchesUsed =
+        typeof usedFilter === 'boolean' ? product.used === usedFilter : true;
+
+    return matchesPrice && matchesUsed;
 };
 
 function getMinMaxPrices(queryString: string) {
@@ -46,4 +49,15 @@ function getMinMaxPrices(queryString: string) {
         min: prices.gte ?? null,
         max: prices.lte ?? null,
     };
+}
+
+function getUsedFilter(queryString: string): boolean | null {
+    const regex = /filters\[used\]=(true|false)/;
+    const match = regex.exec(queryString);
+
+    if (match) {
+        return match[1] === 'true';
+    }
+
+    return null;
 }
