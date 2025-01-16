@@ -25,6 +25,7 @@ export default function Buttons() {
             <Badge
                 badgeContent={cartItems && cartItems.length > 0 ? '' : 0}
                 size={width < 900 ? 'md' : 'sm'}
+                color={/cart/g.test(pathname) ? 'neutral' : 'primary'}
             >
                 <IconButton
                     disabled={pathname === '/cart'}

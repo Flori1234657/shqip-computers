@@ -54,6 +54,18 @@ html {
     }
 }
 
+.hide-scrollbars {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    overflow: hidden; /* Fallback for older browsers */
+    overflow-y: scroll; /* Retain vertical scrolling */
+}
+
+/* For WebKit-based browsers (Chrome, Safari, Edge) */
+.hide-scrollbars::-webkit-scrollbar {
+    display: none;
+}
+
 @font-face {
     font-family: 'Poppins';
     src: url('/src/assets/fonts/Poppins/poppins-latin-300-normal.woff2')

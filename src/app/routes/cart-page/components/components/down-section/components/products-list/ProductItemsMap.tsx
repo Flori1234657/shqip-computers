@@ -11,7 +11,11 @@ export default function ProductItemsMap() {
             gap={{ xs: '0.5rem', md: '0.234rem' }}
             sx={{
                 maxHeight: { xs: '20.625rem', md: '13.43rem' },
-                overflowY: 'scroll',
+            }}
+            slotProps={{
+                root: {
+                    className: 'hide-scrollbars',
+                },
             }}
         >
             {cartItems!.map((product, index) => (

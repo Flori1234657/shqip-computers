@@ -12,7 +12,7 @@ export default function Layout() {
                 <DynamicImports />
                 <TopBar />
             </Suspense>
-            <main style={{ overflowX: 'hidden' }}>
+            <main style={{ overflowX: 'hidden' }} className='hide-scrollbars'>
                 <Outlet />
             </main>
             <Suspense fallback=''>
