@@ -2,12 +2,20 @@ import { Stack, Typography } from '@mui/joy';
 import Image from 'src/components/Image';
 import Img from 'src/assets/images/logo.svg';
 import useWindowDimensions from 'src/hooks/useWindowsDimesions';
+import { useNavigate } from 'react-router-dom';
 
 export default function Logo() {
     const { width } = useWindowDimensions();
+    const navigate = useNavigate();
 
     return (
-        <Stack direction='row' alignItems='center' gap='0.25rem'>
+        <Stack
+            direction='row'
+            alignItems='center'
+            gap='0.25rem'
+            onClick={() => navigate('/')}
+            sx={{ cursor: { md: 'pointer' } }}
+        >
             <Image
                 ratio='1/1'
                 src={Img}

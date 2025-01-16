@@ -4,8 +4,14 @@ import SuggestedProducts from './components/SuggestedProducts';
 
 import Image from 'src/components/Image';
 import Blob from 'src/assets/images/svg/single-product-page/blob.svg';
+import { Navigate } from 'react-router-dom';
+import useProductStore from 'src/stores/products';
 
 export default function Product() {
+    const { products } = useProductStore();
+
+    if (!products || products.length < 1) return <Navigate to='/' replace />;
+
     return (
         <Stack
             direction={{ md: 'row' }}

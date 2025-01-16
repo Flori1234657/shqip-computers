@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/joy';
 import Image from 'src/components/Image';
-import Logo from 'src/assets/images/logo-no-bckg.png';
+import Logo from 'src/assets/images/logo-no-bckg.webp';
 import { motion } from 'motion/react';
 import { heroTextVariants } from 'src/animations/home-page/hero-variants';
 

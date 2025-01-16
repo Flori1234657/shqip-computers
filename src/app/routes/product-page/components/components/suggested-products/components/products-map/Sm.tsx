@@ -1,33 +1,15 @@
 import { Stack } from '@mui/joy';
 import Carousel from 'src/components/carousel/Carousel';
 import Image from 'src/components/Image';
-import PlaceholderImage from 'src/assets/images/placeholder.png';
 import { motion } from 'motion/react';
 import { cardsCarouselVariants } from 'src/animations/shared';
+import useProductStore from 'src/stores/products';
+import { getRandomProducts } from 'src/app/routes/product-page/utils/suggested-products';
+import { useNavigate } from 'react-router-dom';
 
 export default function Sm() {
-    const offerProducts = [
-        {
-            id: '1829hsbn8xhx2',
-            image: PlaceholderImage,
-        },
-        {
-            id: '8329c939jsnjsnj',
-            image: PlaceholderImage,
-        },
-        {
-            id: '91xsnuxajjasa2',
-            image: PlaceholderImage,
-        },
-        {
-            id: '190xnsuhjana9',
-            image: PlaceholderImage,
-        },
-        {
-            id: 'hduaaioj901ao',
-            image: PlaceholderImage,
-        },
-    ];
+    const { products } = useProductStore();
+    const navigate = useNavigate();
 
     return (
         <Stack
@@ -42,16 +24,19 @@ export default function Sm() {
             whileInView='whileInView'
         >
             <Carousel
-                elements={offerProducts.map((product) => (
+                elements={getRandomProducts(products!).map((product) => (
                     <Stack
                         key={`card-image-product${product.id}`}
                         sx={{
                             borderRadius: { xs: '0.5rem' },
                         }}
+                        onClick={() =>
+                            navigate(`/product/${product.documentId}`)
+                        }
                     >
                         <Image
                             ratio='1.54/1'
-                            src={product.image}
+                            src={`${import.meta.env.VITE_REACT_APP_BACKEND}${product.images[0].url}`}
                             width={{ xs: '10rem' }}
                             alt='product'
                         />

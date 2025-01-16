@@ -1,35 +1,13 @@
 import { Grid } from '@mui/joy';
 import { motion } from 'motion/react';
-import PlaceholderImage from 'src/assets/images/placeholder.png';
+import { useNavigate } from 'react-router-dom';
+import { getRandomProducts } from 'src/app/routes/product-page/utils/suggested-products';
 import Image from 'src/components/Image';
+import useProductStore from 'src/stores/products';
 
 export default function Tablet() {
-    const offerProducts = [
-        {
-            id: 'asasw322',
-            image: PlaceholderImage,
-        },
-        {
-            id: '98ahaca',
-            image: PlaceholderImage,
-        },
-        {
-            id: '219fh9cn98b92',
-            image: PlaceholderImage,
-        },
-        {
-            id: '05s15w2e2',
-            image: PlaceholderImage,
-        },
-        {
-            id: '!87b98dh899213',
-            image: PlaceholderImage,
-        },
-        {
-            id: '!22ss',
-            image: PlaceholderImage,
-        },
-    ];
+    const { products } = useProductStore();
+    const navigate = useNavigate();
 
     return (
         <Grid
@@ -41,9 +19,9 @@ export default function Tablet() {
                 maxWidth: { md: '12.422rem' },
             }}
         >
-            {offerProducts.map((image, index) => (
+            {getRandomProducts(products!).map((product, index) => (
                 <Grid
-                    key={image.id}
+                    key={product.id}
                     sx={(theme) => ({
                         position: { md: 'relative' },
                         borderRadius: { sm: '0.5rem', md: '0.352rem' },
@@ -53,7 +31,7 @@ export default function Tablet() {
                         ':hover': {
                             ':before': {
                                 display: { xs: 'none', md: 'flex' },
-                                content: "'Hp Z-book 440 32 ram'",
+                                content: `"${product.name}"`,
                                 width: '100%',
                                 height: '100%',
                                 borderRadius: '0.352rem',
@@ -82,10 +60,11 @@ export default function Tablet() {
                             damping: 3 + index,
                         },
                     }}
+                    onClick={() => navigate(`/product/${product.documentId}`)}
                 >
                     <Image
                         ratio='1.54/1'
-                        src={image.image}
+                        src={`${import.meta.env.VITE_REACT_APP_BACKEND}${product.images[0].url}`}
                         width={{ sm: '10rem', md: '5.859rem' }}
                         objectFit='contain'
                         alt='product'
