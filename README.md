@@ -1,50 +1,85 @@
-# React + TypeScript + Vite
+# Shqip Computers - Modern E-commerce Platform 🖥️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Strapi](https://img.shields.io/badge/Strapi-2F2E8B?style=for-the-badge&logo=strapi&logoColor=white)](https://strapi.io/)
+[![MUI](https://img.shields.io/badge/MUI-007FFF?style=for-the-badge&logo=mui&logoColor=white)](https://mui.com/)
 
-Currently, two official plugins are available:
+A high-performance electronics e-commerce platform specializing in computer hardware, featuring modern web development practices and scalable architecture.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Live Demo:** [Coming Soon] | **Backend Repo:** [Private]
 
-## Expanding the ESLint configuration
+![Shqip Computers Preview](https://via.placeholder.com/800x400.png?text=Shqip+Computers+Screenshot) <!-- Add real screenshot -->
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🚀 Features
 
-- Configure the top-level `parserOptions` property like this:
+### Core Functionality
+- **Product Catalog**: Responsive layout with pagination
+- **Advanced Search**: Multi-criteria filtering (price range, specifications ...)
+- **Sorting System**: Dynamic ordering by price, sales volume, and recommended
+- **Shopping Cart**: Persistent cart management with local storage integration
+- **Checkout Process**: Secure order processing with form validation, shipping adress and more
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Technical Highlights
+- ⚡ **Blazing Fast**: Built with Vite + React optimized production builds
+- 🧩 **Modular Architecture**: Feature-based folder structure with clear separation of concerns
+- 🐻 **State Management**: Zustand for lightweight, scalable state solutions
+- 💅 **UI System**: Customizable Material UI theme with reusable components
+- 🔄 **Real-time Updates**: Optimistic UI patterns for seamless user interactions
+
+### Developer Experience
+- 🛠️ **Type-Safe**: Comprehensive TypeScript integration throughout
+- 📦 **Component Library**: Material UI (Joy UI)
+- 🔍 **SEO Optimized**: With accessibility by MUI and other techniques
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- React 18 + TypeScript
+- Vite build system
+- Zustand state management
+- Material UI (Joy UI)
+- React Router
+- Axios and more...
+
+**Backend**
+- Strapi Headless CMS
+- SQL-lite database
+
+**DevOps**
+- ESLint + Prettier
+- GitHub pre-commit hooks
+
+## 📦 Installation
+
+1. **Clone Repository**
+```bash
+git clone https://github.com/Flori1234657/shqip-computers.git
+cd shqip-computers 
+```
+2. **Install Dependencies**
+```bash
+# Client
+cd client
+yarn install
+
+# Server (requires separate Strapi setup)
+cd ../server
+npm(varies based on the package manager you want to use) install
+```
+3. **Environment Setup**
+```bash
+# Create .env files useing the .env.development template
+```
+4. **Run Development servers**
+```bash
+# Client
+cd client
+yarn run dev
+
+# Server
+cd ../server
+npm run develop
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+#### Crafted with ❤️ by [Florian Dollani] - [Portfolio](https://portfolio-project-45af5.web.app/) | [LinkedIn](https://www.linkedin.com/in/florian-dollani/)
